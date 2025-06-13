@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Head from 'next/head';
-import Link from 'next/link';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -189,9 +188,7 @@ export default function Home() {
       <Section>
         <Title>Ready to get rejected like it&apos;s your love language?</Title>
         <ButtonGroup>
-          <Link href="/download" passHref>
-            <CTAButton as="a">Get Epicurious Now</CTAButton>
-          </Link>
+          <CTAButton as="a" href="/download">Get Epicurious Now</CTAButton>
           <CTAButton>Follow Us for Rejection Memes</CTAButton>
         </ButtonGroup>
       </Section>

@@ -45,22 +45,19 @@ const Title = styled.h2`
   color: #F9FAFB;
 `;
 
-const CodeBlock = styled.pre`
-  background: #2A2A2A;
-  padding: 2rem;
-  border-radius: 8px;
-  overflow-x: auto;
-  font-family: 'IBM Plex Mono', monospace;
-  color: #F9FAFB;
+const StepsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
   margin: 2rem 0;
 `;
 
 const Step = styled.div`
-  margin: 2rem 0;
   padding: 1.5rem;
   border-radius: 8px;
   background: #2A2A2A;
   border: 1px solid #D1D5DB;
+  text-align: center;
   
   h3 {
     font-family: 'IBM Plex Mono', monospace;
@@ -71,6 +68,36 @@ const Step = styled.div`
   p {
     color: #D1D5DB;
     margin-bottom: 1rem;
+  }
+`;
+
+const CodeBlock = styled.pre`
+  background: #1A1A1A;
+  padding: 2rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #F9FAFB;
+  margin: 2rem 0;
+  border: 1px solid #4F46E5;
+`;
+
+const BenefitsList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+`;
+
+const Benefit = styled.li`
+  margin: 1rem 0;
+  padding-left: 2rem;
+  position: relative;
+  color: #F9FAFB;
+  
+  &:before {
+    content: "⚡";
+    position: absolute;
+    left: 0;
   }
 `;
 
@@ -116,44 +143,6 @@ export default function Download() {
       <Hero>
         <h1>Build Your Own Epicurious</h1>
         <p>Deploy the app that turns rejection into a game. Built with Next.js, Supabase, and a dash of emotional intelligence.</p>
-      </Hero>
-
-      <Section>
-        <Title>Quick Start</Title>
-        <Step>
-          <h3>1. Clone the Repository</h3>
-          <CodeBlock>
-            {`git clone https://github.com/yourusername/epicurious.git
-cd epicurious`}
-          </CodeBlock>
-        </Step>
-
-        <Step>
-          <h3>2. Install Dependencies</h3>
-          <CodeBlock>
-            {`yarn install`}
-          </CodeBlock>
-        </Step>
-
-        <Step>
-          <h3>3. Set Up Supabase</h3>
-          <p>Create a new Supabase project and add your environment variables:</p>
-          <CodeBlock>
-            {`NEXT_PUBLIC_SUPABASE_URL=your-project-url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
-          </CodeBlock>
-        </Step>
-
-        <Step>
-          <h3>4. Run the Development Server</h3>
-          <CodeBlock>
-            {`yarn dev`}
-          </CodeBlock>
-        </Step>
-      </Section>
-
-      <Section>
-        <Title>Ready to Deploy?</Title>
         <ButtonGroup>
           <CTAButton href="https://github.com/yourusername/epicurious" target="_blank" rel="noopener noreferrer">
             View on GitHub
@@ -162,17 +151,71 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
             Deploy to Vercel
           </CTAButton>
         </ButtonGroup>
+      </Hero>
+
+      <Section>
+        <Title>Quick Start Guide</Title>
+        <StepsGrid>
+          <Step>
+            <h3>1. Clone</h3>
+            <CodeBlock>
+              {`git clone https://github.com/yourusername/epicurious.git
+cd epicurious`}
+            </CodeBlock>
+          </Step>
+          <Step>
+            <h3>2. Install</h3>
+            <CodeBlock>
+              {`yarn install`}
+            </CodeBlock>
+          </Step>
+          <Step>
+            <h3>3. Configure</h3>
+            <CodeBlock>
+              {`NEXT_PUBLIC_SUPABASE_URL=your-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-key`}
+            </CodeBlock>
+          </Step>
+          <Step>
+            <h3>4. Run</h3>
+            <CodeBlock>
+              {`yarn dev`}
+            </CodeBlock>
+          </Step>
+        </StepsGrid>
       </Section>
 
       <Section>
-        <Title>Features Included</Title>
-        <Step>
-          <h3>✨ Core Features</h3>
-          <p>• User authentication and profiles</p>
-          <p>• Match and rejection system</p>
-          <p>• Real-time messaging</p>
-          <p>• Responsive design</p>
-        </Step>
+        <Title>Why Build With Epicurious?</Title>
+        <BenefitsList>
+          <Benefit>Modern tech stack with Next.js and Supabase</Benefit>
+          <Benefit>Real-time features out of the box</Benefit>
+          <Benefit>Scalable authentication system</Benefit>
+          <Benefit>Built-in matchmaking algorithm</Benefit>
+          <Benefit>Responsive design for all devices</Benefit>
+        </BenefitsList>
+      </Section>
+
+      <Section>
+        <Title>Core Features</Title>
+        <StepsGrid>
+          <Step>
+            <h3>Auth</h3>
+            <p>Secure user authentication with Supabase Auth</p>
+          </Step>
+          <Step>
+            <h3>Matches</h3>
+            <p>Smart matching system with rejection mechanics</p>
+          </Step>
+          <Step>
+            <h3>Chat</h3>
+            <p>Real-time messaging powered by Supabase</p>
+          </Step>
+          <Step>
+            <h3>UI/UX</h3>
+            <p>Beautiful, responsive design system</p>
+          </Step>
+        </StepsGrid>
       </Section>
 
       <Section>
