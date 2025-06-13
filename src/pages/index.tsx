@@ -188,7 +188,7 @@ export default function Home() {
       <Section>
         <Title>Ready to get rejected like it&apos;s your love language?</Title>
         <ButtonGroup>
-          <CTAButton as="a" href="/download">Get Epicurious Now</CTAButton>
+          <CTAButton as="a" href="/profile">Get Epicurious Now</CTAButton>
           <CTAButton>Follow Us for Rejection Memes</CTAButton>
         </ButtonGroup>
       </Section>
