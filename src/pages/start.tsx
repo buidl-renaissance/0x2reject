@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
+import { useUser } from '@/contexts/UserContext';
 
 const Container = styled.div`
   max-width: 600px;
@@ -12,9 +14,10 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #1A1A1A;
-  color: #F9FAFB;
+  background: #121212;
+  color: #f9fafb;
   font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
 `;
 
 const Title = styled.h1`
@@ -25,122 +28,86 @@ const Title = styled.h1`
 `;
 
 const Subtext = styled.p`
-  font-size: 1.2rem;
-  color: #9CA3AF;
+  font-size: 1.1rem;
+  color: #9ca3af;
   text-align: center;
   margin-bottom: 2rem;
 `;
 
 const AuthButton = styled.button`
   width: 100%;
+  max-width: 360px;
   padding: 1rem;
   margin: 0.5rem 0;
   border: none;
   border-radius: 8px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   font-family: 'IBM Plex Mono', monospace;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
   transition: transform 0.2s ease;
-  
+
   &:hover {
     transform: scale(1.02);
   }
 `;
 
-const PhoneButton = styled(AuthButton)`
-  background: #4F46E5;
-  color: #F9FAFB;
-`;
-
-const EmailButton = styled(AuthButton)`
-  background: #10B981;
-  color: #F9FAFB;
-`;
-
 const SocialButton = styled(AuthButton)`
-  background: #2A2A2A;
-  color: #F9FAFB;
-  border: 2px solid #4F46E5;
+  background: #2a2a2a;
+  color: #f9fafb;
+  border: 2px solid #4f46e5;
 `;
 
-const LegalText = styled.p`
-  font-size: 0.8rem;
-  color: #6B7280;
+const Hint = styled.p`
+  font-size: 0.85rem;
+  color: #6b7280;
   text-align: center;
-  margin-top: 2rem;
-  
-  a {
-    color: #4F46E5;
-    text-decoration: none;
-    
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+  margin-top: 1.5rem;
+  max-width: 360px;
 `;
 
 export default function Start() {
   const router = useRouter();
+  const { user, isLoading } = useUser();
+  const next = typeof router.query.next === 'string' ? router.query.next : '/deck';
 
-  const handlePhoneAuth = async () => {
-    // TODO: Implement phone authentication
-    router.push('/profile/basics');
-  };
-
-  const handleEmailAuth = async () => {
-    // TODO: Implement email authentication
-    router.push('/profile/basics');
-  };
+  useEffect(() => {
+    if (isLoading) return;
+    if (user?.profileComplete) {
+      router.replace(next.startsWith('/') ? next : '/deck');
+    } else if (user) {
+      router.replace('/profile');
+    }
+  }, [user, isLoading, router, next]);
 
   const handleSocialAuth = async (provider: 'google' | 'apple') => {
+    const redirectTo = `${window.location.origin}/profile`;
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: {
-        redirectTo: `${window.location.origin}/profile/basics`
-      }
+      options: { redirectTo },
     });
-
-    if (error) {
-      console.error('Auth error:', error);
-    }
+    if (error) console.error('Auth error:', error);
   };
 
   return (
     <Container>
       <Head>
-        <title>Welcome to Epicurious</title>
-        <meta name="description" content="Let's build your rejection-worthy profile" />
+        <title>Start | 0x2 Reject</title>
       </Head>
 
-      <Title>Welcome to Epicurious</Title>
-      <Subtext>Let&apos;s build your rejection-worthy profile</Subtext>
+      <Title>0x2 Reject</Title>
+      <Subtext>Build your Drifter card. Get rejected (twice). Stay in the loop.</Subtext>
 
-      <PhoneButton onClick={handlePhoneAuth}>
-        📱 Continue with Phone
-      </PhoneButton>
-
-      <EmailButton onClick={handleEmailAuth}>
-        ✉️ Continue with Email
-      </EmailButton>
-
-      <SocialButton onClick={() => handleSocialAuth('google')}>
-        <img src="/google-icon.svg" alt="Google" width="20" height="20" />
+      <SocialButton type="button" onClick={() => void handleSocialAuth('google')}>
         Continue with Google
       </SocialButton>
-
-      <SocialButton onClick={() => handleSocialAuth('apple')}>
-        <img src="/apple-icon.svg" alt="Apple" width="20" height="20" />
+      <SocialButton type="button" onClick={() => void handleSocialAuth('apple')}>
         Continue with Apple
       </SocialButton>
 
-      <LegalText>
-        By continuing, you agree to{' '}
-        <a href="/terms">get rejected twice</a>
-      </LegalText>
+      <Hint>
+        Opening from Renaissance? You should already be signed in via the mini app. If not, use
+        Google/Apple above.
+      </Hint>
     </Container>
   );
-} 
+}

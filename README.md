@@ -1,53 +1,35 @@
-# 02x Rejects
+# 0x2 Reject (Drifter)
 
-A dating app where rejection is part of the game. Love is awkward, we made it fun.
+A dating-card lead funnel for people who meet online through Renaissance City.
 
-## About
+## Modes
 
-02x Rejects is a unique dating app that turns the traditional dating experience on its head. Instead of endless swiping and ghosting, we've created a structured way to handle rejection and second chances.
+- **Ren embed / `/deck`** — multi-user swipe deck of public cards
+- **Shareable app `/p/[slug]`** — personal lead funnel for one profile
+- **`/profile`** — build photo, name, vibe, activities, and share link
 
-### Key Features
+## Stack
 
-- **Match**: Connect with people who are genuinely curious about you
-- **Reject**: Experience rejection twice - gently, brutally, or playfully
-- **Redeem**: Make a comeback with style
-- **Decide**: Choose to ghost, go deeper, or let curiosity simmer
+- Next.js (Pages Router) + TypeScript + Styled Components
+- Supabase Auth + Postgres
 
-### Why 02x Rejects?
+## Setup
 
-- Turns ghosting into gameplay
-- Makes rejection low-stakes and funny
-- Encourages better conversations through playful tension
-- Empowers people to try again (but only once 😉)
-- Built for emotionally self-aware individuals
+```bash
+yarn install
+cp .env.example .env.local
+```
 
-## Tech Stack
+Fill in Supabase keys and `RENAISSANCE_SSO_SECRET`. Apply migrations under `supabase/migrations/` (including `20260725000000_renaissance_drifter.sql`). Create a public `photos` storage bucket if photo upload is used.
 
-- Next.js
-- TypeScript
-- Styled Components
-- Supabase (Backend)
+```bash
+yarn dev
+```
 
-## Getting Started
+## Renaissance SSO
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   yarn install
-   ```
-3. Set up your environment variables:
-   ```bash
-   cp .env.example .env.local
-   ```
-4. Run the development server:
-   ```bash
-   yarn dev
-   ```
+The mobile mini app injects `__renaissanceAuthContext`. The guest app POSTs to `/api/auth/context`, which mints a Supabase session for that `renaissanceUserId`.
 
-## Contributing
+## Catalog URL
 
-We welcome contributions! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+`https://0x2reject.vercel.app`
