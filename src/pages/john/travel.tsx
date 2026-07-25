@@ -14,14 +14,17 @@ export default function JohnTravelPage() {
       title="Travel"
       description="Adventure is out there. So is John."
     >
-      {/* Chiang Mai, Thailand */}
+      {/* Thailand */}
       <Body>
         <h2 style={{ marginBottom: '0.5rem', color: '#f9fafb' }}>
-          Chiang Mai — Elephant Sanctuary
+          Thailand
         </h2>
         <p style={{ color: '#9ca3af', marginBottom: '1.5rem' }}>
           November 2024
         </p>
+        <h3 style={{ marginBottom: '0.5rem', color: '#d1d5db', fontSize: '1.25rem' }}>
+          Chiang Mai — Elephant Sanctuary
+        </h3>
       </Body>
 
       <PhotoGrid>
@@ -46,10 +49,46 @@ export default function JohnTravelPage() {
         </PhotoWithCaption>
       </PhotoGrid>
 
-      <Body style={{ marginTop: '1.5rem', marginBottom: '2.5rem' }}>
+      <Body style={{ marginTop: '1.5rem', marginBottom: '2rem' }}>
         <p>
           Spent the day at an ethical elephant sanctuary outside Chiang Mai.
           Fed them, walked with them, got rained on together. Worth every muddy step.
+        </p>
+      </Body>
+
+      {/* Phi Phi Islands */}
+      <Body>
+        <h3 style={{ marginBottom: '0.5rem', color: '#d1d5db', fontSize: '1.25rem' }}>
+          Phi Phi Islands
+        </h3>
+      </Body>
+
+      <PhotoGrid>
+        <PhotoWithCaption>
+          <WideShot $src="/profiles/thailand-phiphi-boat.jpg" />
+          <Caption>Lagoon tour with the homie. Limestone cliffs everywhere.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <WideShot $src="/profiles/thailand-phiphi-harbor.jpg" />
+          <Caption>Phi Phi harbor. Boats, mountains, chaos.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <Shot $src="/profiles/thailand-phiphi-coconut.jpg" />
+          <Caption>Beach office. Coconut water on deck.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <Shot $src="/profiles/thailand-phiphi-island.jpg" />
+          <Caption>Island hopping. Coconut in hand. No complaints.</Caption>
+        </PhotoWithCaption>
+      </PhotoGrid>
+
+      <Body style={{ marginTop: '1.5rem', marginBottom: '2.5rem' }}>
+        <p>
+          Island hopped through Phi Phi. Crystal water, limestone karsts,
+          and more coconuts than I could count. The Beach was filmed here for a reason.
         </p>
       </Body>
 
