@@ -76,17 +76,36 @@ export const PhotoGrid = styled.div`
   gap: 1rem;
 `;
 
-export const Shot = styled.div<{ $src: string }>`
+const ShotContainer = styled.div<{ $wide?: boolean }>`
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: ${(p) => (p.$wide ? '4 / 3' : '3 / 4')};
   border-radius: 16px;
-  background: center/cover no-repeat url(${(p) => p.$src});
   border: 2px solid #2a2a2a;
+  overflow: hidden;
 `;
 
-export const WideShot = styled(Shot)`
-  aspect-ratio: 4 / 3;
+const ShotImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 `;
+
+export function Shot({ $src }: { $src: string }) {
+  return (
+    <ShotContainer>
+      <ShotImage src={$src} alt="" />
+    </ShotContainer>
+  );
+}
+
+export function WideShot({ $src }: { $src: string }) {
+  return (
+    <ShotContainer $wide>
+      <ShotImage src={$src} alt="" />
+    </ShotContainer>
+  );
+}
 
 export const Body = styled.div`
   color: #d1d5db;
