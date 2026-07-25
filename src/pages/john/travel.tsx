@@ -7,6 +7,7 @@ import {
   Caption,
   PhotoWithCaption,
 } from '@/components/JohnSubpage';
+import { useUser } from '@/contexts/UserContext';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -28,12 +29,14 @@ const UploadLink = styled(Link)`
 `;
 
 export default function JohnTravelPage() {
+  const { user } = useUser();
+
   return (
     <JohnSubpage
       title="Travel"
       description="Adventure is out there. So is John."
     >
-      <UploadLink href="/john/travel/upload">+ Add Experience</UploadLink>
+      {user && <UploadLink href="/john/travel/upload">+ Add Experience</UploadLink>}
       {/* Thailand */}
       <Body>
         <h2 style={{ marginBottom: '0.5rem', color: '#f9fafb' }}>
