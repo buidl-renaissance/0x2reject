@@ -422,7 +422,7 @@ export function DatingCardFunnel({
     card.package_hint === 'Yes, this cute little girl is included in the package'
       ? '... and yes, this cute little girl is included in the package'
       : card.package_hint;
-  const smsBody = encodeURIComponent("Hey, I think you and your cat are pretty cute. Let's ...");
+  const smsBody = encodeURIComponent("Hey it's ..., I think you and your cat are pretty cute. We should ...");
   const smsHref = card.text_phone
     ? `sms:${card.text_phone.replace(/[^\d+]/g, '')}?&body=${smsBody}`
     : null;
