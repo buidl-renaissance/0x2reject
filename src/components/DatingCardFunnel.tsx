@@ -596,6 +596,9 @@ export function DatingCardFunnel({
                 <ExploreLink href={`${exploreBasePath}/what-he-does`}>
                   What does {displayName} do? →
                 </ExploreLink>
+                <ExploreLink href={`${exploreBasePath}/travel`}>
+                  Where has {displayName} been? →
+                </ExploreLink>
               </ExploreList>
             )}
           </TasteScroll>
