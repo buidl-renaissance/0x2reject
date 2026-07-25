@@ -576,10 +576,7 @@ export function DatingCardFunnel({
             {vibeOverride ? (
               <Headline>We can get those issues straightened out.</Headline>
             ) : (
-              <>
-                <Headline>You&apos;ve got taste.</Headline>
-                <Sub>Good tastes.</Sub>
-              </>
+              <Headline>You&apos;ve got taste.</Headline>
             )}
             {(card.secondary_photo_url || card.photo_url) && (
               <TastePhoto $src={card.secondary_photo_url || card.photo_url} />
