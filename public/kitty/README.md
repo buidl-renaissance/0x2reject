@@ -1,4 +1,4 @@
-# Sash kitty archive
+# Sash(a Cutie) kitty archive
 
 Originals renamed to match `/john/cats` captions. Web JPGs live in `/public/profiles/sash-*.jpg`.
 
@@ -15,3 +15,6 @@ Originals renamed to match `/john/cats` captions. Web JPGs live in `/public/prof
 | sash-relaxed | Fully settled. Zero worries. |
 | sash-suitcase | Ready for adventure. DFW approved. |
 | sash-cutout | Partners in crime. |
+| sash-nuzzle | Nose kisses. She's home. |
+| sash-chest-nap | Chest nap. Heart stolen. |
+| sash-loft | Loft life. Watching everything. |

@@ -12,19 +12,9 @@ export default function JohnCatsPage() {
   return (
     <JohnSubpage
       title="Cat photos"
-      description="You asked for cat photos. Sash delivers."
+      description="You asked for cat photos. Sash(a Cutie) delivers."
     >
       <PhotoGrid>
-        <PhotoWithCaption>
-          <Shot $src="/profiles/sash-cool.jpg" />
-          <Caption>All grown up. Zero apologies.</Caption>
-        </PhotoWithCaption>
-
-        <PhotoWithCaption>
-          <WideShot $src="/profiles/sash-first-meet.jpg" />
-          <Caption>The moment we met. She chose me.</Caption>
-        </PhotoWithCaption>
-
         <PhotoWithCaption>
           <Shot $src="/profiles/sash-found.jpg" />
           <Caption>Found her on the street. Tail up, no fear.</Caption>
@@ -51,13 +41,18 @@ export default function JohnCatsPage() {
         </PhotoWithCaption>
 
         <PhotoWithCaption>
-          <Shot $src="/profiles/sash-queen.jpg" />
-          <Caption>Queen energy from day one.</Caption>
+          <WideShot $src="/profiles/sash-cutout.jpg" />
+          <Caption>Partners in crime.</Caption>
         </PhotoWithCaption>
 
         <PhotoWithCaption>
-          <Shot $src="/profiles/sash-relaxed.jpg" />
-          <Caption>Fully settled. Zero worries.</Caption>
+          <Shot $src="/profiles/sash-nuzzle.jpg" />
+          <Caption>Nose kisses. She&apos;s home.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <WideShot $src="/profiles/sash-loft.jpg" />
+          <Caption>Loft life. Watching everything.</Caption>
         </PhotoWithCaption>
 
         <PhotoWithCaption>
@@ -65,16 +60,12 @@ export default function JohnCatsPage() {
           <Caption>Ready for adventure. DFW approved.</Caption>
         </PhotoWithCaption>
 
-        <PhotoWithCaption>
-          <WideShot $src="/profiles/sash-cutout.jpg" />
-          <Caption>Partners in crime.</Caption>
-        </PhotoWithCaption>
       </PhotoGrid>
 
       <Body style={{ marginTop: '1.25rem' }}>
         <p>
-          <strong>Sash</strong> — the cute little girl included in the package.
-          Soft paws, sharp judgment, zero chill about dinner time.
+          <strong>Sash(a Cutie)</strong> — the cute little girl included in the
+          package. Soft paws, sharp judgment, zero chill about dinner time.
         </p>
       </Body>
     </JohnSubpage>
