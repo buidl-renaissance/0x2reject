@@ -18,11 +18,27 @@ const Center = styled.div`
 
 export default function ShareCardPage() {
   const router = useRouter();
-  const { slug } = router.query;
+  const { slug, step: stepQuery, mode } = router.query;
   const [card, setCard] = useState<DatingCardData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [done, setDone] = useState(false);
+
+  const initialStep =
+    stepQuery === 'taste' ||
+    stepQuery === 'lead' ||
+    stepQuery === 'activities' ||
+    stepQuery === 'card'
+      ? stepQuery
+      : 'card';
+
+  const exploreBasePath =
+    typeof slug === 'string' && slug === 'john' ? '/john' : undefined;
+
+  const vibeOverride =
+    mode === 'bad-girl'
+      ? 'Licensed to shag. Bad girls already knew.'
+      : null;
 
   useEffect(() => {
     if (!slug || typeof slug !== 'string') return;
@@ -90,8 +106,12 @@ export default function ShareCardPage() {
         </title>
       </Head>
       <DatingCardFunnel
+        key={`${card.id}-${initialStep}-${mode || 'default'}`}
         card={card}
         source="share"
+        initialStep={initialStep}
+        exploreBasePath={exploreBasePath}
+        vibeOverride={vibeOverride}
         onFinished={() => setDone(true)}
       />
     </>

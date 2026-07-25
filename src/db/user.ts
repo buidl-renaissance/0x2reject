@@ -18,6 +18,9 @@ export interface User {
   vibe?: string | null;
   age?: number | null;
   photoUrl?: string | null;
+  secondaryPhotoUrl?: string | null;
+  packageHint?: string | null;
+  textPhone?: string | null;
   activities: string[];
   isPublic: boolean;
   status?: UserStatus | null;
@@ -52,6 +55,9 @@ function rowToUser(row: typeof users.$inferSelect): User {
     vibe: row.vibe,
     age: row.age ?? null,
     photoUrl: row.photoUrl,
+    secondaryPhotoUrl: row.secondaryPhotoUrl,
+    packageHint: row.packageHint,
+    textPhone: row.textPhone,
     activities: parseActivities(row.activities),
     isPublic: Boolean(row.isPublic),
     status: row.status as UserStatus | null,
@@ -94,6 +100,9 @@ export function toPublicCard(user: User) {
     vibe: user.vibe,
     age: user.age ?? null,
     photo_url: user.photoUrl || user.pfpUrl || user.profilePicture,
+    secondary_photo_url: user.secondaryPhotoUrl ?? null,
+    package_hint: user.packageHint ?? null,
+    text_phone: user.textPhone ?? null,
     activities: user.activities,
   };
 }
@@ -210,7 +219,17 @@ export async function getOrCreateUserByRenaissanceId(
     updatedAt: now,
   };
   await db.insert(users).values(newUser);
-  return rowToUser({ ...newUser, phone: null, email: null, slug: null, vibe: null, age: null });
+  return rowToUser({
+    ...newUser,
+    phone: null,
+    email: null,
+    slug: null,
+    vibe: null,
+    age: null,
+    secondaryPhotoUrl: null,
+    packageHint: null,
+    textPhone: null,
+  });
 }
 
 export interface ProfileUpdateData {

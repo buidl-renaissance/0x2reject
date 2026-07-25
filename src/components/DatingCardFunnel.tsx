@@ -1,5 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { activityLabel } from '@/lib/activities';
 
 export type DatingCardData = {
@@ -10,10 +11,13 @@ export type DatingCardData = {
   vibe: string | null;
   age?: number | null;
   photo_url: string | null;
+  secondary_photo_url?: string | null;
+  package_hint?: string | null;
+  text_phone?: string | null;
   activities: string[];
 };
 
-type Step = 'card' | 'taste' | 'lead' | 'heart' | 'left-bait' | 'sure' | 'activities';
+type Step = 'card' | 'taste' | 'lead' | 'heart' | 'left-bait' | 'honesty' | 'sure' | 'activities';
 
 const shake = keyframes`
   0%, 100% { transform: translateX(0); }
@@ -78,19 +82,8 @@ const Photo = styled.div<{ $src?: string | null }>`
   inset: 0;
   background: ${(p) =>
     p.$src
-      ? `center/cover no-repeat url(${p.$src}), linear-gradient(160deg, #2a2a2a, #111)`
-      : 'linear-gradient(160deg, #333 0%, #111 100%)'};
-`;
-
-const CardGradient = styled.div`
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 40%,
-    rgba(0, 0, 0, 0.75) 75%,
-    rgba(0, 0, 0, 0.92) 100%
-  );
+      ? `center/cover no-repeat url(${p.$src})`
+      : '#1c1c1c'};
 `;
 
 const CardMeta = styled.div`
@@ -99,6 +92,7 @@ const CardMeta = styled.div`
   right: 0;
   bottom: 0;
   padding: 1.5rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
 `;
 
 const Name = styled.h1`
@@ -133,25 +127,41 @@ const Stamp = styled.div<{ $side: 'left' | 'right' }>`
 
 const Actions = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.25rem;
 `;
 
-const CircleBtn = styled.button<{ $variant: 'pass' | 'like' }>`
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 2px solid ${(p) => (p.$variant === 'like' ? '#10b981' : '#ff4d4f')};
-  background: #1a1a1a;
-  color: ${(p) => (p.$variant === 'like' ? '#10b981' : '#ff4d4f')};
-  font-size: 1.6rem;
+const SwipeRightBtn = styled.button`
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  color: #f9fafb;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 0.5rem 1rem;
+  transition: transform 0.15s ease, color 0.15s ease;
 
   &:hover {
-    transform: scale(1.08);
+    transform: translateX(4px);
+    color: #c7d2fe;
   }
+`;
+
+const SwipeLabel = styled.span`
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+`;
+
+const SwipeArrow = styled.span`
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #4f46e5;
 `;
 
 const Headline = styled.h2`
@@ -288,9 +298,96 @@ const ErrorText = styled.p`
   margin: 0 0 0.75rem;
 `;
 
+const TasteScroll = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 5.5rem;
+  animation: ${fadeIn} 0.35s ease;
+`;
+
+const TastePhoto = styled.div<{ $src?: string | null }>`
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  margin: 1.25rem 0 1rem;
+  background: ${(p) =>
+    p.$src
+      ? `center/cover no-repeat url(${p.$src}), #1c1c1c`
+      : 'linear-gradient(160deg, #333, #111)'};
+  border: 2px solid #2a2a2a;
+`;
+
+const PackageHint = styled.p`
+  text-align: center;
+  color: #d1d5db;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  margin: 0 0 1.5rem;
+  font-style: italic;
+`;
+
+const ExploreList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+`;
+
+const ExploreLink = styled.a`
+  display: block;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  background: #1c1c1c;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 0.95rem;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    border-color: #4f46e5;
+    background: #1e1b4b;
+  }
+`;
+
+const FixedCtaBar = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.85rem 1.25rem calc(0.85rem + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, transparent 0%, #121212 55%);
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+`;
+
+const TextJohnBtn = styled.a`
+  display: inline-block;
+  padding: 0.55rem 1.15rem;
+  border-radius: 8px;
+  border: 1px solid #4f46e5;
+  background: #1a1a1a;
+  color: #c7d2fe;
+  font-size: 0.85rem;
+  font-family: 'IBM Plex Mono', monospace;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+
+  &:hover {
+    background: #4f46e5;
+    color: #fff;
+  }
+`;
+
 type Props = {
   card: DatingCardData;
   source: 'deck' | 'share';
+  initialStep?: Step;
+  exploreBasePath?: string;
+  /** Altered vibe shown on the main card (e.g. after license-to-shag) */
+  vibeOverride?: string | null;
   onFinished?: () => void;
   onSwipeRecorded?: (direction: 'left' | 'right') => void;
 };
@@ -298,10 +395,14 @@ type Props = {
 export function DatingCardFunnel({
   card,
   source,
+  initialStep = 'card',
+  exploreBasePath,
+  vibeOverride,
   onFinished,
   onSwipeRecorded,
 }: Props) {
-  const [step, setStep] = useState<Step>('card');
+  const router = useRouter();
+  const [step, setStep] = useState<Step>(initialStep);
   const [phone, setPhone] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -309,8 +410,33 @@ export function DatingCardFunnel({
   const [dragging, setDragging] = useState(false);
   const startX = useRef(0);
 
+  useEffect(() => {
+    if (initialStep) setStep(initialStep);
+  }, [initialStep]);
+
   const displayName = card.full_name || card.username || 'Mystery';
   const nameLine = card.age ? `${displayName}, ${card.age}` : displayName;
+  const vibeText = vibeOverride || card.vibe || 'No vibe listed… yet.';
+  const packageHintText =
+    !card.package_hint ||
+    card.package_hint === 'Yes, this cute little girl is included in the package'
+      ? '... and yes, this cute little girl is included in the package'
+      : card.package_hint;
+  const smsHref = card.text_phone
+    ? `sms:${card.text_phone.replace(/[^\d+]/g, '')}`
+    : null;
+
+  const licensePath = exploreBasePath
+    ? `${exploreBasePath}/license-to-shag`
+    : null;
+
+  const pushToLicense = useCallback(() => {
+    if (licensePath) {
+      void router.push(licensePath);
+      return;
+    }
+    setStep('taste');
+  }, [licensePath, router]);
 
   const recordSwipe = useCallback(
     async (direction: 'left' | 'right') => {
@@ -332,12 +458,21 @@ export function DatingCardFunnel({
   const goRight = async () => {
     await recordSwipe('right');
     setStep('taste');
-    setTimeout(() => setStep('lead'), 900);
   };
 
   const goLeft = async () => {
     await recordSwipe('left');
     setStep('left-bait');
+  };
+
+  const onDaddyIssuesYes = () => {
+    setStep('honesty');
+    setTimeout(() => pushToLicense(), 1400);
+  };
+
+  const onDaddyIssuesNo = () => {
+    setStep('sure');
+    setTimeout(() => pushToLicense(), 1200);
   };
 
   const submitLead = async () => {
@@ -404,30 +539,63 @@ export function DatingCardFunnel({
             onPointerCancel={onPointerUp}
           >
             <Photo $src={card.photo_url} />
-            <CardGradient />
-            {dragX > 40 && <Stamp $side="right">Like</Stamp>}
+            {dragX > 40 && <Stamp $side="right">Swipe</Stamp>}
             {dragX < -40 && <Stamp $side="left">Nope</Stamp>}
             <CardMeta>
               <Name>{nameLine}</Name>
-              <Vibe>{card.vibe || 'No vibe listed… yet.'}</Vibe>
+              <Vibe>{vibeText}</Vibe>
             </CardMeta>
           </CardShell>
           <Actions>
-            <CircleBtn $variant="pass" type="button" onClick={() => void goLeft()} aria-label="Pass">
-              ✕
-            </CircleBtn>
-            <CircleBtn $variant="like" type="button" onClick={() => void goRight()} aria-label="Like">
-              ♥
-            </CircleBtn>
+            <SwipeRightBtn type="button" onClick={() => void goRight()} aria-label="Swipe right">
+              <SwipeLabel>Swipe Right</SwipeLabel>
+              <SwipeArrow aria-hidden>→</SwipeArrow>
+            </SwipeRightBtn>
           </Actions>
         </Stage>
       )}
 
       {step === 'taste' && (
-        <Stage>
-          <Headline>You&apos;ve got taste.</Headline>
-          <Sub>Hold that thought…</Sub>
-        </Stage>
+        <>
+          <TasteScroll>
+            {vibeOverride ? (
+              <Headline>We can get those issues straightened out.</Headline>
+            ) : (
+              <>
+                <Headline>You&apos;ve got taste.</Headline>
+                <Sub>Good tastes.</Sub>
+              </>
+            )}
+            {(card.secondary_photo_url || card.photo_url) && (
+              <TastePhoto $src={card.secondary_photo_url || card.photo_url} />
+            )}
+            <PackageHint>{packageHintText}</PackageHint>
+            {exploreBasePath && (
+              <ExploreList>
+                <ExploreLink href={`${exploreBasePath}/cats`}>
+                  Take me to cat photos →
+                </ExploreLink>
+                <ExploreLink href={`${exploreBasePath}/kind-of-man`}>
+                  What kind of man is {displayName}? →
+                </ExploreLink>
+                <ExploreLink href={`${exploreBasePath}/what-he-does`}>
+                  What does {displayName} do? →
+                </ExploreLink>
+              </ExploreList>
+            )}
+          </TasteScroll>
+          {smsHref ? (
+            <FixedCtaBar>
+              <TextJohnBtn href={smsHref}>Text {displayName}</TextJohnBtn>
+            </FixedCtaBar>
+          ) : (
+            <FixedCtaBar>
+              <TextJohnBtn href="#" onClick={(e) => { e.preventDefault(); setStep('lead'); }}>
+                Stay in the loop
+              </TextJohnBtn>
+            </FixedCtaBar>
+          )}
+        </>
       )}
 
       {step === 'lead' && (
@@ -465,20 +633,19 @@ export function DatingCardFunnel({
           <Headline>Bad girl.</Headline>
           <Sub>Do you have daddy issues?</Sub>
           <ChoiceRow>
-            <ChoiceBtn $tone="yes" type="button" onClick={() => setStep('lead')}>
+            <ChoiceBtn $tone="yes" type="button" onClick={onDaddyIssuesYes}>
               Yes 😇
             </ChoiceBtn>
-            <ChoiceBtn
-              $tone="no"
-              type="button"
-              onClick={() => {
-                setStep('sure');
-                setTimeout(() => setStep('activities'), 900);
-              }}
-            >
+            <ChoiceBtn $tone="no" type="button" onClick={onDaddyIssuesNo}>
               No 🙄
             </ChoiceBtn>
           </ChoiceRow>
+        </Stage>
+      )}
+
+      {step === 'honesty' && (
+        <Stage>
+          <Headline>I appreciate your honesty.</Headline>
         </Stage>
       )}
 

@@ -31,9 +31,43 @@ const JOHN = {
   slug: 'john',
   vibe: 'Cat dad energy. Bad decisions, good stories.',
   photoUrl: '/profiles/john.png',
+  secondaryPhotoUrl: '/profiles/john-sash.png',
+  packageHint: '... and yes, this cute little girl is included in the package',
+  textPhone: '+13135503518',
   activities: JSON.stringify(['pinball', 'crypto', 'travel', 'building', 'events']),
   isPublic: true,
 };
+
+async function upsertJohn(
+  id: string | null,
+  now: Date
+) {
+  const payload = {
+    ...JOHN,
+    name: JOHN.displayName,
+    profilePicture: JOHN.photoUrl,
+    pfpUrl: JOHN.photoUrl,
+    updatedAt: now,
+  };
+
+  if (id) {
+    await db.update(schema.users).set(payload).where(eq(schema.users.id, id));
+    return id;
+  }
+
+  const newId = uuidv4();
+  await db.insert(schema.users).values({
+    id: newId,
+    ...payload,
+    email: null,
+    phone: null,
+    accountAddress: null,
+    status: 'active',
+    role: 'admin',
+    createdAt: now,
+  });
+  return newId;
+}
 
 async function main() {
   console.log(useLocal || !authToken ? '📁 Seeding local SQLite' : '☁️ Seeding Turso');
@@ -45,59 +79,20 @@ async function main() {
     .limit(1);
 
   const now = new Date();
+  let id: string | null = existing[0]?.id ?? null;
 
-  if (existing.length) {
-    await db
-      .update(schema.users)
-      .set({
-        ...JOHN,
-        name: JOHN.displayName,
-        profilePicture: JOHN.photoUrl,
-        pfpUrl: JOHN.photoUrl,
-        updatedAt: now,
-      })
-      .where(eq(schema.users.id, existing[0].id));
-    console.log('✅ Updated John card:', existing[0].id);
-  } else {
+  if (!id) {
     const byRen = await db
       .select()
       .from(schema.users)
       .where(eq(schema.users.renaissanceId, JOHN.renaissanceId))
       .limit(1);
-
-    if (byRen.length) {
-      await db
-        .update(schema.users)
-        .set({
-          ...JOHN,
-          name: JOHN.displayName,
-          profilePicture: JOHN.photoUrl,
-          pfpUrl: JOHN.photoUrl,
-          updatedAt: now,
-        })
-        .where(eq(schema.users.id, byRen[0].id));
-      console.log('✅ Updated John by renaissanceId:', byRen[0].id);
-    } else {
-      const id = uuidv4();
-      await db.insert(schema.users).values({
-        id,
-        ...JOHN,
-        name: JOHN.displayName,
-        profilePicture: JOHN.photoUrl,
-        pfpUrl: JOHN.photoUrl,
-        email: null,
-        phone: null,
-        accountAddress: null,
-        status: 'active',
-        role: 'admin',
-        createdAt: now,
-        updatedAt: now,
-      });
-      console.log('✅ Created John card:', id);
-    }
+    id = byRen[0]?.id ?? null;
   }
 
-  console.log('🔗 Share: /p/john');
+  const savedId = await upsertJohn(id, now);
+  console.log(id ? '✅ Updated John card:' : '✅ Created John card:', savedId);
+  console.log('🔗 Share: /john  (also /p/john)');
   process.exit(0);
 }
 

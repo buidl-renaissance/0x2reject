@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
+  async rewrites() {
+    return [{ source: "/john", destination: "/p/john" }];
+  },
 };
 
 export default nextConfig;
