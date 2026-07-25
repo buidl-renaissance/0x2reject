@@ -118,3 +118,17 @@ export const Tag = styled.li`
   border: 1px solid #2a2a2a;
   color: #e5e7eb;
 `;
+
+export const Caption = styled.p`
+  color: #9ca3af;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
+`;
+
+export const PhotoWithCaption = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+`;
