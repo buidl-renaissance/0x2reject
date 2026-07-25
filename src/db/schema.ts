@@ -76,3 +76,35 @@ export const swipes = sqliteTable(
     pairIdx: uniqueIndex('swipes_pair_idx').on(table.swiperId, table.profileId),
   })
 );
+
+export const travelExperiences = sqliteTable('travel_experiences', {
+  id: text('id').primaryKey(),
+  userId: text('userId')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  title: text('title').notNull(),
+  description: text('description'),
+  location: text('location'),
+  date: text('date'),
+  sortOrder: integer('sortOrder').default(0),
+  createdAt: integer('createdAt', { mode: 'timestamp' })
+    .default(sql`(strftime('%s', 'now'))`)
+    .notNull(),
+  updatedAt: integer('updatedAt', { mode: 'timestamp' })
+    .default(sql`(strftime('%s', 'now'))`)
+    .notNull(),
+});
+
+export const travelMedia = sqliteTable('travel_media', {
+  id: text('id').primaryKey(),
+  experienceId: text('experienceId')
+    .notNull()
+    .references(() => travelExperiences.id, { onDelete: 'cascade' }),
+  url: text('url').notNull(),
+  type: text('type').$type<'photo' | 'video'>().notNull(),
+  caption: text('caption'),
+  sortOrder: integer('sortOrder').default(0),
+  createdAt: integer('createdAt', { mode: 'timestamp' })
+    .default(sql`(strftime('%s', 'now'))`)
+    .notNull(),
+});
