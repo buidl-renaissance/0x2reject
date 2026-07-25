@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState, useRef, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useUser } from '@/contexts/UserContext';
 
 const Page = styled.div`
   max-width: 600px;
@@ -204,6 +205,15 @@ const Message = styled.p<{ $type?: 'error' | 'success' }>`
   margin-bottom: 1rem;
 `;
 
+const UnauthorizedMessage = styled.div`
+  padding: 1rem;
+  border-radius: 10px;
+  background: #2a1515;
+  border: 1px solid #ef4444;
+  color: #fca5a5;
+  margin-bottom: 1rem;
+`;
+
 type FileWithPreview = {
   file: File;
   preview: string;
@@ -211,6 +221,7 @@ type FileWithPreview = {
 };
 
 export default function TravelUploadPage() {
+  const { user, isLoading } = useUser();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
@@ -341,107 +352,113 @@ export default function TravelUploadPage() {
       <Back href="/john/travel">← Back to travel</Back>
       <Title>Add Travel Experience</Title>
 
-      {message && <Message $type={message.type}>{message.text}</Message>}
+      {!isLoading && !user ? (
+        <UnauthorizedMessage>Unauthorized</UnauthorizedMessage>
+      ) : user ? (
+        <>
+          {message && <Message $type={message.type}>{message.text}</Message>}
 
-      <Form onSubmit={handleSubmit}>
-        <FieldGroup>
-          <Label htmlFor="title">Title *</Label>
-          <Input
-            id="title"
-            type="text"
-            placeholder="e.g., Thailand"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </FieldGroup>
+          <Form onSubmit={handleSubmit}>
+            <FieldGroup>
+              <Label htmlFor="title">Title *</Label>
+              <Input
+                id="title"
+                type="text"
+                placeholder="e.g., Thailand"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </FieldGroup>
 
-        <FieldGroup>
-          <Label htmlFor="location">Location</Label>
-          <Input
-            id="location"
-            type="text"
-            placeholder="e.g., Chiang Mai, Phi Phi Islands"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </FieldGroup>
+            <FieldGroup>
+              <Label htmlFor="location">Location</Label>
+              <Input
+                id="location"
+                type="text"
+                placeholder="e.g., Chiang Mai, Phi Phi Islands"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </FieldGroup>
 
-        <FieldGroup>
-          <Label htmlFor="date">Date</Label>
-          <Input
-            id="date"
-            type="text"
-            placeholder="e.g., November 2024"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </FieldGroup>
+            <FieldGroup>
+              <Label htmlFor="date">Date</Label>
+              <Input
+                id="date"
+                type="text"
+                placeholder="e.g., November 2024"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </FieldGroup>
 
-        <FieldGroup>
-          <Label htmlFor="description">Description</Label>
-          <TextArea
-            id="description"
-            placeholder="Tell the story of this trip..."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </FieldGroup>
+            <FieldGroup>
+              <Label htmlFor="description">Description</Label>
+              <TextArea
+                id="description"
+                placeholder="Tell the story of this trip..."
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </FieldGroup>
 
-        <FieldGroup>
-          <Label>Photos & Videos</Label>
-          <DropZone
-            $active={dragActive}
-            $hasFiles={files.length > 0}
-            onDragEnter={handleDrag}
-            onDragLeave={handleDrag}
-            onDragOver={handleDrag}
-            onDrop={handleDrop}
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <DropText>
-              {files.length > 0
-                ? `${files.length} file${files.length > 1 ? 's' : ''} selected — click or drop to add more`
-                : 'Drag & drop photos/videos here, or click to select'}
-            </DropText>
-          </DropZone>
-          <FileInput
-            ref={fileInputRef}
-            type="file"
-            multiple
-            accept="image/*,video/*"
-            onChange={(e) => handleFiles(e.target.files)}
-          />
+            <FieldGroup>
+              <Label>Photos & Videos</Label>
+              <DropZone
+                $active={dragActive}
+                $hasFiles={files.length > 0}
+                onDragEnter={handleDrag}
+                onDragLeave={handleDrag}
+                onDragOver={handleDrag}
+                onDrop={handleDrop}
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <DropText>
+                  {files.length > 0
+                    ? `${files.length} file${files.length > 1 ? 's' : ''} selected — click or drop to add more`
+                    : 'Drag & drop photos/videos here, or click to select'}
+                </DropText>
+              </DropZone>
+              <FileInput
+                ref={fileInputRef}
+                type="file"
+                multiple
+                accept="image/*,video/*"
+                onChange={(e) => handleFiles(e.target.files)}
+              />
 
-          {files.length > 0 && (
-            <PreviewGrid>
-              {files.map((f, i) => (
-                <div key={i}>
-                  <PreviewItem>
-                    {isVideo(f.file.name) ? (
-                      <PreviewVideo src={f.preview} muted />
-                    ) : (
-                      <PreviewImage src={f.preview} alt="" />
-                    )}
-                    <RemoveBtn type="button" onClick={() => removeFile(i)}>
-                      ×
-                    </RemoveBtn>
-                  </PreviewItem>
-                  <CaptionInput
-                    type="text"
-                    placeholder="Caption..."
-                    value={f.caption}
-                    onChange={(e) => updateCaption(i, e.target.value)}
-                  />
-                </div>
-              ))}
-            </PreviewGrid>
-          )}
-        </FieldGroup>
+              {files.length > 0 && (
+                <PreviewGrid>
+                  {files.map((f, i) => (
+                    <div key={i}>
+                      <PreviewItem>
+                        {isVideo(f.file.name) ? (
+                          <PreviewVideo src={f.preview} muted />
+                        ) : (
+                          <PreviewImage src={f.preview} alt="" />
+                        )}
+                        <RemoveBtn type="button" onClick={() => removeFile(i)}>
+                          ×
+                        </RemoveBtn>
+                      </PreviewItem>
+                      <CaptionInput
+                        type="text"
+                        placeholder="Caption..."
+                        value={f.caption}
+                        onChange={(e) => updateCaption(i, e.target.value)}
+                      />
+                    </div>
+                  ))}
+                </PreviewGrid>
+              )}
+            </FieldGroup>
 
-        <SubmitBtn type="submit" disabled={submitting}>
-          {submitting ? 'Creating...' : 'Create Experience'}
-        </SubmitBtn>
-      </Form>
+            <SubmitBtn type="submit" disabled={submitting}>
+              {submitting ? 'Creating...' : 'Create Experience'}
+            </SubmitBtn>
+          </Form>
+        </>
+      ) : null}
     </Page>
   );
 }
