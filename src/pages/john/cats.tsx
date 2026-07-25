@@ -2,7 +2,6 @@ import {
   JohnSubpage,
   PhotoGrid,
   Shot,
-  WideShot,
   Body,
   Caption,
   PhotoWithCaption,
@@ -36,12 +35,12 @@ export default function JohnCatsPage() {
         </PhotoWithCaption>
 
         <PhotoWithCaption>
-          <WideShot $src="/profiles/sash-croquet.jpg" />
+          <Shot $src="/profiles/sash-croquet.jpg" />
           <Caption>Learning the yard. Croquet assistant.</Caption>
         </PhotoWithCaption>
 
         <PhotoWithCaption>
-          <WideShot $src="/profiles/sash-cutout.jpg" />
+          <Shot $src="/profiles/sash-cutout.jpg" />
           <Caption>Partners in crime.</Caption>
         </PhotoWithCaption>
 
@@ -51,7 +50,7 @@ export default function JohnCatsPage() {
         </PhotoWithCaption>
 
         <PhotoWithCaption>
-          <WideShot $src="/profiles/sash-loft.jpg" />
+          <Shot $src="/profiles/sash-loft.jpg" />
           <Caption>Loft life. Watching everything.</Caption>
         </PhotoWithCaption>
 

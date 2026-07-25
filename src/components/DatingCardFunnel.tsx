@@ -86,6 +86,18 @@ const Photo = styled.div<{ $src?: string | null }>`
       : '#1c1c1c'};
 `;
 
+const CardGradient = styled.div`
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 55%,
+    rgba(0, 0, 0, 0.18) 78%,
+    rgba(0, 0, 0, 0.38) 100%
+  );
+`;
+
 const CardMeta = styled.div`
   position: absolute;
   left: 0;
@@ -109,19 +121,20 @@ const Vibe = styled.p`
   line-height: 1.4;
 `;
 
-const Stamp = styled.div<{ $side: 'left' | 'right' }>`
+const Stamp = styled.div<{ $kind: 'swipe' | 'nope' }>`
   position: absolute;
   top: 1.5rem;
-  ${(p) => (p.$side === 'right' ? 'right: 1.25rem;' : 'left: 1.25rem;')}
+  /* Opposite the swipe direction so the stamp stays on-screen as the card moves */
+  ${(p) => (p.$kind === 'swipe' ? 'left: 1.25rem;' : 'right: 1.25rem;')}
   padding: 0.35rem 0.75rem;
-  border: 3px solid ${(p) => (p.$side === 'right' ? '#10b981' : '#ff4d4f')};
-  color: ${(p) => (p.$side === 'right' ? '#10b981' : '#ff4d4f')};
+  border: 3px solid ${(p) => (p.$kind === 'swipe' ? '#10b981' : '#ff4d4f')};
+  color: ${(p) => (p.$kind === 'swipe' ? '#10b981' : '#ff4d4f')};
   font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   border-radius: 6px;
-  transform: rotate(${(p) => (p.$side === 'right' ? '12deg' : '-12deg')});
+  transform: rotate(${(p) => (p.$kind === 'swipe' ? '-12deg' : '12deg')});
   opacity: 0.9;
 `;
 
@@ -540,8 +553,9 @@ export function DatingCardFunnel({
             onPointerCancel={onPointerUp}
           >
             <Photo $src={card.photo_url} />
-            {dragX > 40 && <Stamp $side="right">Swipe</Stamp>}
-            {dragX < -40 && <Stamp $side="left">Nope</Stamp>}
+            <CardGradient />
+            {dragX > 40 && <Stamp $kind="swipe">Swipe</Stamp>}
+            {dragX < -40 && <Stamp $kind="nope">Nope</Stamp>}
             <CardMeta>
               <Name>{nameLine}</Name>
               <Vibe>{vibeText}</Vibe>
