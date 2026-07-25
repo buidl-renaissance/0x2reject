@@ -19,7 +19,7 @@
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "formidable": "^3.5.4",
-    "next": "15.3.3",
+    "next": "15.3.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "styled-components": "^6.1.19",
