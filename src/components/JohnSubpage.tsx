@@ -142,7 +142,7 @@ export const Caption = styled.p`
   color: #9ca3af;
   font-size: 0.9rem;
   font-style: italic;
-  margin: 0.5rem 0 0;
+  margin: 0.5rem 0 1rem;
   line-height: 1.4;
 `;
 

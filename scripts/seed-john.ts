@@ -31,7 +31,7 @@ const JOHN = {
   slug: 'john',
   vibe: 'Cat dad energy. Bad decisions, good stories.',
   photoUrl: '/profiles/john.png',
-  secondaryPhotoUrl: '/profiles/john-sash.png',
+  secondaryPhotoUrl: '/profiles/sash-john-tounge.jpg',
   packageHint: '... and yes, this cute little girl is included in the package',
   textPhone: '+13135503518',
   activities: JSON.stringify(['pinball', 'crypto', 'travel', 'building', 'events']),
