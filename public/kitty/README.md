@@ -1,6 +1,14 @@
 # Sash(a Cutie) kitty archive
 
-Originals renamed to match `/john/cats` captions. Web JPGs live in `/public/profiles/sash-*.jpg`.
+Originals in `originals/` (often iPhone Display P3 / HEIC).
+Web assets in `/public/profiles/sash-*.jpg` are **sRGB** JPEGs — Cursor and browsers
+wash out Display P3 if left as-is; Finder/Preview look fine because they color-manage P3.
+
+Re-export tip:
+```bash
+sips -m "/System/Library/ColorSync/Profiles/sRGB Profile.icc" \
+  -s format jpeg -s formatOptions 85 -Z 1600 INPUT --out profiles/sash-NAME.jpg
+```
 
 | File | Caption |
 |------|---------|
