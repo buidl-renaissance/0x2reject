@@ -59,6 +59,50 @@ export default function JohnTravelPage() {
         </p>
       </Body>
 
+      {/* Utah Road Trip */}
+      <Body>
+        <h2 style={{ marginBottom: '0.5rem', color: '#f9fafb' }}>
+          Headed West — Utah
+        </h2>
+        <p style={{ color: '#9ca3af', marginBottom: '1.5rem' }}>
+          March 2024
+        </p>
+      </Body>
+
+      <PhotoGrid>
+        <PhotoWithCaption>
+          <Shot $src="/profiles/utah-snowboard.jpg" />
+          <Caption>Powder day. No complaints.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <Shot $src="/profiles/utah-slc.jpg" />
+          <Caption>Salt Lake City from above. Mountains in every direction.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <Shot $src="/profiles/utah-red-canyon.jpg" />
+          <Caption>Red Canyon. Dixie National Forest. Tourist photo obligatory.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <Shot $src="/profiles/utah-bryce.jpg" />
+          <Caption>Bryce Canyon in the snow. Hoodoos for days.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <Shot $src="/profiles/utah-zion.jpg" />
+          <Caption>Zion. Found a perch. Stayed a while.</Caption>
+        </PhotoWithCaption>
+      </PhotoGrid>
+
+      <Body style={{ marginTop: '1.5rem', marginBottom: '2.5rem' }}>
+        <p>
+          Drove west through Utah hitting the national parks. Snowboarding,
+          red rocks, hoodoos, and canyon walls. The desert in winter hits different.
+        </p>
+      </Body>
+
       {/* Costa Rica */}
       <Body>
         <h2 style={{ marginBottom: '0.5rem', color: '#f9fafb' }}>
