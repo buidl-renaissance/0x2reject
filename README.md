@@ -1,6 +1,6 @@
 # 0x2 Reject (Drifter)
 
-A dating-card lead funnel for people who meet online through Renaissance City.
+Dating-card lead funnel for people who meet online through Renaissance City.
 
 ## Modes
 
@@ -11,25 +11,21 @@ A dating-card lead funnel for people who meet online through Renaissance City.
 ## Stack
 
 - Next.js (Pages Router) + TypeScript + Styled Components
-- Supabase Auth + Postgres
+- Turso / local SQLite via Drizzle ORM
 
 ## Setup
 
 ```bash
 yarn install
 cp .env.example .env.local
-```
-
-Fill in Supabase keys and `RENAISSANCE_SSO_SECRET`. Apply migrations under `supabase/migrations/` (including `20260725000000_renaissance_drifter.sql`). Create a public `photos` storage bucket if photo upload is used.
-
-```bash
+yarn db:push
 yarn dev
 ```
 
+Local auth: open `/start` and use **Continue (local)** (`USE_LOCAL=true`).
+
+Production: set `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN`, unset or set `USE_LOCAL=false`, then `yarn db:push`.
+
 ## Renaissance SSO
 
-The mobile mini app injects `__renaissanceAuthContext`. The guest app POSTs to `/api/auth/context`, which mints a Supabase session for that `renaissanceUserId`.
-
-## Catalog URL
-
-`https://0x2reject.vercel.app`
+Mini app injects `__renaissanceAuthContext` → `POST /api/auth/context` sets `user_session` cookie.

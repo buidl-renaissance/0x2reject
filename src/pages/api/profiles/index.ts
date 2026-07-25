@@ -1,21 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getUserFromRequest } from '@/lib/authHelpers';
-import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
-import { ProfilesClient } from '@/data/profiles';
+import { getSessionUser } from '@/lib/session';
+import { toAppUser, toPublicCard, updateProfile } from '@/db/user';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { user, error } = await getUserFromRequest(req);
-  if (error || !user) {
-    return res.status(401).json({ error: error || 'Unauthorized' });
+  const user = await getSessionUser(req);
+  if (!user) {
+    return res.status(401).json({ error: 'Unauthorized' });
   }
-
-  const admin = getSupabaseAdmin();
-  const profiles = new ProfilesClient(admin);
 
   try {
     if (req.method === 'GET') {
-      const profile = await profiles.getProfile(user.id);
-      return res.status(200).json(profile);
+      return res.status(200).json({
+        ...toPublicCard(user),
+        is_public: user.isPublic,
+        full_name: user.displayName || user.name,
+        photo_url: user.photoUrl || user.pfpUrl,
+        avatar_url: user.pfpUrl,
+        profileComplete: toAppUser(user).profileComplete,
+      });
     }
 
     if (req.method === 'PUT') {
@@ -27,12 +29,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         activities?: string[];
         is_public?: boolean;
         photo_url?: string;
-        avatar_url?: string;
-        bio?: string;
       };
 
-      if (body.slug) {
-        const slug = body.slug
+      let slug = body.slug;
+      if (slug) {
+        slug = slug
           .toLowerCase()
           .replace(/[^a-z0-9-]/g, '-')
           .replace(/-+/g, '-')
@@ -40,22 +41,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (slug.length < 2) {
           return res.status(400).json({ error: 'Slug must be at least 2 characters' });
         }
-        body.slug = slug;
-
-        const { data: conflict } = await admin
-          .from('profiles')
-          .select('id')
-          .eq('slug', slug)
-          .neq('id', user.id)
-          .maybeSingle();
-
-        if (conflict) {
-          return res.status(409).json({ error: 'Slug already taken' });
-        }
       }
 
-      const updated = await profiles.upsertProfile(user.id, body);
-      return res.status(200).json(updated);
+      try {
+        const updated = await updateProfile(user.id, {
+          displayName: body.full_name,
+          username: body.username,
+          vibe: body.vibe,
+          slug,
+          activities: body.activities,
+          isPublic: body.is_public,
+          photoUrl: body.photo_url,
+        });
+
+        if (!updated) {
+          return res.status(404).json({ error: 'Profile not found' });
+        }
+
+        return res.status(200).json({
+          ...toPublicCard(updated),
+          is_public: updated.isPublic,
+          slug: updated.slug,
+        });
+      } catch (err) {
+        if (err instanceof Error && err.message === 'Slug already taken') {
+          return res.status(409).json({ error: 'Slug already taken' });
+        }
+        throw err;
+      }
     }
 
     res.setHeader('Allow', ['GET', 'PUT']);

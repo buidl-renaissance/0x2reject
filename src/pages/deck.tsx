@@ -56,7 +56,7 @@ const Title = styled.h1`
 
 export default function DeckPage() {
   const router = useRouter();
-  const { user, isLoading, accessToken, authHeaders } = useUser();
+  const { user, isLoading } = useUser();
   const [cards, setCards] = useState<DatingCardData[]>([]);
   const [index, setIndex] = useState(0);
   const [loadingDeck, setLoadingDeck] = useState(true);
@@ -76,7 +76,7 @@ export default function DeckPage() {
     const load = async () => {
       setLoadingDeck(true);
       try {
-        const res = await fetch('/api/deck', { headers: authHeaders() });
+        const res = await fetch('/api/deck', { credentials: 'include' });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'Failed to load deck');
         setCards(data.cards || []);
@@ -89,7 +89,7 @@ export default function DeckPage() {
     };
 
     void load();
-  }, [user, isLoading, router, authHeaders]);
+  }, [user, isLoading, router]);
 
   const current = cards[index];
 
@@ -123,7 +123,6 @@ export default function DeckPage() {
           key={current.id}
           card={current}
           source="deck"
-          accessToken={accessToken}
           onFinished={() => setIndex((i) => i + 1)}
         />
       )}

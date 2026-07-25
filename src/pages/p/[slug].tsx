@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { DatingCardFunnel, DatingCardData } from '@/components/DatingCardFunnel';
-import { useUser } from '@/contexts/UserContext';
 
 const Center = styled.div`
   min-height: 100vh;
@@ -20,7 +19,6 @@ const Center = styled.div`
 export default function ShareCardPage() {
   const router = useRouter();
   const { slug } = router.query;
-  const { accessToken } = useUser();
   const [card, setCard] = useState<DatingCardData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -94,7 +92,6 @@ export default function ShareCardPage() {
       <DatingCardFunnel
         card={card}
         source="share"
-        accessToken={accessToken}
         onFinished={() => setDone(true)}
       />
     </>

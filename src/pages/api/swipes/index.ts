@@ -1,15 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getUserFromRequest } from '@/lib/authHelpers';
-import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
+import { getSessionUser } from '@/lib/session';
+import { recordSwipe } from '@/db/user';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { user, error } = await getUserFromRequest(req);
-  if (error || !user) {
-    return res.status(401).json({ error: error || 'Unauthorized' });
+  const user = await getSessionUser(req);
+  if (!user) {
+    return res.status(401).json({ error: 'Unauthorized' });
   }
 
   const { profileId, direction } = req.body as {
@@ -26,22 +26,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const admin = getSupabaseAdmin();
-    const { data, error: insertError } = await admin
-      .from('swipes')
-      .upsert(
-        {
-          swiper_id: user.id,
-          profile_id: profileId,
-          direction,
-        },
-        { onConflict: 'swiper_id,profile_id' }
-      )
-      .select()
-      .single();
-
-    if (insertError) throw insertError;
-    return res.status(200).json({ swipe: data });
+    const swipe = await recordSwipe(user.id, profileId, direction);
+    return res.status(200).json({ swipe });
   } catch (err) {
     console.error('POST /api/swipes error:', err);
     return res.status(500).json({ error: 'Internal Server Error' });

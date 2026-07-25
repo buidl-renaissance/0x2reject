@@ -6,7 +6,6 @@ import React, {
   useCallback,
   useRef,
 } from 'react';
-import { supabase } from '@/lib/supabase';
 
 export type AppUser = {
   id: string;
@@ -26,18 +25,15 @@ interface UserContextType {
   user: AppUser | null;
   isLoading: boolean;
   error: string | null;
-  accessToken: string | null;
   setUser: (user: AppUser | null) => void;
   signOut: () => void;
   refreshUser: () => Promise<void>;
   updateUser: (updatedUser: Partial<AppUser>) => void;
-  authHeaders: () => HeadersInit;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 const USER_STORAGE_KEY = '0x2reject_user';
-const TOKEN_STORAGE_KEY = '0x2reject_access_token';
 
 interface RenaissanceContext {
   isAuthenticated?: boolean;
@@ -59,9 +55,7 @@ declare global {
     renaissanceContext?: RenaissanceContext;
     __RENAISSANCE_CONTEXT__?: RenaissanceContext;
     __renaissanceAuthContext?: RenaissanceContext;
-    ReactNativeWebView?: {
-      postMessage: (message: string) => void;
-    };
+    ReactNativeWebView?: { postMessage: (message: string) => void };
     setRenaissanceContext?: (ctx: RenaissanceContext) => void;
   }
 }
@@ -77,7 +71,6 @@ if (typeof window !== 'undefined') {
 
 const getRenaissanceContext = (): RenaissanceContext | null => {
   if (typeof window === 'undefined') return null;
-
   try {
     const ctx =
       window.__renaissanceAuthContext ||
@@ -106,7 +99,6 @@ const getRenaissanceContext = (): RenaissanceContext | null => {
         },
       };
     }
-
     return null;
   } catch {
     return null;
@@ -123,15 +115,6 @@ const getStoredUser = (): AppUser | null => {
   }
 };
 
-const getStoredToken = (): string | null => {
-  if (typeof window === 'undefined') return null;
-  try {
-    return localStorage.getItem(TOKEN_STORAGE_KEY);
-  } catch {
-    return null;
-  }
-};
-
 const storeUser = (user: AppUser | null) => {
   if (typeof window === 'undefined') return;
   try {
@@ -142,19 +125,8 @@ const storeUser = (user: AppUser | null) => {
   }
 };
 
-const storeToken = (token: string | null) => {
-  if (typeof window === 'undefined') return;
-  try {
-    if (token) localStorage.setItem(TOKEN_STORAGE_KEY, token);
-    else localStorage.removeItem(TOKEN_STORAGE_KEY);
-  } catch {
-    /* ignore */
-  }
-};
-
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<AppUser | null>(() => getStoredUser());
-  const [accessToken, setAccessToken] = useState<string | null>(() => getStoredToken());
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const authAttemptedRef = useRef(false);
@@ -168,40 +140,19 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     storeUser(user);
   }, [user]);
 
-  useEffect(() => {
-    storeToken(accessToken);
-  }, [accessToken]);
-
-  const authHeaders = useCallback((): HeadersInit => {
-    const headers: HeadersInit = { 'Content-Type': 'application/json' };
-    if (accessToken) {
-      (headers as Record<string, string>)['Authorization'] = `Bearer ${accessToken}`;
-    }
-    return headers;
-  }, [accessToken]);
-
   const signOut = useCallback(async () => {
     setUser(null);
-    setAccessToken(null);
     storeUser(null);
-    storeToken(null);
     authAttemptedRef.current = false;
-    await supabase.auth.signOut().catch(() => undefined);
-    if (accessToken) {
-      fetch('/api/auth/logout', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }).catch(() => undefined);
-    }
-  }, [accessToken]);
+    document.cookie = 'user_session=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' }).catch(
+      () => undefined
+    );
+  }, []);
 
   const refreshUser = useCallback(async () => {
-    const token = accessToken || getStoredToken();
-    if (!token) return;
     try {
-      const response = await fetch('/api/user/me', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch('/api/user/me', { credentials: 'include' });
       if (response.ok) {
         const data = await response.json();
         if (data.user) setUser(data.user);
@@ -209,7 +160,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } catch (err) {
       console.error('❌ Error refreshing user:', err);
     }
-  }, [accessToken]);
+  }, []);
 
   const updateUser = useCallback((updatedUser: Partial<AppUser>) => {
     setUser((prev) => (prev ? { ...prev, ...updatedUser } : null));
@@ -222,29 +173,20 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       try {
         console.log('🔐 Authenticating from Renaissance context:', renaissanceUserId);
-
         const response = await fetch('/api/auth/context', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            renaissanceUserId,
-            user: ctx.user,
-          }),
+          credentials: 'include',
+          body: JSON.stringify({ renaissanceUserId, user: ctx.user }),
         });
 
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          console.error('❌ Context auth failed:', response.status, errorData);
+          console.error('❌ Context auth failed:', response.status);
           return null;
         }
 
         const data = await response.json();
-        if (data.success && data.user && data.access_token) {
-          setAccessToken(data.access_token);
-          await supabase.auth.setSession({
-            access_token: data.access_token,
-            refresh_token: data.refresh_token,
-          });
+        if (data.success && data.user) {
           console.log('✅ Authenticated from context:', data.user);
           return data.user;
         }
@@ -276,24 +218,13 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
           }
         }
 
-        // Existing Supabase session
-        const {
-          data: { session },
-        } = await supabase.auth.getSession();
-
-        const token = session?.access_token || getStoredToken();
-        if (token) {
-          setAccessToken(token);
-          const response = await fetch('/api/user/me', {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          if (response.ok) {
-            const data = await response.json();
-            if (data.user && mounted) {
-              setUser(data.user);
-              setIsLoading(false);
-              return;
-            }
+        const response = await fetch('/api/user/me', { credentials: 'include' });
+        if (response.ok) {
+          const data = await response.json();
+          if (data.user && mounted) {
+            setUser(data.user);
+            setIsLoading(false);
+            return;
           }
         }
 
@@ -327,12 +258,10 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const handleMessage = async (event: MessageEvent) => {
       try {
         const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-
         if (data?.type === 'RENAISSANCE_CONTEXT' && data?.context) {
           const contextUser = await authenticateFromContext(data.context);
           if (contextUser) setUser(contextUser);
         }
-
         if (data?.type === 'farcaster:context:ready' && data?.context) {
           const ctx: RenaissanceContext = {
             isAuthenticated: data.authenticated || true,
@@ -343,7 +272,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
           const contextUser = await authenticateFromContext(ctx);
           if (contextUser) setUser(contextUser);
         }
-
         if (data?.renaissanceUserId || data?.user?.renaissanceUserId) {
           const contextUser = await authenticateFromContext(data as RenaissanceContext);
           if (contextUser) setUser(contextUser);
@@ -417,17 +345,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   return (
     <UserContext.Provider
-      value={{
-        user,
-        isLoading,
-        error,
-        accessToken,
-        setUser,
-        signOut,
-        refreshUser,
-        updateUser,
-        authHeaders,
-      }}
+      value={{ user, isLoading, error, setUser, signOut, refreshUser, updateUser }}
     >
       {children}
     </UserContext.Provider>

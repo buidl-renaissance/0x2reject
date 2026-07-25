@@ -177,7 +177,7 @@ function slugify(value: string) {
 
 export default function ProfileBuilderPage() {
   const router = useRouter();
-  const { user, isLoading, accessToken, authHeaders, refreshUser } = useUser();
+  const { user, isLoading, refreshUser } = useUser();
   const [fullName, setFullName] = useState('');
   const [vibe, setVibe] = useState('');
   const [slug, setSlug] = useState('');
@@ -209,7 +209,7 @@ export default function ProfileBuilderPage() {
 
     const load = async () => {
       try {
-        const res = await fetch('/api/profiles', { headers: authHeaders() });
+        const res = await fetch('/api/profiles', { credentials: 'include' });
         if (!res.ok) return;
         const profile = await res.json();
         setFullName(profile.full_name || user.displayName || '');
@@ -224,7 +224,7 @@ export default function ProfileBuilderPage() {
     };
 
     void load();
-  }, [user, isLoading, router, authHeaders]);
+  }, [user, isLoading, router]);
 
   const toggleActivity = (id: string) => {
     setActivities((prev) =>
@@ -234,7 +234,7 @@ export default function ProfileBuilderPage() {
 
   const onPhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file || !accessToken) return;
+    if (!file) return;
     setUploading(true);
     setError(null);
     try {
@@ -242,7 +242,7 @@ export default function ProfileBuilderPage() {
       form.append('photo', file);
       const res = await fetch('/api/profiles/upload-photo', {
         method: 'POST',
-        headers: { Authorization: `Bearer ${accessToken}` },
+        credentials: 'include',
         body: form,
       });
       const data = await res.json();
@@ -270,7 +270,8 @@ export default function ProfileBuilderPage() {
 
       const res = await fetch('/api/profiles', {
         method: 'PUT',
-        headers: authHeaders(),
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           full_name: fullName.trim(),
           vibe: vibe.trim(),
@@ -278,7 +279,6 @@ export default function ProfileBuilderPage() {
           activities,
           is_public: isPublic,
           photo_url: photoUrl,
-          avatar_url: photoUrl,
         }),
       });
       const data = await res.json();

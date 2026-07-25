@@ -290,7 +290,6 @@ const ErrorText = styled.p`
 type Props = {
   card: DatingCardData;
   source: 'deck' | 'share';
-  accessToken?: string | null;
   onFinished?: () => void;
   onSwipeRecorded?: (direction: 'left' | 'right') => void;
 };
@@ -298,7 +297,6 @@ type Props = {
 export function DatingCardFunnel({
   card,
   source,
-  accessToken,
   onFinished,
   onSwipeRecorded,
 }: Props) {
@@ -315,21 +313,18 @@ export function DatingCardFunnel({
   const recordSwipe = useCallback(
     async (direction: 'left' | 'right') => {
       onSwipeRecorded?.(direction);
-      if (!accessToken) return;
       try {
         await fetch('/api/swipes', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
-          },
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
           body: JSON.stringify({ profileId: card.id, direction }),
         });
       } catch {
         /* non-blocking */
       }
     },
-    [accessToken, card.id, onSwipeRecorded]
+    [card.id, onSwipeRecorded]
   );
 
   const goRight = async () => {
@@ -347,12 +342,10 @@ export function DatingCardFunnel({
     setError(null);
     setSubmitting(true);
     try {
-      const headers: HeadersInit = { 'Content-Type': 'application/json' };
-      if (accessToken) headers.Authorization = `Bearer ${accessToken}`;
-
       const res = await fetch('/api/leads', {
         method: 'POST',
-        headers,
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ profileId: card.id, phone, source }),
       });
       const data = await res.json();

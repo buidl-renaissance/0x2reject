@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+import { useEffect, useState } from 'react';
 import { useUser } from '@/contexts/UserContext';
 
 const Container = styled.div`
@@ -34,6 +33,20 @@ const Subtext = styled.p`
   margin-bottom: 2rem;
 `;
 
+const Input = styled.input`
+  width: 100%;
+  max-width: 360px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  border: 2px solid #2a2a2a;
+  background: #1c1c1c;
+  color: #f9fafb;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  box-sizing: border-box;
+`;
+
 const AuthButton = styled.button`
   width: 100%;
   max-width: 360px;
@@ -44,17 +57,12 @@ const AuthButton = styled.button`
   font-size: 1.05rem;
   cursor: pointer;
   font-family: 'IBM Plex Mono', monospace;
-  transition: transform 0.2s ease;
+  background: #4f46e5;
+  color: #fff;
 
-  &:hover {
-    transform: scale(1.02);
+  &:disabled {
+    background: #374151;
   }
-`;
-
-const SocialButton = styled(AuthButton)`
-  background: #2a2a2a;
-  color: #f9fafb;
-  border: 2px solid #4f46e5;
 `;
 
 const Hint = styled.p`
@@ -65,10 +73,18 @@ const Hint = styled.p`
   max-width: 360px;
 `;
 
+const Err = styled.p`
+  color: #ef4444;
+  font-size: 0.9rem;
+`;
+
 export default function Start() {
   const router = useRouter();
-  const { user, isLoading } = useUser();
+  const { user, isLoading, setUser } = useUser();
   const next = typeof router.query.next === 'string' ? router.query.next : '/deck';
+  const [name, setName] = useState('john');
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (isLoading) return;
@@ -79,13 +95,25 @@ export default function Start() {
     }
   }, [user, isLoading, router, next]);
 
-  const handleSocialAuth = async (provider: 'google' | 'apple') => {
-    const redirectTo = `${window.location.origin}/profile`;
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: { redirectTo },
-    });
-    if (error) console.error('Auth error:', error);
+  const handleDevLogin = async () => {
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/auth/dev-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ username: name, displayName: name }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Login failed');
+      setUser(data.user);
+      router.push(data.user.profileComplete ? next : '/profile');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Login failed');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -97,16 +125,19 @@ export default function Start() {
       <Title>0x2 Reject</Title>
       <Subtext>Build your Drifter card. Get rejected (twice). Stay in the loop.</Subtext>
 
-      <SocialButton type="button" onClick={() => void handleSocialAuth('google')}>
-        Continue with Google
-      </SocialButton>
-      <SocialButton type="button" onClick={() => void handleSocialAuth('apple')}>
-        Continue with Apple
-      </SocialButton>
+      <Input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="username"
+      />
+      {error && <Err>{error}</Err>}
+      <AuthButton type="button" disabled={submitting || !name.trim()} onClick={() => void handleDevLogin()}>
+        {submitting ? 'Signing in…' : 'Continue (local)'}
+      </AuthButton>
 
       <Hint>
-        Opening from Renaissance? You should already be signed in via the mini app. If not, use
-        Google/Apple above.
+        From Renaissance, you&apos;re signed in automatically via the mini app. Locally, use the
+        button above (`USE_LOCAL=true`).
       </Hint>
     </Container>
   );

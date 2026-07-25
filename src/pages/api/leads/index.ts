@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getOptionalUser } from '@/lib/authHelpers';
-import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
+import { getSessionUser } from '@/lib/session';
+import { createLead, getUserById } from '@/db/user';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -23,32 +23,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const visitor = await getOptionalUser(req);
-    const admin = getSupabaseAdmin();
-
-    const { data: profile } = await admin
-      .from('profiles')
-      .select('id')
-      .eq('id', profileId)
-      .maybeSingle();
-
+    const profile = await getUserById(profileId);
     if (!profile) {
       return res.status(404).json({ error: 'Profile not found' });
     }
 
-    const { data, error } = await admin
-      .from('leads')
-      .insert({
-        profile_id: profileId,
-        phone: cleaned,
-        visitor_user_id: visitor?.id || null,
-        source: source === 'deck' ? 'deck' : 'share',
-      })
-      .select()
-      .single();
+    const visitor = await getSessionUser(req);
+    const lead = await createLead({
+      profileId,
+      phone: cleaned,
+      visitorUserId: visitor?.id || null,
+      source: source === 'deck' ? 'deck' : 'share',
+    });
 
-    if (error) throw error;
-    return res.status(200).json({ lead: data });
+    return res.status(200).json({ lead });
   } catch (err) {
     console.error('POST /api/leads error:', err);
     return res.status(500).json({ error: 'Internal Server Error' });
