@@ -14,6 +14,45 @@ export default function JohnTravelPage() {
       title="Travel"
       description="Adventure is out there. So is John."
     >
+      {/* Chiang Mai, Thailand */}
+      <Body>
+        <h2 style={{ marginBottom: '0.5rem', color: '#f9fafb' }}>
+          Chiang Mai — Elephant Sanctuary
+        </h2>
+        <p style={{ color: '#9ca3af', marginBottom: '1.5rem' }}>
+          November 2024
+        </p>
+      </Body>
+
+      <PhotoGrid>
+        <PhotoWithCaption>
+          <WideShot $src="/profiles/thailand-elephant-rain.jpg" />
+          <Caption>Rainy day at the sanctuary. She didn&apos;t mind.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <WideShot $src="/profiles/thailand-elephant-mist.jpg" />
+          <Caption>Misty mountains. Gentle giants.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <Shot $src="/profiles/thailand-elephant-touch.jpg" />
+          <Caption>Made a friend. Mud and all.</Caption>
+        </PhotoWithCaption>
+
+        <PhotoWithCaption>
+          <Shot $src="/profiles/thailand-elephants-rain.jpg" />
+          <Caption>Squad goals. Monsoon edition.</Caption>
+        </PhotoWithCaption>
+      </PhotoGrid>
+
+      <Body style={{ marginTop: '1.5rem', marginBottom: '2.5rem' }}>
+        <p>
+          Spent the day at an ethical elephant sanctuary outside Chiang Mai.
+          Fed them, walked with them, got rained on together. Worth every muddy step.
+        </p>
+      </Body>
+
       {/* Medellín, Colombia */}
       <Body>
         <h2 style={{ marginBottom: '0.5rem', color: '#f9fafb' }}>
