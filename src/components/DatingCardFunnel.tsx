@@ -8,6 +8,7 @@ export type DatingCardData = {
   username: string | null;
   slug: string | null;
   vibe: string | null;
+  age?: number | null;
   photo_url: string | null;
   activities: string[];
 };
@@ -309,6 +310,7 @@ export function DatingCardFunnel({
   const startX = useRef(0);
 
   const displayName = card.full_name || card.username || 'Mystery';
+  const nameLine = card.age ? `${displayName}, ${card.age}` : displayName;
 
   const recordSwipe = useCallback(
     async (direction: 'left' | 'right') => {
@@ -406,7 +408,7 @@ export function DatingCardFunnel({
             {dragX > 40 && <Stamp $side="right">Like</Stamp>}
             {dragX < -40 && <Stamp $side="left">Nope</Stamp>}
             <CardMeta>
-              <Name>{displayName}</Name>
+              <Name>{nameLine}</Name>
               <Vibe>{card.vibe || 'No vibe listed… yet.'}</Vibe>
             </CardMeta>
           </CardShell>

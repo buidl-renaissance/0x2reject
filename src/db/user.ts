@@ -16,6 +16,7 @@ export interface User {
   accountAddress?: string | null;
   slug?: string | null;
   vibe?: string | null;
+  age?: number | null;
   photoUrl?: string | null;
   activities: string[];
   isPublic: boolean;
@@ -49,6 +50,7 @@ function rowToUser(row: typeof users.$inferSelect): User {
     accountAddress: row.accountAddress,
     slug: row.slug,
     vibe: row.vibe,
+    age: row.age ?? null,
     photoUrl: row.photoUrl,
     activities: parseActivities(row.activities),
     isPublic: Boolean(row.isPublic),
@@ -75,6 +77,7 @@ export function toAppUser(user: User) {
     pfpUrl: user.pfpUrl ?? null,
     slug: user.slug ?? null,
     vibe: user.vibe ?? null,
+    age: user.age ?? null,
     activities: user.activities,
     isPublic: user.isPublic,
     photoUrl: user.photoUrl || user.pfpUrl || user.profilePicture || null,
@@ -89,6 +92,7 @@ export function toPublicCard(user: User) {
     username: user.username,
     slug: user.slug,
     vibe: user.vibe,
+    age: user.age ?? null,
     photo_url: user.photoUrl || user.pfpUrl || user.profilePicture,
     activities: user.activities,
   };
@@ -206,13 +210,14 @@ export async function getOrCreateUserByRenaissanceId(
     updatedAt: now,
   };
   await db.insert(users).values(newUser);
-  return rowToUser({ ...newUser, phone: null, email: null, slug: null, vibe: null });
+  return rowToUser({ ...newUser, phone: null, email: null, slug: null, vibe: null, age: null });
 }
 
 export interface ProfileUpdateData {
   displayName?: string;
   username?: string;
   vibe?: string;
+  age?: number | null;
   slug?: string;
   activities?: string[];
   isPublic?: boolean;
@@ -243,6 +248,7 @@ export async function updateProfile(userId: string, data: ProfileUpdateData): Pr
   }
   if (data.username !== undefined) updateData.username = data.username;
   if (data.vibe !== undefined) updateData.vibe = data.vibe;
+  if (data.age !== undefined) updateData.age = data.age;
   if (data.slug !== undefined) updateData.slug = data.slug;
   if (data.activities !== undefined) updateData.activities = JSON.stringify(data.activities);
   if (data.isPublic !== undefined) updateData.isPublic = data.isPublic;

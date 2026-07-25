@@ -180,6 +180,7 @@ export default function ProfileBuilderPage() {
   const { user, isLoading, refreshUser } = useUser();
   const [fullName, setFullName] = useState('');
   const [vibe, setVibe] = useState('');
+  const [age, setAge] = useState('');
   const [slug, setSlug] = useState('');
   const [activities, setActivities] = useState<string[]>([]);
   const [isPublic, setIsPublic] = useState(true);
@@ -214,6 +215,7 @@ export default function ProfileBuilderPage() {
         const profile = await res.json();
         setFullName(profile.full_name || user.displayName || '');
         setVibe(profile.vibe || '');
+        setAge(profile.age != null ? String(profile.age) : '');
         setSlug(profile.slug || slugify(user.username || user.displayName || 'drifter'));
         setActivities(Array.isArray(profile.activities) ? profile.activities : []);
         setIsPublic(profile.is_public ?? true);
@@ -262,11 +264,15 @@ export default function ProfileBuilderPage() {
     setMessage(null);
     try {
       const cleanSlug = slugify(slug);
+      const ageNum = age.trim() ? parseInt(age, 10) : null;
       if (!fullName.trim()) throw new Error('Name is required');
       if (!vibe.trim()) throw new Error('Vibe is required');
       if (!cleanSlug) throw new Error('Slug is required');
       if (!photoUrl) throw new Error('Photo is required');
       if (activities.length === 0) throw new Error('Pick at least one activity');
+      if (ageNum != null && (Number.isNaN(ageNum) || ageNum < 18 || ageNum > 120)) {
+        throw new Error('Age must be 18–120');
+      }
 
       const res = await fetch('/api/profiles', {
         method: 'PUT',
@@ -275,6 +281,7 @@ export default function ProfileBuilderPage() {
         body: JSON.stringify({
           full_name: fullName.trim(),
           vibe: vibe.trim(),
+          age: ageNum,
           slug: cleanSlug,
           activities,
           is_public: isPublic,
@@ -338,6 +345,18 @@ export default function ProfileBuilderPage() {
             onChange={(e) => setFullName(e.target.value)}
             placeholder="Your name"
             maxLength={40}
+          />
+        </div>
+
+        <div>
+          <Label>Age</Label>
+          <Input
+            type="number"
+            min={18}
+            max={120}
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            placeholder="37"
           />
         </div>
 

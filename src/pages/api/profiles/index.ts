@@ -25,6 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         full_name?: string;
         username?: string;
         vibe?: string;
+        age?: number | null;
         slug?: string;
         activities?: string[];
         is_public?: boolean;
@@ -48,6 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           displayName: body.full_name,
           username: body.username,
           vibe: body.vibe,
+          age: body.age,
           slug,
           activities: body.activities,
           isPublic: body.is_public,

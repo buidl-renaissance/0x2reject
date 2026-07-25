@@ -21,6 +21,7 @@ export const users = sqliteTable(
     // Drifter dating card fields
     slug: text('slug').unique(),
     vibe: text('vibe'),
+    age: integer('age'),
     photoUrl: text('photoUrl'),
     activities: text('activities').default('[]'), // JSON string array
     isPublic: integer('isPublic', { mode: 'boolean' }).default(false).notNull(),
