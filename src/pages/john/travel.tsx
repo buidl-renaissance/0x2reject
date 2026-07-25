@@ -7,6 +7,25 @@ import {
   Caption,
   PhotoWithCaption,
 } from '@/components/JohnSubpage';
+import Link from 'next/link';
+import styled from 'styled-components';
+
+const UploadLink = styled(Link)`
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #4f46e5;
+  background: #1a1a1a;
+  color: #c7d2fe;
+  font-size: 0.85rem;
+  text-decoration: none;
+
+  &:hover {
+    background: #4f46e5;
+    color: #fff;
+  }
+`;
 
 export default function JohnTravelPage() {
   return (
@@ -14,6 +33,7 @@ export default function JohnTravelPage() {
       title="Travel"
       description="Adventure is out there. So is John."
     >
+      <UploadLink href="/john/travel/upload">+ Add Experience</UploadLink>
       {/* Thailand */}
       <Body>
         <h2 style={{ marginBottom: '0.5rem', color: '#f9fafb' }}>
