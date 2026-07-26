@@ -29,7 +29,7 @@ const JOHN = {
   displayName: 'John',
   age: 37,
   slug: 'john',
-  vibe: 'Cat dad energy. Bad decisions, good stories.',
+  vibe: 'Loving cat daddy looking for his next adventure.',
   photoUrl: '/profiles/john.png',
   secondaryPhotoUrl: '/profiles/sash-john-tounge.jpg',
   packageHint: '... and yes, this cute little girl is included in the package',
