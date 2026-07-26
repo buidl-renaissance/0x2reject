@@ -1,0 +1,583 @@
+{
+  "version": 2,
+  "folder": "/travel",
+  "trips": [
+    {
+      "id": "utah",
+      "title": "Utah",
+      "subtitle": "Red rock, hoodoos, and cliff edges",
+      "photoIds": [
+        "salt-lake-capitol-overlook",
+        "red-canyon-visitor-sign",
+        "bryce-hoodoos-winter-ridge",
+        "zion-canyon-peace-selfie",
+        "zion-cliff-ledge-perch"
+      ]
+    },
+    {
+      "id": "puerto-rico",
+      "title": "Puerto Rico",
+      "subtitle": "Old San Juan, Condado blues, and golden hour forts",
+      "photoIds": [
+        "palm-lined-golden-sunrise",
+        "coastal-fort-golden-selfie",
+        "san-juan-garita-bay-view",
+        "el-morro-grass-golden-hour",
+        "jungle-rope-swing-river",
+        "condado-beach-blue-hour"
+      ]
+    },
+    {
+      "id": "costa-rica",
+      "title": "Costa Rica",
+      "subtitle": "Pura vida — surf, shipwrecks, and jungle mist",
+      "photoIds": [
+        "imperial-beer-shallow-surf",
+        "shaka-surf-wave-action",
+        "jungle-waterfall-mist",
+        "shipwreck-beach-driftwood",
+        "graffiti-shipwreck-pura-vida",
+        "tree-climb-turquoise-ocean"
+      ]
+    },
+    {
+      "id": "thailand",
+      "title": "Thailand",
+      "subtitle": "Phi Phi boats, elephants, temples, and Devcon SEA",
+      "photoIds": [
+        "thailand-coconut-karst-beach",
+        "phi-phi-boat-bow-friends",
+        "beach-coconut-straw-sand",
+        "karst-islands-scouting-pose",
+        "phi-phi-harbor-profile",
+        "elephant-sanctuary-head-pat",
+        "misty-mountain-elephant-sanctuary",
+        "happy-elephant-home-mud",
+        "elephant-vendetta-plaid",
+        "mahout-rain-poncho-elephant",
+        "peace-sign-baby-elephant",
+        "mother-baby-elephant-jungle",
+        "purple-shades-elephant-fence",
+        "devcon-seven-sea-sign",
+        "devcon-purple-beanbag-lounge",
+        "festival-pad-thai-bowl",
+        "festival-fried-chicken-drumstick",
+        "kad-mua-meatball-skewer",
+        "temple-bodhi-leaf-wishes",
+        "monks-candlelight-ceremony-night",
+        "night-temple-buddha-glow"
+      ]
+    },
+    {
+      "id": "colombia",
+      "title": "Colombia",
+      "subtitle": "Bogotá storms, Medellín murals, Comuna 13",
+      "photoIds": [
+        "colombia-gallery-corner",
+        "bogota-candelaria-street-art",
+        "bogota-plaza-street-llama",
+        "rooftop-coffee-mountain-view",
+        "muisca-raft-gold-museum",
+        "bogota-monserrate-god-rays",
+        "medellin-rose-mural-building",
+        "medellin-graffiti-bouldering-wall",
+        "medellin-mural-gold-shades",
+        "comuna-13-hillside-storm",
+        "comuna-13-book-district-mural",
+        "comuna-13-rainbow-stairs-paz",
+        "pink-railing-walkway-graffiti",
+        "comuna-13-outdoor-slides",
+        "comuna-13-stairway-mural",
+        "neon-space-room-shaka",
+        "moon-floor-neon-glasses"
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "id": "pine-forest-snowboard-break",
+      "file": "pine-forest-snowboard-break.jpg",
+      "path": "/travel/pine-forest-snowboard-break.jpg",
+      "title": "Snowboard Pause in the Pines",
+      "caption": "Yellow jacket, orange shades, red board buried in powder—peak mountain energy.",
+      "original": "IMG_1970.jpg",
+      "hidden": true
+    },
+    {
+      "id": "red-board-snowy-pine-break",
+      "file": "red-board-snowy-pine-break.jpg",
+      "path": "/travel/red-board-snowy-pine-break.jpg",
+      "title": "Red Board in the Snow",
+      "caption": "Sitting in the trees with a graphic-heavy board and nowhere urgent to be.",
+      "original": "IMG_1971.jpg",
+      "hidden": true
+    },
+    {
+      "id": "snowy-ridge-board-pause",
+      "file": "snowy-ridge-board-pause.jpg",
+      "path": "/travel/snowy-ridge-board-pause.jpg",
+      "title": "Ridge Line Snowboard Stop",
+      "caption": "Kneeling on a snowy ridge with the board planted beside me like a flag.",
+      "original": "IMG_2094.jpg",
+      "hidden": true
+    },
+    {
+      "id": "salt-lake-capitol-overlook",
+      "file": "salt-lake-capitol-overlook.jpg",
+      "path": "/travel/salt-lake-capitol-overlook.jpg",
+      "title": "Overlooking Salt Lake City",
+      "caption": "Capitol dome below, Wasatch peaks behind—Utah does the backdrop work for you.",
+      "original": "IMG_2490.jpg"
+    },
+    {
+      "id": "red-canyon-visitor-sign",
+      "file": "red-canyon-visitor-sign.jpg",
+      "path": "/travel/red-canyon-visitor-sign.jpg",
+      "title": "Red Canyon Visitor Center Stop",
+      "caption": "Posed next to the sign because Dixie National Forest deserves a receipt.",
+      "original": "IMG_2644.jpg"
+    },
+    {
+      "id": "bryce-hoodoos-winter-ridge",
+      "file": "bryce-hoodoos-winter-ridge.jpg",
+      "path": "/travel/bryce-hoodoos-winter-ridge.jpg",
+      "title": "Snowy Hoodoos at Bryce",
+      "caption": "Red spires in white snow, clouds rolling in—I picked a moody day on purpose.",
+      "original": "IMG_2693.jpg"
+    },
+    {
+      "id": "zion-canyon-peace-selfie",
+      "file": "zion-canyon-peace-selfie.jpg",
+      "path": "/travel/zion-canyon-peace-selfie.jpg",
+      "title": "Peace Sign Over Zion",
+      "caption": "Cliff edge, canyon drop, peace sign out—Zion makes you feel invincible for a second.",
+      "original": "IMG_2769.jpg"
+    },
+    {
+      "id": "zion-cliff-ledge-perch",
+      "file": "zion-cliff-ledge-perch.jpg",
+      "path": "/travel/zion-cliff-ledge-perch.jpg",
+      "title": "Perched Over Zion Canyon",
+      "caption": "Legs dangling off red rock with Angels Landing in the distance—best seat in Utah.",
+      "original": "IMG_2803.jpg"
+    },
+    {
+      "id": "sunrise-balcony-coastal-view",
+      "file": "sunrise-balcony-coastal-view.jpg",
+      "path": "/travel/sunrise-balcony-coastal-view.jpg",
+      "title": "Sunrise From the Balcony",
+      "caption": "High-rise balcony, golden horizon, beach below—some views demand you drop everything.",
+      "original": "IMG_4008.jpg",
+      "hidden": true
+    },
+    {
+      "id": "palm-lined-golden-sunrise",
+      "file": "palm-lined-golden-sunrise.jpg",
+      "path": "/travel/palm-lined-golden-sunrise.jpg",
+      "title": "Golden Sunrise Over the Palms",
+      "caption": "Palms silhouetted, ocean glowing—this is why I set an alarm on vacation.",
+      "original": "IMG_4065.jpg"
+    },
+    {
+      "id": "coastal-fort-golden-selfie",
+      "file": "coastal-fort-golden-selfie.jpg",
+      "path": "/travel/coastal-fort-golden-selfie.jpg",
+      "title": "Golden Hour Fort Wall Selfie",
+      "caption": "Patterned shirt, bucket hat, stone fort behind me—coastal golden hour hits different.",
+      "original": "IMG_4119.jpg"
+    },
+    {
+      "id": "san-juan-garita-bay-view",
+      "file": "san-juan-garita-bay-view.jpg",
+      "path": "/travel/san-juan-garita-bay-view.jpg",
+      "title": "Garita Over San Juan Bay",
+      "caption": "That little stone sentry box has a better water view than most hotel suites.",
+      "original": "IMG_4123.jpg"
+    },
+    {
+      "id": "el-morro-grass-golden-hour",
+      "file": "el-morro-grass-golden-hour.jpg",
+      "path": "/travel/el-morro-grass-golden-hour.jpg",
+      "title": "Golden Hour at El Morro",
+      "caption": "Green lawn, old stone buildings, sun breaking through the clouds—Old San Juan at its best.",
+      "original": "IMG_4125.jpg"
+    },
+    {
+      "id": "jungle-rope-swing-river",
+      "file": "jungle-rope-swing-river.jpg",
+      "path": "/travel/jungle-rope-swing-river.jpg",
+      "title": "Rope Swing Over Jungle River",
+      "caption": "Saw a rope over clear green water and skipped the risk assessment.",
+      "original": "IMG_4179.JPG"
+    },
+    {
+      "id": "condado-beach-blue-hour",
+      "file": "condado-beach-blue-hour.jpg",
+      "path": "/travel/condado-beach-blue-hour.jpg",
+      "title": "Blue Hour on Condado Beach",
+      "caption": "Condado skyline at dusk, crescent moon up, waves rolling in—hard to beat.",
+      "original": "IMG_4270.jpg"
+    },
+    {
+      "id": "imperial-beer-shallow-surf",
+      "file": "imperial-beer-shallow-surf.jpg",
+      "path": "/travel/imperial-beer-shallow-surf.jpg",
+      "title": "Cold Imperial in the Surf",
+      "caption": "Knee-deep in Costa Rica with an Imperial in hand—shirt up, stress down.",
+      "original": "IMG_5473.jpg"
+    },
+    {
+      "id": "shaka-surf-wave-action",
+      "file": "shaka-surf-wave-action.jpg",
+      "path": "/travel/shaka-surf-wave-action.jpg",
+      "title": "Shaka On The Wave",
+      "caption": "Caught a wave, threw a shaka, and tried to look cool while the ocean did most of the work.",
+      "original": "IMG_8872.PNG"
+    },
+    {
+      "id": "jungle-waterfall-mist",
+      "file": "jungle-waterfall-mist.jpg",
+      "path": "/travel/jungle-waterfall-mist.jpg",
+      "title": "Jungle Waterfall Reset",
+      "caption": "Nothing fixes a travel day like getting drenched under a jungle waterfall.",
+      "original": "IMG_8971.JPG"
+    },
+    {
+      "id": "shipwreck-beach-driftwood",
+      "file": "shipwreck-beach-driftwood.jpg",
+      "path": "/travel/shipwreck-beach-driftwood.jpg",
+      "title": "Shipwreck Beach Front Row",
+      "caption": "Found a driftwood seat with a wrecked boat in the background and called it a beach day.",
+      "original": "IMG_9156.jpg"
+    },
+    {
+      "id": "graffiti-shipwreck-pura-vida",
+      "file": "graffiti-shipwreck-pura-vida.jpg",
+      "path": "/travel/graffiti-shipwreck-pura-vida.jpg",
+      "title": "Pura Vida Shipwreck Swim",
+      "caption": "The graffiti boat had a thought bubble that said pura vida, and honestly I was already thinking it.",
+      "original": "IMG_9162.jpg"
+    },
+    {
+      "id": "tree-climb-turquoise-ocean",
+      "file": "tree-climb-turquoise-ocean.jpg",
+      "path": "/travel/tree-climb-turquoise-ocean.jpg",
+      "title": "Tree Climb Over Ocean",
+      "caption": "Climbed a tree for the view and stayed because the water looked too good to leave.",
+      "original": "IMG_9826.JPG"
+    },
+    {
+      "id": "thailand-coconut-karst-beach",
+      "file": "thailand-coconut-karst-beach.jpg",
+      "path": "/travel/thailand-coconut-karst-beach.jpg",
+      "title": "Fresh Coconut on Thai Beach",
+      "caption": "Limestone islands, black rocks, cold coconut—yes, this counts as a workout.",
+      "original": "IMG_1913.JPG"
+    },
+    {
+      "id": "phi-phi-boat-bow-friends",
+      "file": "phi-phi-boat-bow-friends.jpg",
+      "path": "/travel/phi-phi-boat-bow-friends.jpg",
+      "title": "Boat Day in Phi Phi",
+      "caption": "Two guys on the bow, turquoise water behind us, zero regrets about the tie-dye.",
+      "original": "IMG_1956.JPG"
+    },
+    {
+      "id": "beach-coconut-straw-sand",
+      "file": "beach-coconut-straw-sand.jpg",
+      "path": "/travel/beach-coconut-straw-sand.jpg",
+      "title": "Coconut On The Shore",
+      "caption": "My hydration strategy is a green coconut in the sand while strangers live their best lives in turquoise water.",
+      "original": "IMG_6839.jpg"
+    },
+    {
+      "id": "karst-islands-scouting-pose",
+      "file": "karst-islands-scouting-pose.jpg",
+      "path": "/travel/karst-islands-scouting-pose.jpg",
+      "title": "Scouting The Karst Islands",
+      "caption": "Dropped to one knee on volcanic rocks like I was scouting Thailand's limestone islands for our next adventure.",
+      "original": "IMG_6896.jpg"
+    },
+    {
+      "id": "phi-phi-harbor-profile",
+      "file": "phi-phi-harbor-profile.jpg",
+      "path": "/travel/phi-phi-harbor-profile.jpg",
+      "title": "Harbor View, Limestone Cliffs",
+      "caption": "Paused at the harbor with longtail boats and karst cliffs behind me—contemplating dinner, not life.",
+      "original": "IMG_6933.jpg"
+    },
+    {
+      "id": "elephant-sanctuary-head-pat",
+      "file": "elephant-sanctuary-head-pat.jpg",
+      "path": "/travel/elephant-sanctuary-head-pat.jpg",
+      "title": "Head Pat at Elephant Sanctuary",
+      "caption": "She leaned in for scratches and I was not about to leave her hanging.",
+      "original": "IMG_6606.jpg"
+    },
+    {
+      "id": "misty-mountain-elephant-sanctuary",
+      "file": "misty-mountain-elephant-sanctuary.jpg",
+      "path": "/travel/misty-mountain-elephant-sanctuary.jpg",
+      "title": "Misty Mountains, Big Friend",
+      "caption": "Met my largest travel buddy on a platform above the clouds—he didn't say much, but the vibe was immaculate.",
+      "original": "IMG_6612.jpg"
+    },
+    {
+      "id": "happy-elephant-home-mud",
+      "file": "happy-elephant-home-mud.jpg",
+      "path": "/travel/happy-elephant-home-mud.jpg",
+      "title": "Happy Elephant Home, Thailand",
+      "caption": "Signed up for elephants, got mud boots and a sign that literally said Happy Elephant Home—no notes.",
+      "original": "IMG_6616.jpg"
+    },
+    {
+      "id": "elephant-vendetta-plaid",
+      "file": "elephant-vendetta-plaid.jpg",
+      "path": "/travel/elephant-vendetta-plaid.jpg",
+      "title": "Elephant Side-Eye Check",
+      "caption": "Standing shoulder-to-trunk with an elephant while wearing a V for Vendetta shirt—she judged me silently and fairly.",
+      "original": "IMG_6618.jpg"
+    },
+    {
+      "id": "mahout-rain-poncho-elephant",
+      "file": "mahout-rain-poncho-elephant.jpg",
+      "path": "/travel/mahout-rain-poncho-elephant.jpg",
+      "title": "Rain Poncho, Big Neighbor",
+      "caption": "Some guys commute in traffic; this mahout commutes in a mud pit with a three-ton coworker.",
+      "original": "IMG_6630.jpg"
+    },
+    {
+      "id": "peace-sign-baby-elephant",
+      "file": "peace-sign-baby-elephant.jpg",
+      "path": "/travel/peace-sign-baby-elephant.jpg",
+      "title": "Peace Sign, Baby Elephant",
+      "caption": "Threw up a peace sign and a baby elephant immediately stole the shot—classic photobomb energy.",
+      "original": "IMG_6636.jpg"
+    },
+    {
+      "id": "mother-baby-elephant-jungle",
+      "file": "mother-baby-elephant-jungle.jpg",
+      "path": "/travel/mother-baby-elephant-jungle.jpg",
+      "title": "Mom And Calf Jungle Moment",
+      "caption": "Caught a mom and calf snacking in the jungle—turns out family dinner looks the same at every scale.",
+      "original": "IMG_6638.jpg"
+    },
+    {
+      "id": "purple-shades-elephant-fence",
+      "file": "purple-shades-elephant-fence.jpg",
+      "path": "/travel/purple-shades-elephant-fence.jpg",
+      "title": "Purple Shades, Elephant Lunch",
+      "caption": "Wore ridiculous purple shades to an elephant sanctuary because confidence is half the fit check.",
+      "original": "IMG_6652.jpg"
+    },
+    {
+      "id": "devcon-seven-sea-sign",
+      "file": "devcon-seven-sea-sign.jpg",
+      "path": "/travel/devcon-seven-sea-sign.jpg",
+      "title": "Devcon Seven SEA Sign",
+      "caption": "Posed with the DC7 SEA sign because when Ethereum lands in Bangkok, you document the moment.",
+      "original": "IMG_7093.jpg"
+    },
+    {
+      "id": "devcon-purple-beanbag-lounge",
+      "file": "devcon-purple-beanbag-lounge.jpg",
+      "path": "/travel/devcon-purple-beanbag-lounge.jpg",
+      "title": "Purple Beanbag Conference Lounge",
+      "caption": "Even crypto conferences need a nap zone—found mine under glowing lanterns and beanbags on fake grass.",
+      "original": "IMG_7082.jpg"
+    },
+    {
+      "id": "hotel-mirror-fit-check",
+      "file": "hotel-mirror-fit-check.jpg",
+      "path": "/travel/hotel-mirror-fit-check.jpg",
+      "title": "Hotel Mirror Fit Check",
+      "caption": "Quick mirror check before heading out—graphic tee, crossbody bag, and a bathroom floor worth the photo.",
+      "original": "IMG_7162.jpg",
+      "hidden": true
+    },
+    {
+      "id": "festival-pad-thai-bowl",
+      "file": "festival-pad-thai-bowl.jpg",
+      "path": "/travel/festival-pad-thai-bowl.jpg",
+      "title": "Festival Pad Thai Bowl",
+      "caption": "Held up a bowl of pad thai at an outdoor festival because the noodles deserved their close-up first.",
+      "original": "IMG_7379.jpg"
+    },
+    {
+      "id": "festival-fried-chicken-drumstick",
+      "file": "festival-fried-chicken-drumstick.jpg",
+      "path": "/travel/festival-fried-chicken-drumstick.jpg",
+      "title": "Golden Hour Fried Chicken",
+      "caption": "Raised a fried drumstick to the sky at golden hour—peak festival behavior, zero regrets.",
+      "original": "IMG_7385.jpg"
+    },
+    {
+      "id": "kad-mua-meatball-skewer",
+      "file": "kad-mua-meatball-skewer.jpg",
+      "path": "/travel/kad-mua-meatball-skewer.jpg",
+      "title": "Kad Mua Meatball Skewer",
+      "caption": "Grilled meatball skewer in one hand, live music on stage behind me—this is my kind of afternoon.",
+      "original": "IMG_7391.jpg"
+    },
+    {
+      "id": "temple-bodhi-leaf-wishes",
+      "file": "temple-bodhi-leaf-wishes.jpg",
+      "path": "/travel/temple-bodhi-leaf-wishes.jpg",
+      "title": "Bodhi Leaf Temple Wishes",
+      "caption": "Hung a sparkly bodhi leaf at the temple with a wish on it—prosperity looks good in holographic gold.",
+      "original": "IMG_7405.jpg"
+    },
+    {
+      "id": "monks-candlelight-ceremony-night",
+      "file": "monks-candlelight-ceremony-night.jpg",
+      "path": "/travel/monks-candlelight-ceremony-night.jpg",
+      "title": "Monks Candlelight Ceremony Night",
+      "caption": "Watched hundreds of monks lit by candles on a tiered platform—one of those nights you don't scroll past.",
+      "original": "IMG_7494.jpg"
+    },
+    {
+      "id": "night-temple-buddha-glow",
+      "file": "night-temple-buddha-glow.jpg",
+      "path": "/travel/night-temple-buddha-glow.jpg",
+      "title": "Night Temple Buddha Glow",
+      "caption": "Smiled at the camera with a glowing Buddha behind me—best backdrop I've ever accidentally nailed.",
+      "original": "IMG_7515.jpg"
+    },
+    {
+      "id": "colombia-gallery-corner",
+      "file": "colombia-gallery-corner.jpg",
+      "path": "/travel/colombia-gallery-corner.jpg",
+      "title": "Colombian Gallery Corner",
+      "caption": "Three paintings in one corner and still no consensus on what my apartment actually needs.",
+      "original": "IMG_9313.jpg"
+    },
+    {
+      "id": "bogota-candelaria-street-art",
+      "file": "bogota-candelaria-street-art.jpg",
+      "path": "/travel/bogota-candelaria-street-art.jpg",
+      "title": "La Candelaria Art Market",
+      "caption": "Bogotá's sidewalks have better galleries than most cities' museums.",
+      "original": "IMG_9314.jpg"
+    },
+    {
+      "id": "bogota-plaza-street-llama",
+      "file": "bogota-plaza-street-llama.jpg",
+      "path": "/travel/bogota-plaza-street-llama.jpg",
+      "title": "Bogotá Plaza Llama",
+      "caption": "Met the best-dressed llama in Bogotá and he didn't even need a reservation.",
+      "original": "IMG_9317.jpg"
+    },
+    {
+      "id": "rooftop-coffee-mountain-view",
+      "file": "rooftop-coffee-mountain-view.jpg",
+      "path": "/travel/rooftop-coffee-mountain-view.jpg",
+      "title": "Rooftop Coffee Over Andes",
+      "caption": "Morning ritual: coffee first, mountains second, plans eventually.",
+      "original": "IMG_9341.jpg"
+    },
+    {
+      "id": "muisca-raft-gold-museum",
+      "file": "muisca-raft-gold-museum.jpg",
+      "path": "/travel/muisca-raft-gold-museum.jpg",
+      "title": "Muisca Raft Gold Museum",
+      "caption": "The El Dorado legend hits different when you're standing three feet from the actual raft.",
+      "original": "IMG_9359.jpg"
+    },
+    {
+      "id": "bogota-monserrate-god-rays",
+      "file": "bogota-monserrate-god-rays.jpg",
+      "path": "/travel/bogota-monserrate-god-rays.jpg",
+      "title": "Bogotá Storm Light Break",
+      "caption": "Bogotá dropped a whole cinematic filter on the city just as the clouds cracked open.",
+      "original": "IMG_9396.jpg"
+    },
+    {
+      "id": "medellin-rose-mural-building",
+      "file": "medellin-rose-mural-building.jpg",
+      "path": "/travel/medellin-rose-mural-building.jpg",
+      "title": "Rose Mural in El Poblado",
+      "caption": "Medellín puts a whole portrait on the side of a building and I just show up with a camera.",
+      "original": "IMG_0516.jpg"
+    },
+    {
+      "id": "medellin-graffiti-bouldering-wall",
+      "file": "medellin-graffiti-bouldering-wall.jpg",
+      "path": "/travel/medellin-graffiti-bouldering-wall.jpg",
+      "title": "Graffiti Wall Bouldering",
+      "caption": "Today's workout was climbing a wall that already had better art than my apartment.",
+      "original": "IMG_9579.jpg"
+    },
+    {
+      "id": "medellin-mural-gold-shades",
+      "file": "medellin-mural-gold-shades.jpg",
+      "path": "/travel/medellin-mural-gold-shades.jpg",
+      "title": "Mural Backdrop Gold Shades",
+      "caption": "Medellín's murals are loud enough that I had to match the energy with the shades.",
+      "original": "IMG_9640.jpg"
+    },
+    {
+      "id": "comuna-13-hillside-storm",
+      "file": "comuna-13-hillside-storm.jpg",
+      "path": "/travel/comuna-13-hillside-storm.jpg",
+      "title": "Comuna 13 Hillside View",
+      "caption": "A million stacked houses and one break in the clouds — worth every step up the hill.",
+      "original": "IMG_9649.jpg"
+    },
+    {
+      "id": "comuna-13-book-district-mural",
+      "file": "comuna-13-book-district-mural.jpg",
+      "path": "/travel/comuna-13-book-district-mural.jpg",
+      "title": "Book District 13 Mural",
+      "caption": "Even the motorcycles in Comuna 13 pull up to better murals than I do.",
+      "original": "IMG_9665.jpg"
+    },
+    {
+      "id": "comuna-13-rainbow-stairs-paz",
+      "file": "comuna-13-rainbow-stairs-paz.jpg",
+      "path": "/travel/comuna-13-rainbow-stairs-paz.jpg",
+      "title": "Rainbow Stairs With Paz",
+      "caption": "Climbed a staircase painted like a sunset and signed with peace — no notes.",
+      "original": "IMG_9679.jpg"
+    },
+    {
+      "id": "pink-railing-walkway-graffiti",
+      "file": "pink-railing-walkway-graffiti.jpg",
+      "path": "/travel/pink-railing-walkway-graffiti.jpg",
+      "title": "Pink Railing Walkway POV",
+      "caption": "My sneakers and this pink railing are doing more for the vibe than I am.",
+      "original": "IMG_9713.jpg"
+    },
+    {
+      "id": "comuna-13-outdoor-slides",
+      "file": "comuna-13-outdoor-slides.jpg",
+      "path": "/travel/comuna-13-outdoor-slides.jpg",
+      "title": "Comuna 13 Outdoor Slides",
+      "caption": "Yes those are real slides on a hillside and yes I went down twice.",
+      "original": "IMG_9718.jpg"
+    },
+    {
+      "id": "comuna-13-stairway-mural",
+      "file": "comuna-13-stairway-mural.jpg",
+      "path": "/travel/comuna-13-stairway-mural.jpg",
+      "title": "Comuna 13 Stairway Mural",
+      "caption": "Sat on these stairs long enough to realize the neighborhood is the real art show.",
+      "original": "IMG_9736.jpg"
+    },
+    {
+      "id": "neon-space-room-shaka",
+      "file": "neon-space-room-shaka.jpg",
+      "path": "/travel/neon-space-room-shaka.jpg",
+      "title": "Neon Space Room Shaka",
+      "caption": "Walked into a blacklight space tunnel and immediately forgot how to stand normally.",
+      "original": "IMG_9764.jpg"
+    },
+    {
+      "id": "moon-floor-neon-glasses",
+      "file": "moon-floor-neon-glasses.jpg",
+      "path": "/travel/moon-floor-neon-glasses.jpg",
+      "title": "Moon Floor Neon Glasses",
+      "caption": "Glowing glasses, crater floor, zero-gravity energy — date night or museum, you decide.",
+      "original": "IMG_9765.jpg"
+    }
+  ]
+}

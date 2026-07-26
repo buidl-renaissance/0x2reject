@@ -11,7 +11,9 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "seed:john": "npx tsx scripts/seed-john.ts"
+    "seed:john": "npx tsx scripts/seed-john.ts",
+    "heic:travel": "bash scripts/convert-heic-travel.sh",
+    "mov:travel": "bash scripts/convert-mov-travel.sh"
   },
   "dependencies": {
     "@libsql/client": "^0.15.15",

@@ -587,6 +587,9 @@ export function DatingCardFunnel({
                 <ExploreLink href={`${exploreBasePath}/cats`}>
                   Take me to cat photos →
                 </ExploreLink>
+                <ExploreLink href={`${exploreBasePath}/travel`}>
+                  Where has {displayName} been? →
+                </ExploreLink>
                 <ExploreLink href={`${exploreBasePath}/kind-of-man`}>
                   What kind of man is {displayName}? →
                 </ExploreLink>

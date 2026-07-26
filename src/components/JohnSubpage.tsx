@@ -107,6 +107,25 @@ export function WideShot({ $src }: { $src: string }) {
   );
 }
 
+/** Full image, natural aspect — no crop (good for mixed portrait/landscape) */
+const FitShotImage = styled.img`
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 2px solid #2a2a2a;
+`;
+
+export function FitShot({
+  $src,
+  alt = '',
+}: {
+  $src: string;
+  alt?: string;
+}) {
+  return <FitShotImage src={$src} alt={alt} />;
+}
+
 export const Body = styled.div`
   color: #d1d5db;
   line-height: 1.55;
