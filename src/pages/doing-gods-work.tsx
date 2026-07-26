@@ -2,9 +2,14 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styled, { keyframes } from 'styled-components';
 
-const emberPulse = keyframes`
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50% { opacity: 0.55; transform: scale(1.06); }
+const driftA = keyframes`
+  0%, 100% { transform: translate(-2%, -1%) rotate(0deg) scale(1); }
+  50% { transform: translate(3%, 2%) rotate(8deg) scale(1.05); }
+`;
+
+const driftB = keyframes`
+  0%, 100% { transform: translate(2%, 1%) rotate(0deg) scale(1.02); }
+  50% { transform: translate(-3%, -2%) rotate(-6deg) scale(1); }
 `;
 
 const riseIn = keyframes`
@@ -12,21 +17,20 @@ const riseIn = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
-const markGlow = keyframes`
-  0%, 100% { filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.25)); }
-  50% { filter: drop-shadow(0 0 32px rgba(212, 175, 55, 0.45)); }
-`;
-
 const Page = styled.div`
-  --bg: #0a0908;
-  --ink: #f3ead7;
-  --muted: #b6a68c;
-  --gold: #d4af37;
-  --gold-bright: #f0d78c;
-  --ember: #c45a12;
+  --ink: #0c1a2e;
+  --ink-soft: #1a3354;
+  --muted: #2a4a6e;
+  --yellow: #ffe14a;
+  --yellow-deep: #f5c400;
+  --cyan: #3ec6ff;
+  --blue: #1e6fff;
+  --blue-deep: #0b3d99;
+  --white: #f7fbff;
+  --green-blend: #7fd9a8;
 
   min-height: 100vh;
-  background: var(--bg);
+  background: var(--white);
   color: var(--ink);
   font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   position: relative;
@@ -37,37 +41,55 @@ const Atmosphere = styled.div`
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 10%, rgba(196, 90, 18, 0.28), transparent 55%),
-    radial-gradient(ellipse 60% 45% at 90% 85%, rgba(196, 90, 18, 0.22), transparent 50%),
-    radial-gradient(ellipse 80% 60% at 50% 40%, #14110e, var(--bg));
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(
-        118deg,
-        transparent 0 14px,
-        rgba(0, 0, 0, 0.14) 14px 15px
-      );
-    opacity: 0.45;
-  }
+  overflow: hidden;
+  background: #e8f6ff;
 `;
 
-const Ember = styled.div<{ $top?: string; $left?: string; $right?: string; $bottom?: string }>`
+/** Shirt-true spiral: cyan / royal / yellow / white — less washed-out */
+const DyeLayer = styled.div<{ $variant: 'a' | 'b' }>`
   position: absolute;
-  width: min(42vw, 280px);
-  height: min(42vw, 220px);
-  border-radius: 50%;
-  background: var(--ember);
-  filter: blur(64px);
-  animation: ${emberPulse} 7s ease-in-out infinite;
-  top: ${(p) => p.$top ?? 'auto'};
-  left: ${(p) => p.$left ?? 'auto'};
-  right: ${(p) => p.$right ?? 'auto'};
-  bottom: ${(p) => p.$bottom ?? 'auto'};
+  inset: -20%;
+  background:
+    radial-gradient(
+      circle at 45% 42%,
+      #ffffff 0%,
+      #ffffff 6%,
+      #5ec8ff 14%,
+      #2a7bff 26%,
+      #1e5fe0 36%,
+      #ffe34d 48%,
+      #ffd000 58%,
+      #8fd9b0 68%,
+      #3aa0ff 82%,
+      #1550c0 100%
+    ),
+    conic-gradient(
+      from ${(p) => (p.$variant === 'a' ? '200deg' : '30deg')} at 48% 44%,
+      #1e6fff 0deg,
+      #4db8ff 50deg,
+      #ffffff 90deg,
+      #ffe14a 140deg,
+      #f0c000 190deg,
+      #6fcf9a 240deg,
+      #3ec6ff 300deg,
+      #1e6fff 360deg
+    );
+  mix-blend-mode: ${(p) => (p.$variant === 'a' ? 'normal' : 'multiply')};
+  opacity: ${(p) => (p.$variant === 'a' ? 1 : 0.28)};
+  filter: blur(${(p) => (p.$variant === 'a' ? '14px' : '36px')});
+  animation: ${(p) => (p.$variant === 'a' ? driftA : driftB)} 22s ease-in-out
+    infinite;
+`;
+
+const DyeVeil = styled.div`
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.42) 45%,
+    rgba(232, 246, 255, 0.55) 100%
+  );
 `;
 
 const Shell = styled.main`
@@ -82,43 +104,32 @@ const Shell = styled.main`
   margin: 0 auto;
 `;
 
-const Brand = styled.p`
-  margin: 0 0 1.25rem;
-  font-family: 'Syne', system-ui, sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.5rem, 9vw, 5.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  color: var(--gold-bright);
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
-  animation: ${riseIn} 0.8s ease-out both, ${markGlow} 5s ease-in-out infinite;
-`;
-
 const Headline = styled.h1`
   margin: 0 0 1rem;
   font-family: 'Syne', system-ui, sans-serif;
-  font-weight: 600;
-  font-size: clamp(1.35rem, 3.5vw, 2rem);
-  line-height: 1.25;
-  max-width: 18ch;
+  font-weight: 700;
+  font-size: clamp(2rem, 7vw, 3.25rem);
+  line-height: 1.1;
+  max-width: 14ch;
   color: var(--ink);
-  animation: ${riseIn} 0.8s ease-out 0.12s both;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  animation: ${riseIn} 0.8s ease-out both;
 `;
 
 const Lead = styled.p`
   margin: 0 0 2rem;
-  max-width: 34ch;
+  max-width: 38ch;
   font-size: clamp(1.05rem, 2.2vw, 1.25rem);
   line-height: 1.5;
   color: var(--muted);
-  animation: ${riseIn} 0.8s ease-out 0.22s both;
+  animation: ${riseIn} 0.8s ease-out 0.12s both;
 `;
 
 const Actions = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
-  animation: ${riseIn} 0.8s ease-out 0.32s both;
+  animation: ${riseIn} 0.8s ease-out 0.22s both;
 `;
 
 const Primary = styled(Link)`
@@ -126,48 +137,20 @@ const Primary = styled(Link)`
   align-items: center;
   padding: 0.85rem 1.35rem;
   border-radius: 999px;
-  background: linear-gradient(145deg, var(--gold-bright), var(--gold));
-  color: #1a1208;
+  background: linear-gradient(145deg, var(--yellow), var(--yellow-deep));
+  color: var(--ink);
   font-family: 'Syne', system-ui, sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   text-decoration: none;
+  box-shadow: 0 8px 24px rgba(30, 111, 255, 0.18);
   transition: transform 0.2s ease, filter 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
-    filter: brightness(1.05);
+    filter: brightness(1.03);
   }
-`;
-
-const Secondary = styled(Link)`
-  display: inline-flex;
-  align-items: center;
-  padding: 0.85rem 1.35rem;
-  border-radius: 999px;
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  background: rgba(20, 16, 12, 0.55);
-  color: var(--gold-bright);
-  font-family: 'Syne', system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: border-color 0.2s ease, background 0.2s ease;
-
-  &:hover {
-    border-color: var(--gold);
-    background: rgba(40, 30, 16, 0.75);
-  }
-`;
-
-const Foot = styled.p`
-  margin: 3rem 0 0;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(182, 166, 140, 0.65);
-  animation: ${riseIn} 0.8s ease-out 0.42s both;
 `;
 
 export default function DoingGodsWorkPage() {
@@ -177,7 +160,7 @@ export default function DoingGodsWorkPage() {
         <title>doing gods work</title>
         <meta
           name="description"
-          content="doing gods work — experiments, stories, and the next adventure."
+          content="Glad our paths crossed. If you're open to a connection, so am I."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -192,22 +175,20 @@ export default function DoingGodsWorkPage() {
       </Head>
 
       <Atmosphere aria-hidden>
-        <Ember $top="-4%" $left="-6%" />
-        <Ember $bottom="8%" $right="-4%" />
+        <DyeLayer $variant="a" />
+        <DyeLayer $variant="b" />
+        <DyeVeil />
       </Atmosphere>
 
       <Shell>
-        <Brand>doing gods work</Brand>
-        <Headline>Ask better questions. Ship stranger answers.</Headline>
+        <Headline>Glad our paths crossed.</Headline>
         <Lead>
-          A home for experiments, travel receipts, and whatever we&apos;re
-          building next — under one slightly divine domain.
+          If you&apos;re open to a connection, so am I — a conversation, a plan,
+          or just seeing where curiosity wants to go.
         </Lead>
         <Actions>
-          <Primary href="/john">Meet John</Primary>
-          <Secondary href="/start">0x2 Reject</Secondary>
+          <Primary href="/john">Let&apos;s connect</Primary>
         </Actions>
-        <Foot>gods.work</Foot>
       </Shell>
     </Page>
   );
