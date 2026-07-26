@@ -590,14 +590,8 @@ export function DatingCardFunnel({
                 <ExploreLink href={`${exploreBasePath}/travel`}>
                   Where has {displayName} been? →
                 </ExploreLink>
-                <ExploreLink href={`${exploreBasePath}/kind-of-man`}>
-                  What kind of man is {displayName}? →
-                </ExploreLink>
-                <ExploreLink href={`${exploreBasePath}/what-he-does`}>
-                  What does {displayName} do? →
-                </ExploreLink>
-                <ExploreLink href={`${exploreBasePath}/travel`}>
-                  Where has {displayName} been? →
+                <ExploreLink href={`${exploreBasePath}/about`}>
+                  Learn about {displayName} →
                 </ExploreLink>
               </ExploreList>
             )}
