@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import {
   JohnSubpage,
   PhotoGrid,
@@ -6,6 +7,42 @@ import {
   Caption,
   PhotoWithCaption,
 } from '@/components/JohnSubpage';
+
+const CtaBlock = styled.div`
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #2a2a2a;
+  text-align: center;
+`;
+
+const CtaLead = styled.p`
+  margin: 0 0 1rem;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.45;
+`;
+
+const TextJohnBtn = styled.a`
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid #4f46e5;
+  background: #1a1a1a;
+  color: #c7d2fe;
+  font-size: 0.95rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+
+  &:hover {
+    background: #4f46e5;
+    color: #fff;
+  }
+`;
+
+const JOHN_PHONE = '+13135503518';
+const catsSmsHref = `sms:${JOHN_PHONE}?&body=${encodeURIComponent(
+  "Hey John — saw Sash(a Cutie). When do I meet the cat?"
+)}`;
 
 export default function JohnCatsPage() {
   return (
@@ -67,6 +104,13 @@ export default function JohnCatsPage() {
           package. Soft paws, sharp judgment, zero chill about dinner time.
         </p>
       </Body>
+
+      <CtaBlock>
+        <CtaLead>
+          Cat person? Prove it — Sash is already judging your reply time.
+        </CtaLead>
+        <TextJohnBtn href={catsSmsHref}>Text John</TextJohnBtn>
+      </CtaBlock>
     </JohnSubpage>
   );
 }
