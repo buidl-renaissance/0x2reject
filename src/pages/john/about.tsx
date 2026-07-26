@@ -1,21 +1,15 @@
 import styled from 'styled-components';
-import {
-  JohnSubpage,
-  Body,
-  TagList,
-  Tag,
-} from '@/components/JohnSubpage';
+import Link from 'next/link';
+import { JohnSubpage, Body } from '@/components/JohnSubpage';
 
-const Section = styled.section`
-  margin-bottom: 1.75rem;
-`;
+const LetterLink = styled(Link)`
+  color: #a5b4fc;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 
-const SectionTitle = styled.h2`
-  margin: 0 0 0.75rem;
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #f9fafb;
+  &:hover {
+    color: #c7d2fe;
+  }
 `;
 
 const CtaBlock = styled.div`
@@ -23,13 +17,6 @@ const CtaBlock = styled.div`
   padding-top: 1.5rem;
   border-top: 1px solid #2a2a2a;
   text-align: center;
-`;
-
-const CtaLead = styled.p`
-  margin: 0 0 1rem;
-  color: #d1d5db;
-  font-size: 0.95rem;
-  line-height: 1.45;
 `;
 
 const TextJohnBtn = styled.a`
@@ -51,57 +38,33 @@ const TextJohnBtn = styled.a`
 
 const JOHN_PHONE = '+13135503518';
 const aboutSmsHref = `sms:${JOHN_PHONE}?&body=${encodeURIComponent(
-  "Hey John — just learned about you. When's the next adventure?"
+  'Hey John — our paths crossed. Want to connect?'
 )}`;
 
 export default function JohnAboutPage() {
   return (
     <JohnSubpage
-      title="Learn about John"
+      title="John"
       description="Loving cat daddy looking for his next adventure."
     >
-      <Section>
-        <SectionTitle>Who he is</SectionTitle>
-        <Body>
-          <p>
-            Roasts your dating app, still shows up with snacks. Silly faces are
-            a love language; so is remembering what you ordered last time.
-          </p>
-          <p>
-            Ghosts the group chat, then somehow plans the trip. Soft for
-            animals, hard on bad coffee.
-          </p>
-        </Body>
-      </Section>
-
-      <Section>
-        <SectionTitle>What he builds</SectionTitle>
-        <Body>
-          <p>
-            Software, app blocks, and weird little worlds that shouldn&apos;t
-            exist but somehow do. Days in code and community; nights negotiating
-            couch territory with Sash.
-          </p>
-          <p>
-            Ask what he &quot;does&quot; and get a shrug, then a riff on cities,
-            crypto rabbit holes, pinball, and whatever he&apos;s shipping this
-            week.
-          </p>
-        </Body>
-      </Section>
-
-      <TagList>
-        <Tag>Soft for animals, hard on bad coffee</Tag>
-        <Tag>Builder who treats life like a prototype</Tag>
-        <Tag>City experiments (Renaissance)</Tag>
-        <Tag>Crypto curiosity, not crypto bro cosplay</Tag>
-        <Tag>Pinball, travel, events</Tag>
-      </TagList>
+      <Body>
+        <p>
+          I&apos;m the guy who grills the steaks. Talk is cheap — from plan to
+          action.
+        </p>
+        <p>
+          Home base is couch negotiations with{' '}
+          <LetterLink href="/john/cats">Sash</LetterLink>. Out in the world:{' '}
+          <LetterLink href="/john/travel">trips with receipts</LetterLink> —
+          boards, boats, elephants, murals.
+        </p>
+        <p>
+          If you&apos;re curious, say hi. Just a conversation — and maybe the
+          next adventure.
+        </p>
+      </Body>
 
       <CtaBlock>
-        <CtaLead>
-          Still curious? The next adventure might need a plus-one.
-        </CtaLead>
         <TextJohnBtn href={aboutSmsHref}>Text John</TextJohnBtn>
       </CtaBlock>
     </JohnSubpage>
