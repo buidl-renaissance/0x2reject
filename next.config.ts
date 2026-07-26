@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
+  // Travel/profile media are CDN static assets — do not pack them into serverless functions
+  outputFileTracingExcludes: {
+    "/api/**/*": [
+      "./public/travel/**/*",
+      "./public/kitty/**/*",
+      "./public/profiles/**/*",
+      "./public/business-card/**/*",
+    ],
+  },
   async redirects() {
     return [
       {

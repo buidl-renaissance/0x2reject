@@ -62,7 +62,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       captionsArray = [];
     }
 
-    const uploadsDir = path.join(process.cwd(), 'public', 'travel');
+    // Local/dev: write under public/travel. On Vercel the FS is ephemeral and
+    // tracing must not pull the whole media folder into the function bundle.
+    const uploadsDir = process.env.VERCEL
+      ? path.join('/tmp', 'travel-uploads')
+      : path.join(process.cwd(), 'public', 'travel');
     await fs.mkdir(uploadsDir, { recursive: true });
 
     const uploadedMedia = [];
