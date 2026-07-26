@@ -24,17 +24,21 @@
         "san-juan-garita-bay-view",
         "el-morro-grass-golden-hour",
         "jungle-rope-swing-river",
+        "jungle-rope-swing",
+        "jungle-water-slide",
         "condado-beach-blue-hour"
       ]
     },
     {
       "id": "costa-rica",
       "title": "Costa Rica",
-      "subtitle": "Pura vida — surf, shipwrecks, and jungle mist",
+      "subtitle": "Pura vida — Ring of Fire eclipse, surf, and jungle mist",
       "photoIds": [
         "imperial-beer-shallow-surf",
         "shaka-surf-wave-action",
+        "costa-rica-horse-beaches",
         "jungle-waterfall-mist",
+        "la-fortuna-waterfall-dive",
         "shipwreck-beach-driftwood",
         "graffiti-shipwreck-pura-vida",
         "tree-climb-turquoise-ocean"
@@ -58,14 +62,17 @@
         "peace-sign-baby-elephant",
         "mother-baby-elephant-jungle",
         "purple-shades-elephant-fence",
+        "elephant-sancutary-river-play",
         "devcon-seven-sea-sign",
         "devcon-purple-beanbag-lounge",
+        "devsea-plant-music",
         "festival-pad-thai-bowl",
         "festival-fried-chicken-drumstick",
         "kad-mua-meatball-skewer",
         "temple-bodhi-leaf-wishes",
         "monks-candlelight-ceremony-night",
-        "night-temple-buddha-glow"
+        "night-temple-buddha-glow",
+        "thailand-lantern-lighting"
       ]
     },
     {
@@ -86,6 +93,7 @@
         "comuna-13-book-district-mural",
         "comuna-13-rainbow-stairs-paz",
         "pink-railing-walkway-graffiti",
+        "comuna-13-slide",
         "comuna-13-outdoor-slides",
         "comuna-13-stairway-mural",
         "neon-space-room-shaka",
@@ -223,7 +231,7 @@
       "file": "imperial-beer-shallow-surf.jpg",
       "path": "/travel/imperial-beer-shallow-surf.jpg",
       "title": "Cold Imperial in the Surf",
-      "caption": "Knee-deep in Costa Rica with an Imperial in hand—shirt up, stress down.",
+      "caption": "Working on my influencer shot so I can never go back to real life.",
       "original": "IMG_5473.jpg"
     },
     {
@@ -239,23 +247,23 @@
       "file": "jungle-waterfall-mist.jpg",
       "path": "/travel/jungle-waterfall-mist.jpg",
       "title": "Jungle Waterfall Reset",
-      "caption": "Nothing fixes a travel day like getting drenched under a jungle waterfall.",
+      "caption": "A slippery rock brought out the energy I had inside for this moment.",
       "original": "IMG_8971.JPG"
     },
     {
       "id": "shipwreck-beach-driftwood",
       "file": "shipwreck-beach-driftwood.jpg",
       "path": "/travel/shipwreck-beach-driftwood.jpg",
-      "title": "Shipwreck Beach Front Row",
-      "caption": "Found a driftwood seat with a wrecked boat in the background and called it a beach day.",
+      "title": "Ring of Fire Shipwreck Seat",
+      "caption": "Front-row driftwood for the annular eclipse — wrecked boat, open sky, Ring of Fire overhead.",
       "original": "IMG_9156.jpg"
     },
     {
       "id": "graffiti-shipwreck-pura-vida",
       "file": "graffiti-shipwreck-pura-vida.jpg",
       "path": "/travel/graffiti-shipwreck-pura-vida.jpg",
-      "title": "Pura Vida Shipwreck Swim",
-      "caption": "The graffiti boat had a thought bubble that said pura vida, and honestly I was already thinking it.",
+      "title": "Pura Vida Eclipse Swim",
+      "caption": "Swimming out to the graffiti wreck for the Ring of Fire — the boat says pura vida and so does the sky.",
       "original": "IMG_9162.jpg"
     },
     {
@@ -264,7 +272,8 @@
       "path": "/travel/tree-climb-turquoise-ocean.jpg",
       "title": "Tree Climb Over Ocean",
       "caption": "Climbed a tree for the view and stayed because the water looked too good to leave.",
-      "original": "IMG_9826.JPG"
+      "original": "IMG_9826.JPG",
+      "hidden": true
     },
     {
       "id": "thailand-coconut-karst-beach",
@@ -304,7 +313,8 @@
       "path": "/travel/phi-phi-harbor-profile.jpg",
       "title": "Harbor View, Limestone Cliffs",
       "caption": "Paused at the harbor with longtail boats and karst cliffs behind me—contemplating dinner, not life.",
-      "original": "IMG_6933.jpg"
+      "original": "IMG_6933.jpg",
+      "hidden": true
     },
     {
       "id": "elephant-sanctuary-head-pat",
@@ -552,7 +562,7 @@
       "file": "comuna-13-outdoor-slides.jpg",
       "path": "/travel/comuna-13-outdoor-slides.jpg",
       "title": "Comuna 13 Outdoor Slides",
-      "caption": "Yes those are real slides on a hillside and yes I went down twice.",
+      "caption": "The still life after the ride — proof I actually walked back up for round two.",
       "original": "IMG_9718.jpg"
     },
     {
@@ -577,7 +587,72 @@
       "path": "/travel/moon-floor-neon-glasses.jpg",
       "title": "Moon Floor Neon Glasses",
       "caption": "Glowing glasses, crater floor, zero-gravity energy — date night or museum, you decide.",
-      "original": "IMG_9765.jpg"
+      "original": "IMG_9765.jpg",
+      "hidden": true
+    },
+    {
+      "id": "comuna-13-slide",
+      "file": "comuna-13-slide.mp4",
+      "path": "/travel/comuna-13-slide.mp4",
+      "type": "video",
+      "title": "Comuna Trece Slide",
+      "caption": "Took the hillside slides in Comuna 13 — infrastructure with main-character energy."
+    },
+    {
+      "id": "costa-rica-horse-beaches",
+      "file": "costa-rica-horse-beaches.mp4",
+      "path": "/travel/costa-rica-horse-beaches.mp4",
+      "type": "video",
+      "title": "Horseback on Costa Rica Beaches",
+      "caption": "Beach, horses, open sky — pura vida from the saddle."
+    },
+    {
+      "id": "devsea-plant-music",
+      "file": "devsea-plant-music.mp4",
+      "path": "/travel/devsea-plant-music.mp4",
+      "type": "video",
+      "title": "Devcon SEA Plant Music",
+      "caption": "Live set in the greenery at Devcon SEA — builders, basslines, and big leaves."
+    },
+    {
+      "id": "elephant-sancutary-river-play",
+      "file": "elephant-sancutary-river-play.mp4",
+      "path": "/travel/elephant-sancutary-river-play.mp4",
+      "type": "video",
+      "title": "Elephant Sanctuary River Play",
+      "caption": "River time with the elephants — mud optional, joy mandatory."
+    },
+    {
+      "id": "jungle-rope-swing",
+      "file": "jungle-rope-swing.mp4",
+      "path": "/travel/jungle-rope-swing.mp4",
+      "type": "video",
+      "title": "Jungle Rope Swing",
+      "caption": "Swung out over the river and let go — the splash was the whole point."
+    },
+    {
+      "id": "jungle-water-slide",
+      "file": "jungle-water-slide.mp4",
+      "path": "/travel/jungle-water-slide.mp4",
+      "type": "video",
+      "title": "Jungle Water Slide",
+      "caption": "Natural jungle slide, cold water, zero regrets."
+    },
+    {
+      "id": "la-fortuna-waterfall-dive",
+      "file": "la-fortuna-waterfall-dive.mp4",
+      "path": "/travel/la-fortuna-waterfall-dive.mp4",
+      "type": "video",
+      "title": "La Fortuna Waterfall Dive",
+      "caption": "Climbed down for La Fortuna and jumped in — cold as hell, worth it."
+    },
+    {
+      "id": "thailand-lantern-lighting",
+      "file": "thailand-lantern-lighting.mp4",
+      "path": "/travel/thailand-lantern-lighting.mp4",
+      "type": "video",
+      "title": "Thailand Lantern Lighting",
+      "caption": "Lit a lantern and watched it rise — Thailand nights hit different."
     }
   ]
 }

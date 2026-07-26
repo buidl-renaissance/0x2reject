@@ -10,9 +10,15 @@ export type TravelPhoto = {
   path: string;
   title: string;
   caption: string;
+  type?: 'photo' | 'video';
   original?: string;
   hidden?: boolean;
 };
+
+export function isTravelVideo(photo: TravelPhoto): boolean {
+  if (photo.type === 'video') return true;
+  return /\.(mp4|mov|webm|avi|mkv)$/i.test(photo.file || photo.path);
+}
 
 export type TravelTrip = {
   id: string;

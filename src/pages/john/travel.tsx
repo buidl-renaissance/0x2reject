@@ -6,7 +6,7 @@ import {
   Body,
   PhotoWithCaption,
 } from '@/components/JohnSubpage';
-import { travelTrips, getTripPhotos } from '@/lib/travel';
+import { travelTrips, getTripPhotos, isTravelVideo } from '@/lib/travel';
 
 const UploadLink = styled(Link)`
   display: inline-block;
@@ -78,6 +78,15 @@ const Photo = styled.img`
   height: auto;
   border-radius: 16px;
   border: 2px solid #2a2a2a;
+`;
+
+const Video = styled.video`
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 2px solid #2a2a2a;
+  background: #0a0a0a;
 `;
 
 const PhotoTitle = styled.h3`
@@ -159,7 +168,17 @@ export default function JohnTravelPage() {
             <PhotoGrid>
               {photos.map((photo) => (
                 <PhotoWithCaption key={photo.id}>
-                  <Photo src={photo.path} alt={photo.title} />
+                  {isTravelVideo(photo) ? (
+                    <Video
+                      src={photo.path}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      aria-label={photo.title}
+                    />
+                  ) : (
+                    <Photo src={photo.path} alt={photo.title} />
+                  )}
                   <PhotoTitle>{photo.title}</PhotoTitle>
                   <PhotoCaption>{photo.caption}</PhotoCaption>
                 </PhotoWithCaption>
