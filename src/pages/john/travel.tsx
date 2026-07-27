@@ -1,14 +1,30 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import {
   JohnSubpage,
   PhotoGrid,
   Body,
   PhotoWithCaption,
-  CtaBlock,
-  CtaLead,
-  TextJohnBtn,
 } from '@/components/JohnSubpage';
+import { FloatingTextJohn } from '@/components/FloatingTextJohn';
 import { travelTrips, getTripPhotos, isTravelVideo } from '@/lib/travel';
+
+const NextLink = styled(Link)`
+  display: block;
+  margin: 0.5rem 0 4rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  background: #1c1c1c;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 0.95rem;
+
+  &:hover {
+    border-color: #4f46e5;
+    background: #1e1b4b;
+  }
+`;
 
 const TripNav = styled.nav`
   display: flex;
@@ -146,15 +162,15 @@ export default function JohnTravelPage() {
           about the rope swing, the elephant that side-eyed him, or the outdoor
           slides in Comuna 13.
         </p>
-      </Body>
-
-      <CtaBlock>
-        <CtaLead>
+        <p>
           Got a destination in mind? Pitch the trip — he&apos;s already packing
           half a bag.
-        </CtaLead>
-        <TextJohnBtn href={travelSmsHref}>Text John</TextJohnBtn>
-      </CtaBlock>
+        </p>
+      </Body>
+
+      <NextLink href="/john/cats">Take me to cat photos →</NextLink>
+
+      <FloatingTextJohn href={travelSmsHref} />
     </JohnSubpage>
   );
 }

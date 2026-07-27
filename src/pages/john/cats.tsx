@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import styled from 'styled-components';
 import {
   JohnSubpage,
   PhotoGrid,
@@ -5,10 +7,25 @@ import {
   Body,
   Caption,
   PhotoWithCaption,
-  CtaBlock,
-  CtaLead,
-  TextJohnBtn,
 } from '@/components/JohnSubpage';
+import { FloatingTextJohn } from '@/components/FloatingTextJohn';
+
+const NextLink = styled(Link)`
+  display: block;
+  margin: 0.5rem 0 4rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  background: #1c1c1c;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 0.95rem;
+
+  &:hover {
+    border-color: #4f46e5;
+    background: #1e1b4b;
+  }
+`;
 
 const JOHN_PHONE = '+13135503518';
 const catsSmsHref = `sms:${JOHN_PHONE}?&body=${encodeURIComponent(
@@ -73,15 +90,15 @@ export default function JohnCatsPage() {
           <strong>Sash(a Cutie)</strong> — the cute little girl included in the
           package. Soft paws, sharp judgment, zero chill about dinner time.
         </p>
-      </Body>
-
-      <CtaBlock>
-        <CtaLead>
+        <p>
           Soft spot for cats? Sash already likes you — say hi to John… and maybe
           you two can meet.
-        </CtaLead>
-        <TextJohnBtn href={catsSmsHref}>Text John</TextJohnBtn>
-      </CtaBlock>
+        </p>
+      </Body>
+
+      <NextLink href="/john/travel">Where has John been? →</NextLink>
+
+      <FloatingTextJohn href={catsSmsHref} />
     </JohnSubpage>
   );
 }

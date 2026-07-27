@@ -1,8 +1,9 @@
-import styled, { keyframes, css } from 'styled-components';
-import { useState, useRef, useCallback, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { activityLabel } from '@/lib/activities';
+import styled, { keyframes, css } from "styled-components";
+import { useState, useRef, useCallback, useEffect } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { activityLabel } from "@/lib/activities";
+import { FloatingTextJohn } from "@/components/FloatingTextJohn";
 
 export type DatingCardData = {
   id: string;
@@ -18,7 +19,15 @@ export type DatingCardData = {
   activities: string[];
 };
 
-type Step = 'card' | 'taste' | 'lead' | 'heart' | 'left-bait' | 'honesty' | 'sure' | 'activities';
+type Step =
+  | "card"
+  | "taste"
+  | "lead"
+  | "heart"
+  | "left-bait"
+  | "honesty"
+  | "sure"
+  | "activities";
 
 const shake = keyframes`
   0%, 100% { transform: translateX(0); }
@@ -50,7 +59,7 @@ const Root = styled.div`
   padding: 1.25rem;
   background: #121212;
   color: #f9fafb;
-  font-family: 'IBM Plex Mono', 'SF Mono', ui-monospace, monospace;
+  font-family: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -75,16 +84,14 @@ const CardShell = styled.div<{ $dragX?: number; $dragging?: boolean }>`
   touch-action: none;
   transform: translateX(${(p) => p.$dragX || 0}px)
     rotate(${(p) => ((p.$dragX || 0) / 30).toFixed(2)}deg);
-  transition: ${(p) => (p.$dragging ? 'none' : 'transform 0.25s ease')};
+  transition: ${(p) => (p.$dragging ? "none" : "transform 0.25s ease")};
 `;
 
 const Photo = styled.div<{ $src?: string | null }>`
   position: absolute;
   inset: 0;
   background: ${(p) =>
-    p.$src
-      ? `center/cover no-repeat url(${p.$src})`
-      : '#1c1c1c'};
+    p.$src ? `center/cover no-repeat url(${p.$src})` : "#1c1c1c"};
 `;
 
 const CardGradient = styled.div`
@@ -110,7 +117,7 @@ const CardMeta = styled.div`
 
 const Name = styled.h1`
   margin: 0 0 0.35rem;
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: "Space Grotesk", system-ui, sans-serif;
   font-size: 1.85rem;
   font-weight: 700;
 `;
@@ -122,20 +129,20 @@ const Vibe = styled.p`
   line-height: 1.4;
 `;
 
-const Stamp = styled.div<{ $kind: 'swipe' | 'nope' }>`
+const Stamp = styled.div<{ $kind: "swipe" | "nope" }>`
   position: absolute;
   top: 1.5rem;
   /* Opposite the swipe direction so the stamp stays on-screen as the card moves */
-  ${(p) => (p.$kind === 'swipe' ? 'left: 1.25rem;' : 'right: 1.25rem;')}
+  ${(p) => (p.$kind === "swipe" ? "left: 1.25rem;" : "right: 1.25rem;")}
   padding: 0.35rem 0.75rem;
-  border: 3px solid ${(p) => (p.$kind === 'swipe' ? '#10b981' : '#ff4d4f')};
-  color: ${(p) => (p.$kind === 'swipe' ? '#10b981' : '#ff4d4f')};
+  border: 3px solid ${(p) => (p.$kind === "swipe" ? "#10b981" : "#ff4d4f")};
+  color: ${(p) => (p.$kind === "swipe" ? "#10b981" : "#ff4d4f")};
   font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   border-radius: 6px;
-  transform: rotate(${(p) => (p.$kind === 'swipe' ? '-12deg' : '12deg')});
+  transform: rotate(${(p) => (p.$kind === "swipe" ? "-12deg" : "12deg")});
   opacity: 0.9;
 `;
 
@@ -156,9 +163,11 @@ const SwipeRightBtn = styled.button`
   border: none;
   color: #f9fafb;
   cursor: pointer;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   padding: 0.5rem 1rem;
-  transition: transform 0.15s ease, color 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    color 0.15s ease;
 
   &:hover {
     transform: translateX(4px);
@@ -179,7 +188,7 @@ const SwipeArrow = styled.span`
 `;
 
 const Headline = styled.h2`
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: "Space Grotesk", system-ui, sans-serif;
   font-size: 1.75rem;
   text-align: center;
   margin: 0 0 0.75rem;
@@ -273,12 +282,12 @@ const ChoiceRow = styled.div`
   gap: 0.75rem;
 `;
 
-const ChoiceBtn = styled.button<{ $tone?: 'yes' | 'no' }>`
+const ChoiceBtn = styled.button<{ $tone?: "yes" | "no" }>`
   width: 100%;
   padding: 1rem;
   border-radius: 12px;
-  border: 2px solid ${(p) => (p.$tone === 'no' ? '#6b7280' : '#ff4d4f')};
-  background: ${(p) => (p.$tone === 'no' ? '#1a1a1a' : '#2a1515')};
+  border: 2px solid ${(p) => (p.$tone === "no" ? "#6b7280" : "#ff4d4f")};
+  background: ${(p) => (p.$tone === "no" ? "#1a1a1a" : "#2a1515")};
   color: #f9fafb;
   font-size: 1.05rem;
   font-family: inherit;
@@ -315,7 +324,7 @@ const ErrorText = styled.p`
 const TasteScroll = styled.div`
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 5.5rem;
+  padding-bottom: 5rem;
   animation: ${fadeIn} 0.35s ease;
 `;
 
@@ -327,7 +336,7 @@ const TastePhoto = styled.div<{ $src?: string | null }>`
   background: ${(p) =>
     p.$src
       ? `center/cover no-repeat url(${p.$src}), #1c1c1c`
-      : 'linear-gradient(160deg, #333, #111)'};
+      : "linear-gradient(160deg, #333, #111)"};
   border: 2px solid #2a2a2a;
 `;
 
@@ -380,7 +389,9 @@ const ExploreLink = styled.a`
   text-decoration: none;
   font-size: 0.95rem;
   text-align: left;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
 
   &:hover {
     border-color: #4f46e5;
@@ -388,51 +399,21 @@ const ExploreLink = styled.a`
   }
 `;
 
-const FixedCtaBar = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 0.85rem 1.25rem calc(0.85rem + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, transparent 0%, #121212 55%);
-  display: flex;
-  justify-content: center;
-  z-index: 20;
-`;
-
-const TextJohnBtn = styled.a`
-  display: inline-block;
-  padding: 0.55rem 1.15rem;
-  border-radius: 8px;
-  border: 1px solid #4f46e5;
-  background: #1a1a1a;
-  color: #c7d2fe;
-  font-size: 0.85rem;
-  font-family: 'IBM Plex Mono', monospace;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-
-  &:hover {
-    background: #4f46e5;
-    color: #fff;
-  }
-`;
-
 type Props = {
   card: DatingCardData;
-  source: 'deck' | 'share';
+  source: "deck" | "share";
   initialStep?: Step;
   exploreBasePath?: string;
   /** Altered vibe shown on the main card (e.g. after license-to-shag) */
   vibeOverride?: string | null;
   onFinished?: () => void;
-  onSwipeRecorded?: (direction: 'left' | 'right') => void;
+  onSwipeRecorded?: (direction: "left" | "right") => void;
 };
 
 export function DatingCardFunnel({
   card,
   source,
-  initialStep = 'card',
+  initialStep = "card",
   exploreBasePath,
   vibeOverride,
   onFinished,
@@ -440,7 +421,7 @@ export function DatingCardFunnel({
 }: Props) {
   const router = useRouter();
   const [step, setStep] = useState<Step>(initialStep);
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [dragX, setDragX] = useState(0);
@@ -451,17 +432,20 @@ export function DatingCardFunnel({
     if (initialStep) setStep(initialStep);
   }, [initialStep]);
 
-  const displayName = card.full_name || card.username || 'Mystery';
+  const displayName = card.full_name || card.username || "Mystery";
   const nameLine = card.age ? `${displayName}, ${card.age}` : displayName;
-  const vibeText = vibeOverride || card.vibe || 'No vibe listed… yet.';
+  const vibeText = vibeOverride || card.vibe || "No vibe listed… yet.";
   const packageHintText =
     !card.package_hint ||
-    card.package_hint === 'Yes, this cute little girl is included in the package'
-      ? '... and yes, this cute little girl is included in the package'
+    card.package_hint ===
+      "Yes, this cute little girl is included in the package"
+      ? "... and yes, this cute little girl is included in the package"
       : card.package_hint;
-  const smsBody = encodeURIComponent("Hey, I think you and your cat are pretty cute. Let's ...");
+  const smsBody = encodeURIComponent(
+    "Hey, I think you and your cat are pretty cute. Let's ...",
+  );
   const smsHref = card.text_phone
-    ? `sms:${card.text_phone.replace(/[^\d+]/g, '')}?&body=${smsBody}`
+    ? `sms:${card.text_phone.replace(/[^\d+]/g, "")}?&body=${smsBody}`
     : null;
 
   const licensePath = exploreBasePath
@@ -473,43 +457,43 @@ export function DatingCardFunnel({
       void router.push(licensePath);
       return;
     }
-    setStep('taste');
+    setStep("taste");
   }, [licensePath, router]);
 
   const recordSwipe = useCallback(
-    async (direction: 'left' | 'right') => {
+    async (direction: "left" | "right") => {
       onSwipeRecorded?.(direction);
       try {
-        await fetch('/api/swipes', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
+        await fetch("/api/swipes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
           body: JSON.stringify({ profileId: card.id, direction }),
         });
       } catch {
         /* non-blocking */
       }
     },
-    [card.id, onSwipeRecorded]
+    [card.id, onSwipeRecorded],
   );
 
   const goRight = async () => {
-    await recordSwipe('right');
-    setStep('taste');
+    await recordSwipe("right");
+    setStep("taste");
   };
 
   const goLeft = async () => {
-    await recordSwipe('left');
-    setStep('left-bait');
+    await recordSwipe("left");
+    setStep("left-bait");
   };
 
   const onDaddyIssuesYes = () => {
-    setStep('honesty');
+    setStep("honesty");
     setTimeout(() => pushToLicense(), 1400);
   };
 
   const onDaddyIssuesNo = () => {
-    setStep('sure');
+    setStep("sure");
     setTimeout(() => pushToLicense(), 1200);
   };
 
@@ -517,18 +501,18 @@ export function DatingCardFunnel({
     setError(null);
     setSubmitting(true);
     try {
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ profileId: card.id, phone, source }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to save');
-      setStep('heart');
-      setTimeout(() => setStep('activities'), 1100);
+      if (!res.ok) throw new Error(data.error || "Failed to save");
+      setStep("heart");
+      setTimeout(() => setStep("activities"), 1100);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong');
+      setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
       setSubmitting(false);
     }
@@ -539,19 +523,19 @@ export function DatingCardFunnel({
   };
 
   const onPointerDown = (e: React.PointerEvent) => {
-    if (step !== 'card') return;
+    if (step !== "card") return;
     startX.current = e.clientX;
     setDragging(true);
     (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
   };
 
   const onPointerMove = (e: React.PointerEvent) => {
-    if (!dragging || step !== 'card') return;
+    if (!dragging || step !== "card") return;
     setDragX(e.clientX - startX.current);
   };
 
   const onPointerUp = () => {
-    if (!dragging || step !== 'card') return;
+    if (!dragging || step !== "card") return;
     setDragging(false);
     if (dragX > 100) {
       setDragX(0);
@@ -566,7 +550,7 @@ export function DatingCardFunnel({
 
   return (
     <Root>
-      {step === 'card' && (
+      {step === "card" && (
         <Stage>
           <CardShell
             $dragX={dragX}
@@ -586,7 +570,11 @@ export function DatingCardFunnel({
             </CardMeta>
           </CardShell>
           <Actions>
-            <SwipeRightBtn type="button" onClick={() => void goRight()} aria-label="Swipe right">
+            <SwipeRightBtn
+              type="button"
+              onClick={() => void goRight()}
+              aria-label="Swipe right"
+            >
               <SwipeLabel>Swipe Right</SwipeLabel>
               <SwipeArrow aria-hidden>→</SwipeArrow>
             </SwipeRightBtn>
@@ -594,7 +582,7 @@ export function DatingCardFunnel({
         </Stage>
       )}
 
-      {step === 'taste' && (
+      {step === "taste" && (
         <>
           <TasteScroll>
             {vibeOverride ? (
@@ -613,21 +601,21 @@ export function DatingCardFunnel({
                     plan to action.
                   </p>
                   <p>
-                    Home base is couch negotiations with{' '}
+                    Home base is couch negotiations with{" "}
                     <AboutLink href={`${exploreBasePath}/cats`}>Sash</AboutLink>
-                    . Out in the world:{' '}
+                    . Out in the world:{" "}
                     <AboutLink href={`${exploreBasePath}/travel`}>
                       trips with receipts
-                    </AboutLink>{' '}
+                    </AboutLink>{" "}
                     — boards, boats, elephants, murals.
                   </p>
                   <p>
                     If you&apos;re curious, say hi. Just a conversation — and
                     maybe the next adventure.
-                    </p>
-                    <p>
+                  </p>
+                  <p>
                     <i>{packageHintText}</i>
-                    </p>
+                  </p>
                 </AboutLetter>
                 <ExploreList>
                   <ExploreLink href={`${exploreBasePath}/cats`}>
@@ -642,21 +630,27 @@ export function DatingCardFunnel({
               <PackageHint>{packageHintText}</PackageHint>
             )}
           </TasteScroll>
-          {smsHref ? (
-            <FixedCtaBar>
-              <TextJohnBtn href={smsHref}>Text {displayName}</TextJohnBtn>
-            </FixedCtaBar>
-          ) : (
-            <FixedCtaBar>
-              <TextJohnBtn href="#" onClick={(e) => { e.preventDefault(); setStep('lead'); }}>
-                Stay in the loop
-              </TextJohnBtn>
-            </FixedCtaBar>
-          )}
         </>
       )}
 
-      {step === 'lead' && (
+      {(step === "card" || step === "taste") &&
+        (smsHref ? (
+          <FloatingTextJohn
+            href={smsHref}
+            label={exploreBasePath ? "Text John" : `Text ${displayName}`}
+          />
+        ) : (
+          <FloatingTextJohn
+            href="#"
+            label="Stay in the loop"
+            onClick={(e) => {
+              e.preventDefault();
+              setStep("lead");
+            }}
+          />
+        ))}
+
+      {step === "lead" && (
         <Stage>
           <Headline>Stay in the loop?</Headline>
           <Sub>Want to stay in the loop? Drop your number.</Sub>
@@ -669,23 +663,27 @@ export function DatingCardFunnel({
             onChange={(e) => setPhone(e.target.value)}
             autoFocus
           />
-          <PrimaryBtn type="button" disabled={submitting} onClick={() => void submitLead()}>
-            {submitting ? 'Sending…' : 'Send it 💘'}
+          <PrimaryBtn
+            type="button"
+            disabled={submitting}
+            onClick={() => void submitLead()}
+          >
+            {submitting ? "Sending…" : "Send it 💘"}
           </PrimaryBtn>
-          <SkipBtn type="button" onClick={() => setStep('activities')}>
+          <SkipBtn type="button" onClick={() => setStep("activities")}>
             Skip
           </SkipBtn>
         </Stage>
       )}
 
-      {step === 'heart' && (
+      {step === "heart" && (
         <Stage>
           <Heart>❤️</Heart>
           <Sub>You&apos;re on the list.</Sub>
         </Stage>
       )}
 
-      {step === 'left-bait' && (
+      {step === "left-bait" && (
         <Stage>
           <Devil $shake>😈</Devil>
           <Headline>Bad girl.</Headline>
@@ -701,32 +699,36 @@ export function DatingCardFunnel({
         </Stage>
       )}
 
-      {step === 'honesty' && (
+      {step === "honesty" && (
         <Stage>
           <Headline>I appreciate your honesty.</Headline>
         </Stage>
       )}
 
-      {step === 'sure' && (
+      {step === "sure" && (
         <Stage>
           <Headline>Sure you don&apos;t.</Headline>
         </Stage>
       )}
 
-      {step === 'activities' && (
+      {step === "activities" && (
         <Stage>
           <Headline>Here&apos;s what I&apos;m into</Headline>
           <Sub>{displayName}&apos;s world</Sub>
           <ActivityGrid>
             {(card.activities?.length
               ? card.activities
-              : ['pinball', 'crypto', 'travel', 'building', 'events']
+              : ["pinball", "crypto", "travel", "building", "events"]
             ).map((id) => (
               <ActivityTile key={id}>{activityLabel(id)}</ActivityTile>
             ))}
           </ActivityGrid>
           {onFinished && (
-            <PrimaryBtn type="button" style={{ marginTop: '1.5rem' }} onClick={finishActivities}>
+            <PrimaryBtn
+              type="button"
+              style={{ marginTop: "1.5rem" }}
+              onClick={finishActivities}
+            >
               Next card →
             </PrimaryBtn>
           )}
