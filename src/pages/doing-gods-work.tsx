@@ -105,23 +105,33 @@ const Shell = styled.main`
   margin: 0 auto;
 `;
 
-const Lead = styled.p`
+const Headline = styled.h1`
   margin: 0;
-  max-width: 28ch;
+  max-width: 12ch;
   font-family: 'Syne', system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(1.65rem, 5.5vw, 2.5rem);
-  line-height: 1.2;
+  font-size: clamp(2rem, 7vw, 3.25rem);
+  line-height: 1.1;
   color: var(--ink);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
   animation: ${riseIn} 0.8s ease-out both;
+`;
+
+const Lead = styled.p`
+  margin: 0;
+  max-width: 34ch;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--muted);
+  animation: ${riseIn} 0.8s ease-out 0.1s both;
 `;
 
 const Actions = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
-  animation: ${riseIn} 0.8s ease-out 0.12s both;
+  margin-top: 0.25rem;
+  animation: ${riseIn} 0.8s ease-out 0.18s both;
 `;
 
 const Primary = styled(Link)`
@@ -152,7 +162,7 @@ export default function DoingGodsWorkPage() {
         <title>doing gods work</title>
         <meta
           name="description"
-          content="If you're open to a connection, so am I."
+          content="You showed up. If you're open to a connection, so am I."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -173,12 +183,13 @@ export default function DoingGodsWorkPage() {
       </Atmosphere>
 
       <Shell>
+        <Headline>You showed up.</Headline>
         <Lead>
           If you&apos;re open to a connection, so am I — a conversation, a plan,
           or just seeing where curiosity wants to go.
         </Lead>
         <Actions>
-          <Primary href="/john">Let&apos;s connect</Primary>
+          <Primary href="/john">Meet John</Primary>
         </Actions>
       </Shell>
     </Page>
