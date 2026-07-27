@@ -18,12 +18,17 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/john/kind-of-man",
-        destination: "/john/about",
+        destination: "/john?step=taste",
         permanent: true,
       },
       {
         source: "/john/what-he-does",
-        destination: "/john/about",
+        destination: "/john?step=taste",
+        permanent: true,
+      },
+      {
+        source: "/john/about",
+        destination: "/john?step=taste",
         permanent: true,
       },
     ];

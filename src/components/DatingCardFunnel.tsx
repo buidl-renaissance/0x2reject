@@ -1,6 +1,7 @@
 import styled, { keyframes, css } from 'styled-components';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { activityLabel } from '@/lib/activities';
 
 export type DatingCardData = {
@@ -331,12 +332,35 @@ const TastePhoto = styled.div<{ $src?: string | null }>`
 `;
 
 const PackageHint = styled.p`
-  text-align: center;
+  text-align: left;
   color: #d1d5db;
   font-size: 1.05rem;
   line-height: 1.45;
   margin: 0 0 1.5rem;
   font-style: italic;
+`;
+
+const AboutLetter = styled.div`
+  color: #d1d5db;
+  line-height: 1.55;
+  font-size: 1rem;
+  margin: 0 0 1.5rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid #2a2a2a;
+
+  p {
+    margin: 1rem 0 0;
+  }
+`;
+
+const AboutLink = styled(Link)`
+  color: #a5b4fc;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover {
+    color: #c7d2fe;
+  }
 `;
 
 const ExploreList = styled.div`
@@ -581,19 +605,41 @@ export function DatingCardFunnel({
             {(card.secondary_photo_url || card.photo_url) && (
               <TastePhoto $src={card.secondary_photo_url || card.photo_url} />
             )}
-            <PackageHint>{packageHintText}</PackageHint>
-            {exploreBasePath && (
-              <ExploreList>
-                <ExploreLink href={`${exploreBasePath}/cats`}>
-                  Take me to cat photos →
-                </ExploreLink>
-                <ExploreLink href={`${exploreBasePath}/travel`}>
-                  Where has {displayName} been? →
-                </ExploreLink>
-                <ExploreLink href={`${exploreBasePath}/about`}>
-                  Learn about {displayName} →
-                </ExploreLink>
-              </ExploreList>
+            {exploreBasePath ? (
+              <>
+                <AboutLetter>
+                  <p>
+                    I&apos;m the guy who grills the steaks. Talk is cheap — from
+                    plan to action.
+                  </p>
+                  <p>
+                    Home base is couch negotiations with{' '}
+                    <AboutLink href={`${exploreBasePath}/cats`}>Sash</AboutLink>
+                    . Out in the world:{' '}
+                    <AboutLink href={`${exploreBasePath}/travel`}>
+                      trips with receipts
+                    </AboutLink>{' '}
+                    — boards, boats, elephants, murals.
+                  </p>
+                  <p>
+                    If you&apos;re curious, say hi. Just a conversation — and
+                    maybe the next adventure.
+                    </p>
+                    <p>
+                    <i>{packageHintText}</i>
+                    </p>
+                </AboutLetter>
+                <ExploreList>
+                  <ExploreLink href={`${exploreBasePath}/cats`}>
+                    Take me to cat photos →
+                  </ExploreLink>
+                  <ExploreLink href={`${exploreBasePath}/travel`}>
+                    Where has {displayName} been? →
+                  </ExploreLink>
+                </ExploreList>
+              </>
+            ) : (
+              <PackageHint>{packageHintText}</PackageHint>
             )}
           </TasteScroll>
           {smsHref ? (

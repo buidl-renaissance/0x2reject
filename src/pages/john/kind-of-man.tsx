@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 
 export const getServerSideProps: GetServerSideProps = async () => ({
   redirect: {
-    destination: '/john/about',
+    destination: '/john?step=taste',
     permanent: true,
   },
 });
