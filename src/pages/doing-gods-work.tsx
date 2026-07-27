@@ -99,37 +99,29 @@ const Shell = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 1.5rem;
   padding: clamp(1.5rem, 5vw, 3.5rem);
   max-width: 920px;
   margin: 0 auto;
 `;
 
-const Headline = styled.h1`
-  margin: 0 0 1rem;
+const Lead = styled.p`
+  margin: 0;
+  max-width: 28ch;
   font-family: 'Syne', system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(2rem, 7vw, 3.25rem);
-  line-height: 1.1;
-  max-width: 14ch;
+  font-size: clamp(1.65rem, 5.5vw, 2.5rem);
+  line-height: 1.2;
   color: var(--ink);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
   animation: ${riseIn} 0.8s ease-out both;
-`;
-
-const Lead = styled.p`
-  margin: 0 0 2rem;
-  max-width: 38ch;
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-  line-height: 1.5;
-  color: var(--muted);
-  animation: ${riseIn} 0.8s ease-out 0.12s both;
 `;
 
 const Actions = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
-  animation: ${riseIn} 0.8s ease-out 0.22s both;
+  animation: ${riseIn} 0.8s ease-out 0.12s both;
 `;
 
 const Primary = styled(Link)`
@@ -160,7 +152,7 @@ export default function DoingGodsWorkPage() {
         <title>doing gods work</title>
         <meta
           name="description"
-          content="Glad our paths crossed. If you're open to a connection, so am I."
+          content="If you're open to a connection, so am I."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -181,7 +173,6 @@ export default function DoingGodsWorkPage() {
       </Atmosphere>
 
       <Shell>
-        <Headline>Glad our paths crossed.</Headline>
         <Lead>
           If you&apos;re open to a connection, so am I — a conversation, a plan,
           or just seeing where curiosity wants to go.
