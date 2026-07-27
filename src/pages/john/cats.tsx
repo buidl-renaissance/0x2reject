@@ -41,7 +41,7 @@ const TextJohnBtn = styled.a`
 
 const JOHN_PHONE = '+13135503518';
 const catsSmsHref = `sms:${JOHN_PHONE}?&body=${encodeURIComponent(
-  "Hey John — saw Sash(a Cutie). When do I meet the cat?"
+  'Hey John — saw Sash(a Cutie). When can we plan a play date?'
 )}`;
 
 export default function JohnCatsPage() {
