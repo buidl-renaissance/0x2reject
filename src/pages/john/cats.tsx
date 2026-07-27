@@ -107,7 +107,8 @@ export default function JohnCatsPage() {
 
       <CtaBlock>
         <CtaLead>
-          Cat person? Prove it — Sash is already judging your reply time.
+          Soft spot for cats? Sash already likes you — say hi to John… and maybe
+          you two can meet.
         </CtaLead>
         <TextJohnBtn href={catsSmsHref}>Text John</TextJohnBtn>
       </CtaBlock>
