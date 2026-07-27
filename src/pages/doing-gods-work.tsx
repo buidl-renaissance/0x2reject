@@ -107,11 +107,11 @@ const Shell = styled.main`
 
 const Headline = styled.h1`
   margin: 0;
-  max-width: 12ch;
   font-family: 'Syne', system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(2rem, 7vw, 3.25rem);
+  font-size: clamp(1.75rem, 6vw, 3.25rem);
   line-height: 1.1;
+  white-space: nowrap;
   color: var(--ink);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
   animation: ${riseIn} 0.8s ease-out both;
@@ -119,9 +119,9 @@ const Headline = styled.h1`
 
 const Lead = styled.p`
   margin: 0;
-  max-width: 34ch;
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-  line-height: 1.5;
+  max-width: 46ch;
+  font-size: clamp(1.5rem, 3.7vw, 1.8rem);
+  line-height: 1.45;
   color: var(--muted);
   animation: ${riseIn} 0.8s ease-out 0.1s both;
 `;
@@ -162,7 +162,7 @@ export default function DoingGodsWorkPage() {
         <title>doing gods work</title>
         <meta
           name="description"
-          content="You showed up. If you're open to a connection, so am I."
+          content="Hey, you showed up. If you're open to a connection, so am I."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -183,7 +183,7 @@ export default function DoingGodsWorkPage() {
       </Atmosphere>
 
       <Shell>
-        <Headline>You showed up.</Headline>
+        <Headline>Hey, you showed up.</Headline>
         <Lead>
           If you&apos;re open to a connection, so am I — a conversation, a plan,
           or just seeing where curiosity wants to go.
