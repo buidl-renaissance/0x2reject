@@ -15,6 +15,17 @@
       ]
     },
     {
+      "id": "california",
+      "title": "California",
+      "subtitle": "Eastern Sierra granite, ski nights, Big Sur, and golden coast light",
+      "photoIds": [
+        "alabama-hills-whitney-arch",
+        "eastern-sierra-horses",
+        "sierra-ski-ridge-sit",
+        "ski-night-star-mountain"
+      ]
+    },
+    {
       "id": "puerto-rico",
       "title": "Puerto Rico",
       "subtitle": "Old San Juan, Condado blues, and golden hour forts",
@@ -32,7 +43,7 @@
     {
       "id": "costa-rica",
       "title": "Costa Rica",
-      "subtitle": "Pura vida — Ring of Fire eclipse, surf, and jungle mist",
+      "subtitle": "Pura vida \u2014 Ring of Fire eclipse, surf, and jungle mist",
       "photoIds": [
         "imperial-beer-shallow-surf",
         "shaka-surf-wave-action",
@@ -78,7 +89,7 @@
     {
       "id": "colombia",
       "title": "Colombia",
-      "subtitle": "Bogotá storms, Medellín murals, Comuna 13",
+      "subtitle": "Bogot\u00e1 storms, Medell\u00edn murals, Comuna 13",
       "photoIds": [
         "colombia-gallery-corner",
         "bogota-candelaria-street-art",
@@ -107,7 +118,7 @@
       "file": "pine-forest-snowboard-break.jpg",
       "path": "/travel/pine-forest-snowboard-break.jpg",
       "title": "Snowboard Pause in the Pines",
-      "caption": "Yellow jacket, orange shades, red board buried in powder—peak mountain energy.",
+      "caption": "Yellow jacket, orange shades, red board buried in powder\u2014peak mountain energy.",
       "original": "IMG_1970.jpg",
       "hidden": true
     },
@@ -134,7 +145,7 @@
       "file": "salt-lake-capitol-overlook.jpg",
       "path": "/travel/salt-lake-capitol-overlook.jpg",
       "title": "Overlooking Salt Lake City",
-      "caption": "Capitol dome below, Wasatch peaks behind—Utah does the backdrop work for you.",
+      "caption": "Capitol dome below, Wasatch peaks behind\u2014Utah does the backdrop work for you.",
       "original": "IMG_2490.jpg"
     },
     {
@@ -150,7 +161,7 @@
       "file": "bryce-hoodoos-winter-ridge.jpg",
       "path": "/travel/bryce-hoodoos-winter-ridge.jpg",
       "title": "Snowy Hoodoos at Bryce",
-      "caption": "Red spires in white snow, clouds rolling in—I picked a moody day on purpose.",
+      "caption": "Red spires in white snow, clouds rolling in\u2014I picked a moody day on purpose.",
       "original": "IMG_2693.jpg"
     },
     {
@@ -158,7 +169,7 @@
       "file": "zion-canyon-peace-selfie.jpg",
       "path": "/travel/zion-canyon-peace-selfie.jpg",
       "title": "Peace Sign Over Zion",
-      "caption": "Cliff edge, canyon drop, peace sign out—Zion makes you feel invincible for a second.",
+      "caption": "Cliff edge, canyon drop, peace sign out\u2014Zion makes you feel invincible for a second.",
       "original": "IMG_2769.jpg"
     },
     {
@@ -166,7 +177,7 @@
       "file": "zion-cliff-ledge-perch.jpg",
       "path": "/travel/zion-cliff-ledge-perch.jpg",
       "title": "Perched Over Zion Canyon",
-      "caption": "Legs dangling off red rock with Angels Landing in the distance—best seat in Utah.",
+      "caption": "Legs dangling off red rock with Angels Landing in the distance\u2014best seat in Utah.",
       "original": "IMG_2803.jpg"
     },
     {
@@ -174,7 +185,7 @@
       "file": "sunrise-balcony-coastal-view.jpg",
       "path": "/travel/sunrise-balcony-coastal-view.jpg",
       "title": "Sunrise From the Balcony",
-      "caption": "High-rise balcony, golden horizon, beach below—some views demand you drop everything.",
+      "caption": "High-rise balcony, golden horizon, beach below\u2014some views demand you drop everything.",
       "original": "IMG_4008.jpg",
       "hidden": true
     },
@@ -183,7 +194,7 @@
       "file": "palm-lined-golden-sunrise.jpg",
       "path": "/travel/palm-lined-golden-sunrise.jpg",
       "title": "Golden Sunrise Over the Palms",
-      "caption": "Palms silhouetted, ocean glowing—this is why I set an alarm on vacation.",
+      "caption": "Palms silhouetted, ocean glowing\u2014this is why I set an alarm on vacation.",
       "original": "IMG_4065.jpg"
     },
     {
@@ -191,7 +202,7 @@
       "file": "coastal-fort-golden-selfie.jpg",
       "path": "/travel/coastal-fort-golden-selfie.jpg",
       "title": "Golden Hour Fort Wall Selfie",
-      "caption": "Patterned shirt, bucket hat, stone fort behind me—coastal golden hour hits different.",
+      "caption": "Patterned shirt, bucket hat, stone fort behind me\u2014coastal golden hour hits different.",
       "original": "IMG_4119.jpg"
     },
     {
@@ -207,7 +218,7 @@
       "file": "el-morro-grass-golden-hour.jpg",
       "path": "/travel/el-morro-grass-golden-hour.jpg",
       "title": "Golden Hour at El Morro",
-      "caption": "Green lawn, old stone buildings, sun breaking through the clouds—Old San Juan at its best.",
+      "caption": "Green lawn, old stone buildings, sun breaking through the clouds\u2014Old San Juan at its best.",
       "original": "IMG_4125.jpg"
     },
     {
@@ -223,7 +234,7 @@
       "file": "condado-beach-blue-hour.jpg",
       "path": "/travel/condado-beach-blue-hour.jpg",
       "title": "Blue Hour on Condado Beach",
-      "caption": "Condado skyline at dusk, crescent moon up, waves rolling in—hard to beat.",
+      "caption": "Condado skyline at dusk, crescent moon up, waves rolling in\u2014hard to beat.",
       "original": "IMG_4270.jpg"
     },
     {
@@ -255,7 +266,7 @@
       "file": "shipwreck-beach-driftwood.jpg",
       "path": "/travel/shipwreck-beach-driftwood.jpg",
       "title": "Ring of Fire Shipwreck Seat",
-      "caption": "Front-row driftwood for the annular eclipse — wrecked boat, open sky, Ring of Fire overhead.",
+      "caption": "Front-row driftwood for the annular eclipse \u2014 wrecked boat, open sky, Ring of Fire overhead.",
       "original": "IMG_9156.jpg"
     },
     {
@@ -263,7 +274,7 @@
       "file": "graffiti-shipwreck-pura-vida.jpg",
       "path": "/travel/graffiti-shipwreck-pura-vida.jpg",
       "title": "Pura Vida Eclipse Swim",
-      "caption": "Swimming out to the graffiti wreck for the Ring of Fire — the boat says pura vida and so does the sky.",
+      "caption": "Swimming out to the graffiti wreck for the Ring of Fire \u2014 the boat says pura vida and so does the sky.",
       "original": "IMG_9162.jpg"
     },
     {
@@ -280,7 +291,7 @@
       "file": "thailand-coconut-karst-beach.jpg",
       "path": "/travel/thailand-coconut-karst-beach.jpg",
       "title": "Fresh Coconut on Thai Beach",
-      "caption": "Limestone islands, black rocks, cold coconut—yes, this counts as a workout.",
+      "caption": "Limestone islands, black rocks, cold coconut\u2014yes, this counts as a workout.",
       "original": "IMG_1913.JPG"
     },
     {
@@ -312,7 +323,7 @@
       "file": "phi-phi-harbor-profile.jpg",
       "path": "/travel/phi-phi-harbor-profile.jpg",
       "title": "Harbor View, Limestone Cliffs",
-      "caption": "Paused at the harbor with longtail boats and karst cliffs behind me—contemplating dinner, not life.",
+      "caption": "Paused at the harbor with longtail boats and karst cliffs behind me\u2014contemplating dinner, not life.",
       "original": "IMG_6933.jpg",
       "hidden": true
     },
@@ -329,7 +340,7 @@
       "file": "misty-mountain-elephant-sanctuary.jpg",
       "path": "/travel/misty-mountain-elephant-sanctuary.jpg",
       "title": "Misty Mountains, Big Friend",
-      "caption": "Met my largest travel buddy on a platform above the clouds—he didn't say much, but the vibe was immaculate.",
+      "caption": "Met my largest travel buddy on a platform above the clouds\u2014he didn't say much, but the vibe was immaculate.",
       "original": "IMG_6612.jpg"
     },
     {
@@ -337,7 +348,7 @@
       "file": "happy-elephant-home-mud.jpg",
       "path": "/travel/happy-elephant-home-mud.jpg",
       "title": "Happy Elephant Home, Thailand",
-      "caption": "Signed up for elephants, got mud boots and a sign that literally said Happy Elephant Home—no notes.",
+      "caption": "Signed up for elephants, got mud boots and a sign that literally said Happy Elephant Home\u2014no notes.",
       "original": "IMG_6616.jpg"
     },
     {
@@ -345,7 +356,7 @@
       "file": "elephant-vendetta-plaid.jpg",
       "path": "/travel/elephant-vendetta-plaid.jpg",
       "title": "Elephant Side-Eye Check",
-      "caption": "Standing shoulder-to-trunk with an elephant while wearing a V for Vendetta shirt—she judged me silently and fairly.",
+      "caption": "Standing shoulder-to-trunk with an elephant while wearing a V for Vendetta shirt\u2014she judged me silently and fairly.",
       "original": "IMG_6618.jpg"
     },
     {
@@ -361,7 +372,7 @@
       "file": "peace-sign-baby-elephant.jpg",
       "path": "/travel/peace-sign-baby-elephant.jpg",
       "title": "Peace Sign, Baby Elephant",
-      "caption": "Threw up a peace sign and a baby elephant immediately stole the shot—classic photobomb energy.",
+      "caption": "Threw up a peace sign and a baby elephant immediately stole the shot\u2014classic photobomb energy.",
       "original": "IMG_6636.jpg"
     },
     {
@@ -369,7 +380,7 @@
       "file": "mother-baby-elephant-jungle.jpg",
       "path": "/travel/mother-baby-elephant-jungle.jpg",
       "title": "Mom And Calf Jungle Moment",
-      "caption": "Caught a mom and calf snacking in the jungle—turns out family dinner looks the same at every scale.",
+      "caption": "Caught a mom and calf snacking in the jungle\u2014turns out family dinner looks the same at every scale.",
       "original": "IMG_6638.jpg"
     },
     {
@@ -393,7 +404,7 @@
       "file": "devcon-purple-beanbag-lounge.jpg",
       "path": "/travel/devcon-purple-beanbag-lounge.jpg",
       "title": "Purple Beanbag Conference Lounge",
-      "caption": "Even crypto conferences need a nap zone—found mine under glowing lanterns and beanbags on fake grass.",
+      "caption": "Even crypto conferences need a nap zone\u2014found mine under glowing lanterns and beanbags on fake grass.",
       "original": "IMG_7082.jpg"
     },
     {
@@ -401,7 +412,7 @@
       "file": "hotel-mirror-fit-check.jpg",
       "path": "/travel/hotel-mirror-fit-check.jpg",
       "title": "Hotel Mirror Fit Check",
-      "caption": "Quick mirror check before heading out—graphic tee, crossbody bag, and a bathroom floor worth the photo.",
+      "caption": "Quick mirror check before heading out\u2014graphic tee, crossbody bag, and a bathroom floor worth the photo.",
       "original": "IMG_7162.jpg",
       "hidden": true
     },
@@ -418,7 +429,7 @@
       "file": "festival-fried-chicken-drumstick.jpg",
       "path": "/travel/festival-fried-chicken-drumstick.jpg",
       "title": "Golden Hour Fried Chicken",
-      "caption": "Raised a fried drumstick to the sky at golden hour—peak festival behavior, zero regrets.",
+      "caption": "Raised a fried drumstick to the sky at golden hour\u2014peak festival behavior, zero regrets.",
       "original": "IMG_7385.jpg"
     },
     {
@@ -426,7 +437,7 @@
       "file": "kad-mua-meatball-skewer.jpg",
       "path": "/travel/kad-mua-meatball-skewer.jpg",
       "title": "Kad Mua Meatball Skewer",
-      "caption": "Grilled meatball skewer in one hand, live music on stage behind me—this is my kind of afternoon.",
+      "caption": "Grilled meatball skewer in one hand, live music on stage behind me\u2014this is my kind of afternoon.",
       "original": "IMG_7391.jpg"
     },
     {
@@ -434,7 +445,7 @@
       "file": "temple-bodhi-leaf-wishes.jpg",
       "path": "/travel/temple-bodhi-leaf-wishes.jpg",
       "title": "Bodhi Leaf Temple Wishes",
-      "caption": "Hung a sparkly bodhi leaf at the temple with a wish on it—prosperity looks good in holographic gold.",
+      "caption": "Hung a sparkly bodhi leaf at the temple with a wish on it\u2014prosperity looks good in holographic gold.",
       "original": "IMG_7405.jpg"
     },
     {
@@ -442,7 +453,7 @@
       "file": "monks-candlelight-ceremony-night.jpg",
       "path": "/travel/monks-candlelight-ceremony-night.jpg",
       "title": "Monks Candlelight Ceremony Night",
-      "caption": "Watched hundreds of monks lit by candles on a tiered platform—one of those nights you don't scroll past.",
+      "caption": "Watched hundreds of monks lit by candles on a tiered platform\u2014one of those nights you don't scroll past.",
       "original": "IMG_7494.jpg"
     },
     {
@@ -450,7 +461,7 @@
       "file": "night-temple-buddha-glow.jpg",
       "path": "/travel/night-temple-buddha-glow.jpg",
       "title": "Night Temple Buddha Glow",
-      "caption": "Smiled at the camera with a glowing Buddha behind me—best backdrop I've ever accidentally nailed.",
+      "caption": "Smiled at the camera with a glowing Buddha behind me\u2014best backdrop I've ever accidentally nailed.",
       "original": "IMG_7515.jpg"
     },
     {
@@ -466,15 +477,15 @@
       "file": "bogota-candelaria-street-art.jpg",
       "path": "/travel/bogota-candelaria-street-art.jpg",
       "title": "La Candelaria Art Market",
-      "caption": "Bogotá's sidewalks have better galleries than most cities' museums.",
+      "caption": "Bogot\u00e1's sidewalks have better galleries than most cities' museums.",
       "original": "IMG_9314.jpg"
     },
     {
       "id": "bogota-plaza-street-llama",
       "file": "bogota-plaza-street-llama.jpg",
       "path": "/travel/bogota-plaza-street-llama.jpg",
-      "title": "Bogotá Plaza Llama",
-      "caption": "Met the best-dressed llama in Bogotá and he didn't even need a reservation.",
+      "title": "Bogot\u00e1 Plaza Llama",
+      "caption": "Met the best-dressed llama in Bogot\u00e1 and he didn't even need a reservation.",
       "original": "IMG_9317.jpg"
     },
     {
@@ -497,8 +508,8 @@
       "id": "bogota-monserrate-god-rays",
       "file": "bogota-monserrate-god-rays.jpg",
       "path": "/travel/bogota-monserrate-god-rays.jpg",
-      "title": "Bogotá Storm Light Break",
-      "caption": "Bogotá dropped a whole cinematic filter on the city just as the clouds cracked open.",
+      "title": "Bogot\u00e1 Storm Light Break",
+      "caption": "Bogot\u00e1 dropped a whole cinematic filter on the city just as the clouds cracked open.",
       "original": "IMG_9396.jpg"
     },
     {
@@ -506,7 +517,7 @@
       "file": "medellin-rose-mural-building.jpg",
       "path": "/travel/medellin-rose-mural-building.jpg",
       "title": "Rose Mural in El Poblado",
-      "caption": "Medellín puts a whole portrait on the side of a building and I just show up with a camera.",
+      "caption": "Medell\u00edn puts a whole portrait on the side of a building and I just show up with a camera.",
       "original": "IMG_0516.jpg"
     },
     {
@@ -522,7 +533,7 @@
       "file": "medellin-mural-gold-shades.jpg",
       "path": "/travel/medellin-mural-gold-shades.jpg",
       "title": "Mural Backdrop Gold Shades",
-      "caption": "Medellín's murals are loud enough that I had to match the energy with the shades.",
+      "caption": "Medell\u00edn's murals are loud enough that I had to match the energy with the shades.",
       "original": "IMG_9640.jpg"
     },
     {
@@ -530,7 +541,7 @@
       "file": "comuna-13-hillside-storm.jpg",
       "path": "/travel/comuna-13-hillside-storm.jpg",
       "title": "Comuna 13 Hillside View",
-      "caption": "A million stacked houses and one break in the clouds — worth every step up the hill.",
+      "caption": "A million stacked houses and one break in the clouds \u2014 worth every step up the hill.",
       "original": "IMG_9649.jpg"
     },
     {
@@ -546,7 +557,7 @@
       "file": "comuna-13-rainbow-stairs-paz.jpg",
       "path": "/travel/comuna-13-rainbow-stairs-paz.jpg",
       "title": "Rainbow Stairs With Paz",
-      "caption": "Climbed a staircase painted like a sunset and signed with peace — no notes.",
+      "caption": "Climbed a staircase painted like a sunset and signed with peace \u2014 no notes.",
       "original": "IMG_9679.jpg"
     },
     {
@@ -562,7 +573,7 @@
       "file": "comuna-13-outdoor-slides.jpg",
       "path": "/travel/comuna-13-outdoor-slides.jpg",
       "title": "Comuna 13 Outdoor Slides",
-      "caption": "The still life after the ride — proof I actually walked back up for round two.",
+      "caption": "The still life after the ride \u2014 proof I actually walked back up for round two.",
       "original": "IMG_9718.jpg"
     },
     {
@@ -586,7 +597,7 @@
       "file": "moon-floor-neon-glasses.jpg",
       "path": "/travel/moon-floor-neon-glasses.jpg",
       "title": "Moon Floor Neon Glasses",
-      "caption": "Glowing glasses, crater floor, zero-gravity energy — date night or museum, you decide.",
+      "caption": "Glowing glasses, crater floor, zero-gravity energy \u2014 date night or museum, you decide.",
       "original": "IMG_9765.jpg",
       "hidden": true
     },
@@ -596,7 +607,7 @@
       "path": "/travel/comuna-13-slide.mp4",
       "type": "video",
       "title": "Comuna Trece Slide",
-      "caption": "Took the hillside slides in Comuna 13 — infrastructure with main-character energy."
+      "caption": "Took the hillside slides in Comuna 13 \u2014 infrastructure with main-character energy."
     },
     {
       "id": "costa-rica-horse-beaches",
@@ -604,7 +615,7 @@
       "path": "/travel/costa-rica-horse-beaches.mp4",
       "type": "video",
       "title": "Horseback on Costa Rica Beaches",
-      "caption": "Beach, horses, open sky — pura vida from the saddle."
+      "caption": "Beach, horses, open sky \u2014 pura vida from the saddle."
     },
     {
       "id": "devsea-plant-music",
@@ -612,7 +623,7 @@
       "path": "/travel/devsea-plant-music.mp4",
       "type": "video",
       "title": "Devcon SEA Plant Music",
-      "caption": "Live set in the greenery at Devcon SEA — builders, basslines, and big leaves."
+      "caption": "Live set in the greenery at Devcon SEA \u2014 builders, basslines, and big leaves."
     },
     {
       "id": "elephant-sancutary-river-play",
@@ -620,7 +631,7 @@
       "path": "/travel/elephant-sancutary-river-play.mp4",
       "type": "video",
       "title": "Elephant Sanctuary River Play",
-      "caption": "River time with the elephants — mud optional, joy mandatory."
+      "caption": "River time with the elephants \u2014 mud optional, joy mandatory."
     },
     {
       "id": "jungle-rope-swing",
@@ -628,7 +639,7 @@
       "path": "/travel/jungle-rope-swing.mp4",
       "type": "video",
       "title": "Jungle Rope Swing",
-      "caption": "Swung out over the river and let go — the splash was the whole point."
+      "caption": "Swung out over the river and let go \u2014 the splash was the whole point."
     },
     {
       "id": "jungle-water-slide",
@@ -644,7 +655,7 @@
       "path": "/travel/la-fortuna-waterfall-dive.mp4",
       "type": "video",
       "title": "La Fortuna Waterfall Dive",
-      "caption": "Climbed down for La Fortuna and jumped in — cold as hell, worth it."
+      "caption": "Climbed down for La Fortuna and jumped in \u2014 cold as hell, worth it."
     },
     {
       "id": "thailand-lantern-lighting",
@@ -652,7 +663,84 @@
       "path": "/travel/thailand-lantern-lighting.mp4",
       "type": "video",
       "title": "Thailand Lantern Lighting",
-      "caption": "Lit a lantern and watched it rise — Thailand nights hit different."
+      "caption": "Lit a lantern and watched it rise \u2014 Thailand nights hit different."
+    },
+    {
+      "id": "alabama-hills-whitney-arch",
+      "file": "alabama-hills-whitney-arch.jpg",
+      "path": "/travel/alabama-hills-whitney-arch.jpg",
+      "title": "Alabama Hills Arch Climb",
+      "caption": "Scrambled up a granite arch with Whitney looking on \u2014 Eastern Sierra doing the most.",
+      "original": "IMG_0163.HEIC"
+    },
+    {
+      "id": "desert-red-rock-peace-sign",
+      "file": "desert-red-rock-peace-sign.jpg",
+      "path": "/travel/desert-red-rock-peace-sign.jpg",
+      "title": "Red Rock Peace Sign",
+      "caption": "Barefoot in the sand, peace up, red walls behind \u2014 desert mood unlocked.",
+      "original": "IMG_2938.JPG",
+      "hidden": true
+    },
+    {
+      "id": "red-canyon-stream-driftwood",
+      "file": "red-canyon-stream-driftwood.jpg",
+      "path": "/travel/red-canyon-stream-driftwood.jpg",
+      "title": "Canyon Stream Driftwood",
+      "caption": "Narrow red walls, a skinny creek, one stick of driftwood holding the frame together.",
+      "original": "IMG_2951.HEIC",
+      "hidden": true
+    },
+    {
+      "id": "sierra-ski-ridge-sit",
+      "file": "sierra-ski-ridge-sit.jpg",
+      "path": "/travel/sierra-ski-ridge-sit.jpg",
+      "title": "Brother on the Ridge",
+      "caption": "My brother taking a ski break with the whole Sierra range as his backdrop.",
+      "original": "IMG_2992.HEIC"
+    },
+    {
+      "id": "ski-night-star-mountain",
+      "file": "ski-night-star-mountain.jpg",
+      "path": "/travel/ski-night-star-mountain.jpg",
+      "title": "Stars Over the Lit Peak",
+      "caption": "Night ski energy: snow underfoot, stars overhead, mountain glowing like a secret.",
+      "original": "IMG_3040.HEIC"
+    },
+    {
+      "id": "eastern-sierra-horses",
+      "file": "eastern-sierra-horses.jpg",
+      "path": "/travel/eastern-sierra-horses.jpg",
+      "title": "Eastern Sierra Horses",
+      "caption": "Fence-line horses with snow peaks behind them \u2014 California range country.",
+      "original": "IMG_3062.HEIC"
+    },
+    {
+      "id": "bixby-creek-bridge-big-sur",
+      "file": "bixby-creek-bridge-big-sur.jpg",
+      "path": "/travel/bixby-creek-bridge-big-sur.jpg",
+      "title": "Bixby Creek Bridge",
+      "caption": "Big Sur postcard energy \u2014 the arch, the cliffs, the Pacific doing its thing.",
+      "original": "IMG_3111.HEIC",
+      "hidden": true
+    },
+    {
+      "id": "monterey-cypress-golden-hour",
+      "file": "monterey-cypress-golden-hour.jpg",
+      "path": "/travel/monterey-cypress-golden-hour.jpg",
+      "title": "Monterey Cypress Golden Hour",
+      "caption": "Wind-bent cypress, driftwood, and that late light that makes the coast feel cinematic.",
+      "original": "IMG_3140.HEIC",
+      "hidden": true
+    },
+    {
+      "id": "coastal-cliffhouse-sunset",
+      "file": "coastal-cliffhouse-sunset.jpg",
+      "path": "/travel/coastal-cliffhouse-sunset.jpg",
+      "title": "Cliff House Sunset",
+      "caption": "Sun kissing the horizon, house tucked into the trees \u2014 California coast afterglow.",
+      "original": "IMG_3145.HEIC",
+      "hidden": true
     }
   ]
 }

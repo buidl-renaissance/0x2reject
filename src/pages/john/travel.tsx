@@ -4,6 +4,9 @@ import {
   PhotoGrid,
   Body,
   PhotoWithCaption,
+  CtaBlock,
+  CtaLead,
+  TextJohnBtn,
 } from '@/components/JohnSubpage';
 import { travelTrips, getTripPhotos, isTravelVideo } from '@/lib/travel';
 
@@ -85,37 +88,6 @@ const PhotoCaption = styled.p`
   font-style: italic;
   margin: 0 0 1rem;
   line-height: 1.4;
-`;
-
-const CtaBlock = styled.div`
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #2a2a2a;
-  text-align: center;
-`;
-
-const CtaLead = styled.p`
-  margin: 0 0 1rem;
-  color: #d1d5db;
-  font-size: 0.95rem;
-  line-height: 1.45;
-`;
-
-const TextJohnBtn = styled.a`
-  display: inline-block;
-  padding: 0.75rem 1.25rem;
-  border-radius: 10px;
-  border: 1px solid #4f46e5;
-  background: #1a1a1a;
-  color: #c7d2fe;
-  font-size: 0.95rem;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-
-  &:hover {
-    background: #4f46e5;
-    color: #fff;
-  }
 `;
 
 const JOHN_PHONE = '+13135503518';
