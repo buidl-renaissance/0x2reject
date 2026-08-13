@@ -27,7 +27,7 @@ const NextLink = styled(Link)`
   }
 `;
 
-const JOHN_PHONE = '+13135503518';
+const JOHN_PHONE = '+14193464592';
 const catsSmsHref = `sms:${JOHN_PHONE}?&body=${encodeURIComponent(
   'Hey John — saw Sash(a Cutie). When can we plan a play date?'
 )}`;
