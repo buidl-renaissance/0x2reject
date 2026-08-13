@@ -106,7 +106,7 @@ const PhotoCaption = styled.p`
   line-height: 1.4;
 `;
 
-const JOHN_PHONE = '+13135503518';
+const JOHN_PHONE = '+14193464592';
 const travelSmsHref = `sms:${JOHN_PHONE}?&body=${encodeURIComponent(
   "Hey John — saw your travel photos. Where are we going next?"
 )}`;
