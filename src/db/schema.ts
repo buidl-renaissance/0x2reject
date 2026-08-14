@@ -25,7 +25,7 @@ export const users = sqliteTable(
     photoUrl: text('photoUrl'),
     secondaryPhotoUrl: text('secondaryPhotoUrl'),
     packageHint: text('packageHint'),
-    textPhone: text('textPhone'), // SMS destination, e.g. +13135503518
+    textPhone: text('textPhone'), // SMS destination, e.g. +14193464592
     activities: text('activities').default('[]'), // JSON string array
     isPublic: integer('isPublic', { mode: 'boolean' }).default(false).notNull(),
     status: text('status').$type<UserStatus>().default('active'),
