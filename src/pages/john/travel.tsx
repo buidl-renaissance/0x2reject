@@ -107,9 +107,7 @@ const PhotoCaption = styled.p`
   line-height: 1.4;
 `;
 
-const JOHN_PHONE = '+14193464592';
 const travelWhatsAppHref = whatsappHref(
-  JOHN_PHONE,
   'Hey John — saw your travel photos. Where are we going next?'
 );
 

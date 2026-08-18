@@ -442,12 +442,9 @@ export function DatingCardFunnel({
       "Yes, this cute little girl is included in the package"
       ? "... and yes, this cute little girl is included in the package"
       : card.package_hint;
-  const smsHref = card.text_phone
-    ? whatsappHref(
-        card.text_phone,
-        "Hey, I think you and your cat are pretty cute. Let's ...",
-      )
-    : null;
+  const smsHref = whatsappHref(
+    "Hey, I think you and your cat are pretty cute. Let's ...",
+  );
 
   const licensePath = exploreBasePath
     ? `${exploreBasePath}/license-to-shag`
@@ -634,22 +631,12 @@ export function DatingCardFunnel({
         </>
       )}
 
-      {(step === "card" || step === "taste") &&
-        (smsHref ? (
-          <FloatingTextJohn
-            href={smsHref}
-            label={exploreBasePath ? "Text John" : `Text ${displayName}`}
-          />
-        ) : (
-          <FloatingTextJohn
-            href="#"
-            label="Stay in the loop"
-            onClick={(e) => {
-              e.preventDefault();
-              setStep("lead");
-            }}
-          />
-        ))}
+      {step === "taste" && (
+        <FloatingTextJohn
+          href={smsHref}
+          label={exploreBasePath ? "Text John" : `Text ${displayName}`}
+        />
+      )}
 
       {step === "lead" && (
         <Stage>

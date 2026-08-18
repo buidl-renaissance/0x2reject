@@ -28,9 +28,7 @@ const NextLink = styled(Link)`
   }
 `;
 
-const JOHN_PHONE = '+14193464592';
 const catsWhatsAppHref = whatsappHref(
-  JOHN_PHONE,
   'Hey John — saw Sash(a Cutie). When can we plan a play date?'
 );
 
