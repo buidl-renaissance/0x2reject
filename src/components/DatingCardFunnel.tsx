@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { activityLabel } from "@/lib/activities";
 import { FloatingTextJohn } from "@/components/FloatingTextJohn";
+import { whatsappHref } from "@/lib/whatsapp";
 
 export type DatingCardData = {
   id: string;
@@ -441,11 +442,11 @@ export function DatingCardFunnel({
       "Yes, this cute little girl is included in the package"
       ? "... and yes, this cute little girl is included in the package"
       : card.package_hint;
-  const smsBody = encodeURIComponent(
-    "Hey, I think you and your cat are pretty cute. Let's ...",
-  );
   const smsHref = card.text_phone
-    ? `sms:${card.text_phone.replace(/[^\d+]/g, "")}?&body=${smsBody}`
+    ? whatsappHref(
+        card.text_phone,
+        "Hey, I think you and your cat are pretty cute. Let's ...",
+      )
     : null;
 
   const licensePath = exploreBasePath

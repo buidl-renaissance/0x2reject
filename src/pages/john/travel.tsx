@@ -7,6 +7,7 @@ import {
   PhotoWithCaption,
 } from '@/components/JohnSubpage';
 import { FloatingTextJohn } from '@/components/FloatingTextJohn';
+import { whatsappHref } from '@/lib/whatsapp';
 import { travelTrips, getTripPhotos, isTravelVideo } from '@/lib/travel';
 
 const NextLink = styled(Link)`
@@ -107,9 +108,10 @@ const PhotoCaption = styled.p`
 `;
 
 const JOHN_PHONE = '+13135503518';
-const travelSmsHref = `sms:${JOHN_PHONE}?&body=${encodeURIComponent(
-  "Hey John — saw your travel photos. Where are we going next?"
-)}`;
+const travelWhatsAppHref = whatsappHref(
+  JOHN_PHONE,
+  'Hey John — saw your travel photos. Where are we going next?'
+);
 
 export default function JohnTravelPage() {
   return (
@@ -170,7 +172,7 @@ export default function JohnTravelPage() {
 
       <NextLink href="/john/cats">Take me to cat photos →</NextLink>
 
-      <FloatingTextJohn href={travelSmsHref} />
+      <FloatingTextJohn href={travelWhatsAppHref} />
     </JohnSubpage>
   );
 }

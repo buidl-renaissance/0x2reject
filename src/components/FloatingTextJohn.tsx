@@ -39,8 +39,15 @@ export function FloatingTextJohn({
   label = 'Text John',
   onClick,
 }: Props) {
+  const external = href.startsWith('http');
   return (
-    <Float href={href} onClick={onClick}>
+    <Float
+      href={href}
+      onClick={onClick}
+      {...(external
+        ? { target: '_blank', rel: 'noopener noreferrer' }
+        : {})}
+    >
       {label}
     </Float>
   );

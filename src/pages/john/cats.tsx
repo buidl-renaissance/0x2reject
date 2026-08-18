@@ -9,6 +9,7 @@ import {
   PhotoWithCaption,
 } from '@/components/JohnSubpage';
 import { FloatingTextJohn } from '@/components/FloatingTextJohn';
+import { whatsappHref } from '@/lib/whatsapp';
 
 const NextLink = styled(Link)`
   display: block;
@@ -28,9 +29,10 @@ const NextLink = styled(Link)`
 `;
 
 const JOHN_PHONE = '+13135503518';
-const catsSmsHref = `sms:${JOHN_PHONE}?&body=${encodeURIComponent(
+const catsWhatsAppHref = whatsappHref(
+  JOHN_PHONE,
   'Hey John — saw Sash(a Cutie). When can we plan a play date?'
-)}`;
+);
 
 export default function JohnCatsPage() {
   return (
@@ -98,7 +100,7 @@ export default function JohnCatsPage() {
 
       <NextLink href="/john/travel">Where has John been? →</NextLink>
 
-      <FloatingTextJohn href={catsSmsHref} />
+      <FloatingTextJohn href={catsWhatsAppHref} />
     </JohnSubpage>
   );
 }
