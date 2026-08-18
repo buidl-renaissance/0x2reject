@@ -7,14 +7,26 @@ export function isGodsWorkHost(host: string): boolean {
   return hostname === 'gods.work' || hostname.endsWith('.gods.work');
 }
 
+export function isDoingGodsWorkHost(host: string): boolean {
+  const hostname = host.split(':')[0]?.toLowerCase() ?? '';
+  return hostname === 'doing.gods.work';
+}
+
 export function middleware(request: NextRequest) {
-  if (!isGodsWorkHost(request.headers.get('host') ?? '')) {
+  const host = request.headers.get('host') ?? '';
+  if (!isGodsWorkHost(host)) {
     return NextResponse.next();
   }
 
   const { pathname } = request.nextUrl;
   if (pathname === '/' || pathname === '') {
     const url = request.nextUrl.clone();
+
+    if (isDoingGodsWorkHost(host)) {
+      url.pathname = '/john';
+      return NextResponse.redirect(url);
+    }
+
     url.pathname = '/doing-gods-work';
     return NextResponse.rewrite(url);
   }

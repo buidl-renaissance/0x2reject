@@ -33,7 +33,7 @@ const JOHN = {
   photoUrl: '/profiles/john.png',
   secondaryPhotoUrl: '/profiles/sash-john-tounge.jpg',
   packageHint: '... and yes, this cute little girl is included in the package',
-  textPhone: '+13135503518',
+  textPhone: '+14193464592',
   activities: JSON.stringify(['pinball', 'crypto', 'travel', 'building', 'events']),
   isPublic: true,
 };
