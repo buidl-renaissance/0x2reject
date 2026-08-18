@@ -117,10 +117,17 @@ const CardMeta = styled.div`
 `;
 
 const Name = styled.h1`
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.2rem;
   font-family: "Space Grotesk", system-ui, sans-serif;
   font-size: 1.85rem;
   font-weight: 700;
+`;
+
+const Location = styled.p`
+  margin: 0 0 0.4rem;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
 `;
 
 const Vibe = styled.p`
@@ -564,6 +571,7 @@ export function DatingCardFunnel({
             {dragX < -40 && <Stamp $kind="nope">Nope</Stamp>}
             <CardMeta>
               <Name>{nameLine}</Name>
+              {exploreBasePath && <Location>Detroit, MI</Location>}
               <Vibe>{vibeText}</Vibe>
             </CardMeta>
           </CardShell>
