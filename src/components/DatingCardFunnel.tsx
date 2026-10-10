@@ -407,6 +407,36 @@ const ExploreLink = styled.a`
   }
 `;
 
+const Bio = styled.div`
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  text-align: left;
+
+  p {
+    margin: 0 0 0.85rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  em {
+    color: #9ca3af;
+    font-style: italic;
+  }
+
+  strong {
+    color: #f9fafb;
+    font-weight: 600;
+  }
+`;
+
 type Props = {
   card: DatingCardData;
   source: "deck" | "share";
@@ -585,6 +615,15 @@ export function DatingCardFunnel({
               <SwipeArrow aria-hidden>→</SwipeArrow>
             </SwipeRightBtn>
           </Actions>
+          {exploreBasePath && (
+            <Bio>
+              <p><strong>Swipe right.</strong> You&apos;ll thank yourself later.</p>
+              <p>Her mom left. He didn&apos;t. She&apos;s been his number one ever since and that&apos;s not up for negotiation.</p>
+              <p>What <em>is</em> available? The role of her favorite human who isn&apos;t him. It&apos;s competitive. It&apos;s worth it.</p>
+              <p>Yes, the cat is cuter. But he makes up for it in other ways. Ask him.</p>
+              <p><em>Limited availability. Act accordingly.</em></p>
+            </Bio>
+          )}
         </Stage>
       )}
 
